@@ -1,0 +1,29 @@
+{
+	"name": "锐冰 Wink",
+	"short_name": "锐冰",
+	"display": "standalone",
+	"theme_color": "#6CB4FE",
+	"start_url": "/index.html",
+	"background_color": "#FFFFFF",
+	"description": "锐冰的个人网站，欢迎访问呀~",
+	"icons": [
+		{
+			"src": "/favicon_180x180.pngg",
+			"sizes": "180x180",
+			"type": "image/png",
+			"purpose": "any"
+		},
+		{
+			"src": "/favicon.png",
+			"sizes": "800x800",
+			"type": "image/png",
+			"purpose": "any"
+		},
+		{
+			"src": "/favicon.ico",
+			"sizes": "128x128",
+			"type": "image/x-icon",
+			"purpose": "any"
+		}
+	]
+}

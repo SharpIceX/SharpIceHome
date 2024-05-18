@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+	@apply font-serif font-bold; /* 字体 */
+	@apply h-screen w-screen; /* 使 body 占满整个屏幕 */
+	@apply bg-nord0 text-nord4; /* 背景色和文本颜色 */
+	@apply flex items-center justify-center; /* flex 布局 */
+	@apply selection:bg-nord6 selection:bg-opacity-40; /* 文本选中时背景色 */
+}
+
+.position-center {
+	@apply left-1/2 top-1/2;
+	@apply -translate-x-1/2 -translate-y-1/2;
+}

@@ -1,0 +1,30 @@
+{
+	"semi": true,
+	"tabWidth": 4,
+	"useTabs": true,
+	"singleQuote": false,
+	"trailingComma": "all",
+	"tailwindConfig": "./tailwind.config.js",
+	"plugins": ["prettier-plugin-tailwindcss"],
+	"overrides": [
+		{
+			"files": "*.yml",
+			"options": {
+				"useTabs": false
+			}
+		},
+		{
+			"files": "*.{html,vue}",
+			"options": {
+				"printWidth": 240
+			}
+		},
+		{
+			"files": "*.md",
+			"options": {
+				"useTabs": false,
+				"tabWidth": 2
+			}
+		}
+	]
+}

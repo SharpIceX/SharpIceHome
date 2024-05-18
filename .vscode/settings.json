@@ -1,0 +1,10 @@
+{
+	"editor.formatOnSave": true,
+	"css.customData": [".vscode/tailwind.json"],
+	"tailwindCSS.includeLanguages": {
+		"vue": "html"
+	},
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": "explicit"
+	}
+}
