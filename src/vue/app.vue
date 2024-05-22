@@ -21,7 +21,7 @@
 		</div>
 		<ul class="flex flex-row flex-wrap justify-center space-x-5">
 			<li>
-				<a herf="https://blog.sharpice.top" class="icon">
+				<a href="https://blog.sharpice.top" class="icon">
 					<span>
 						<font-awesome-icon icon="fa-solid fa-newspaper" />
 					</span>
@@ -29,7 +29,7 @@
 				</a>
 			</li>
 			<li>
-				<a herf="https://github.com/FurryRbl" class="icon">
+				<a href="https://github.com/FurryRbl" class="icon">
 					<span>
 						<font-awesome-icon icon="fa-brands fa-github" />
 					</span>
@@ -37,7 +37,7 @@
 				</a>
 			</li>
 			<li>
-				<a herf="https://space.bilibili.com/513364639" class="icon">
+				<a href="https://space.bilibili.com/513364639" class="icon">
 					<span>
 						<font-awesome-icon icon="fa-brands fa-bilibili" />
 					</span>
@@ -53,7 +53,7 @@
 				</a>
 			</li>
 			<li>
-				<a herf="mailto:SharpIce@SharpIce.top" class="icon">
+				<a href="mailto:SharpIce@SharpIce.top" class="icon">
 					<span>
 						<font-awesome-icon icon="fa-solid fa-envelope" />
 					</span>
