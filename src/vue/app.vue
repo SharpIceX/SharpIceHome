@@ -45,7 +45,7 @@
 				</a>
 			</li>
 			<li>
-				<a herf="https://www.zhihu.com/people/rui-bing-long" class="icon">
+				<a href="https://www.zhihu.com/people/rui-bing-long" class="icon">
 					<span>
 						<font-awesome-icon icon="fa-brands fa-zhihu" />
 					</span>
