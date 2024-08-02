@@ -1,15 +1,17 @@
-import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
+import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 
 export default [
 	eslintPluginPrettierRecommended,
 	{
 		languageOptions: {
-			ecmaVersion: 14,
-			sourceType: "module",
+			parserOptions: {
+				ecmaVersion: 14,
+				sourceType: 'module',
+			},
 		},
 		rules: {
-			eqeqeq: ["error", "always"],
+			eqeqeq: ['error', 'always'],
 		},
-		ignores: ["node_modules", "/build"],
+		ignores: ['node_modules', '/build'],
 	},
 ];

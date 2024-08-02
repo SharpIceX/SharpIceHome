@@ -2,8 +2,14 @@
 	"semi": true,
 	"tabWidth": 4,
 	"useTabs": true,
-	"singleQuote": false,
+	"endOfLine": "lf",
+	"printWidth": 120,
+	"singleQuote": true,
+	"jsxSingleQuote": true,
 	"trailingComma": "all",
+	"arrowParens": "avoid",
+	"bracketSameLine": true,
+	"htmlWhitespaceSensitivity": "strict",
 	"tailwindConfig": "./tailwind.config.js",
 	"plugins": ["prettier-plugin-tailwindcss"],
 	"overrides": [
@@ -14,16 +20,10 @@
 			}
 		},
 		{
-			"files": "*.{html,vue}",
-			"options": {
-				"printWidth": 240
-			}
-		},
-		{
 			"files": "*.md",
 			"options": {
-				"useTabs": false,
-				"tabWidth": 2
+				"tabWidth": 2,
+				"useTabs": false
 			}
 		}
 	]

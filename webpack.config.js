@@ -1,33 +1,33 @@
-import path from "path";
-import webpack from "webpack";
-import { VueLoaderPlugin } from "vue-loader";
-import TerserPlugin from "terser-webpack-plugin";
-import CopyWebpackPlugin from "copy-webpack-plugin";
-import HtmlWebpackPlugin from "html-webpack-plugin";
-import localPostcssOptions from "./postcss.config.js";
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
-import JsonMinimizerPlugin from "json-minimizer-webpack-plugin";
-import HtmlMinimizerPlugin from "html-minimizer-webpack-plugin";
+import path from 'path';
+import webpack from 'webpack';
+import { VueLoaderPlugin } from 'vue-loader';
+import TerserPlugin from 'terser-webpack-plugin';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import localPostcssOptions from './postcss.config.js';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
+import HtmlMinimizerPlugin from 'html-minimizer-webpack-plugin';
 
-export default (env) => {
-	const isDevelopmentMode = env.WEBPACK_SERVE?.toString() === "true";
+export default env => {
+	const isDevelopmentMode = env.WEBPACK_SERVE?.toString() === 'true';
 
-	return {
-		entry: path.resolve("./src/js/main.js"),
+	/** @type {import("webpack").Configuration} */
+	const config = {
+		entry: path.resolve('./src/js/main.js'),
 		output: {
 			clean: true,
-			filename: "module.js",
-			libraryTarget: "umd",
-			path: path.resolve("./build"),
+			filename: 'module.js',
+			libraryTarget: 'umd',
+			path: path.resolve('./build'),
 		},
 		devServer: {
 			hot: true,
 			port: 8200,
 			open: false,
 			compress: true,
-			host: "127.0.0.1",
-			static: [path.resolve("./public")],
+			host: '127.0.0.1',
+			static: [path.resolve('./public')],
 			client: {
 				overlay: false,
 			},
@@ -35,33 +35,51 @@ export default (env) => {
 		module: {
 			rules: [
 				{
-					test: /\.(css|less)$/,
+					test: /\.css$/,
 					use: [
 						MiniCssExtractPlugin.loader,
-						"css-loader",
+						'css-loader',
 						{
-							loader: "postcss-loader",
+							loader: 'postcss-loader',
 							options: {
 								postcssOptions: localPostcssOptions,
 							},
 						},
-						"less-loader",
 					],
 				},
 				{
-					test: /\.(woff|woff2|eot|ttf|otf)$/,
-					type: "asset/resource",
+					test: /\.less$/,
+					use: [
+						MiniCssExtractPlugin.loader,
+						'css-loader',
+						{
+							loader: 'postcss-loader',
+							options: {
+								postcssOptions: localPostcssOptions,
+							},
+						},
+						'less-loader',
+					],
+				},
+				{
+					test: /\.(woff|woff2)$/,
+					type: 'asset/resource',
 					generator: {
-						filename: "assets/fonts/[name][ext]",
+						filename: 'assets/fonts/[name][ext]',
 					},
 				},
 				{
 					test: /\.js$/,
 					exclude: /node_modules/,
+					loader: 'babel-loader',
 				},
 				{
 					test: /\.vue$/,
-					loader: "vue-loader",
+					loader: 'vue-loader',
+				},
+				{
+					test: /\.svg$/,
+					use: ['vue-loader', './tools/svg-vue-loader/main.js'],
 				},
 			],
 		},
@@ -76,28 +94,25 @@ export default (env) => {
 			new CopyWebpackPlugin({
 				patterns: [
 					{
-						from: path.resolve("./public"),
-						to: path.resolve("./build"),
+						from: path.resolve('./public'),
+						to: path.resolve('./build'),
 					},
 				],
 			}),
 			new MiniCssExtractPlugin({
-				filename: "style.css",
+				filename: 'style.css',
 			}),
 			new HtmlWebpackPlugin({
-				template: path.resolve("./template/index.html"),
-				publicPath: "/",
+				template: path.resolve('./template/index.html'),
+				publicPath: '/',
 			}),
 		],
 		optimization: {
 			minimize: isDevelopmentMode ? false : true,
-			minimizer: [
-				new TerserPlugin(),
-				new JsonMinimizerPlugin(),
-				new HtmlMinimizerPlugin(),
-				new CssMinimizerPlugin(),
-			],
+			minimizer: [new TerserPlugin(), new HtmlMinimizerPlugin(), new CssMinimizerPlugin()],
 		},
-		devtool: isDevelopmentMode ? "source-map" : false,
+		devtool: isDevelopmentMode ? 'source-map' : false,
 	};
+
+	return config;
 };
