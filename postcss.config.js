@@ -1,6 +1,7 @@
 import tailwindcss from 'tailwindcss';
 import postcssImport from 'postcss-import';
 import postcssPresetEnv from 'postcss-preset-env';
+import postcssRemoveFormatFonts from 'postcss-remove-format-fonts';
 
 /** @type {import("postcss-load-config").Config} */
 export default {
@@ -10,5 +11,6 @@ export default {
 		postcssPresetEnv({
 			stage: 0,
 		}),
+		postcssRemoveFormatFonts('woff'),
 	],
 };

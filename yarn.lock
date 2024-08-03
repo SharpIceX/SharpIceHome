@@ -5045,6 +5045,13 @@ postcss-reduce-transforms@^7.0.0:
   dependencies:
     postcss-value-parser "^4.2.0"
 
+postcss-remove-format-fonts@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npmmirror.com/postcss-remove-format-fonts/-/postcss-remove-format-fonts-1.0.0.tgz#78eff174e601fb2c116f060854cd33b3c6f6b9df"
+  integrity sha512-zVVFnyQArC8Me/H+CxdkvcLoPRifKtfF8ikpWjS7Kla90Z7nd9VEEvJ/tI2MG/ACtUAE9LlVO2s+Uje0EFiqgQ==
+  dependencies:
+    postcss "^8.4.40"
+
 postcss-replace-overflow-wrap@^4.0.0:
   version "4.0.0"
   resolved "https://registry.npmmirror.com/postcss-replace-overflow-wrap/-/postcss-replace-overflow-wrap-4.0.0.tgz#d2df6bed10b477bf9c52fab28c568b4b29ca4319"

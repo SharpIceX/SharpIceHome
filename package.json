@@ -5,11 +5,11 @@
 	"type": "module",
 	"license": "MPL-2.0",
 	"private": true,
+	"homepage": "https://sharpice.top",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/FurryRbl/SharpIceHome.git"
 	},
-	"homepage": "https://sharpice.top",
 	"bugs": {
 		"url": "https://github.com/FurryRbl/SharpIceHome/issues"
 	},
@@ -67,6 +67,7 @@
 		"postcss-load-config": "^6.0.1",
 		"postcss-loader": "^8.1.1",
 		"postcss-preset-env": "^9.6.0",
+		"postcss-remove-format-fonts": "^1.0.0",
 		"prettier": "^3.3.3",
 		"prettier-plugin-tailwindcss": "^0.6.5",
 		"rimraf": "^6.0.1",

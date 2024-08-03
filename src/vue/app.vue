@@ -1,8 +1,6 @@
 <template>
-	<div>
-		<loading v-if="loading" />
-		<Home v-else />
-	</div>
+	<loading v-if="loading" />
+	<Home v-else />
 </template>
 
 <script>

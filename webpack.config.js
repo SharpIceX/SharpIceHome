@@ -18,7 +18,6 @@ export default env => {
 		output: {
 			clean: true,
 			filename: 'module.js',
-			libraryTarget: 'umd',
 			path: path.resolve('./build'),
 		},
 		devServer: {
@@ -85,12 +84,12 @@ export default env => {
 		},
 		plugins: [
 			new webpack.ProgressPlugin(),
-			new VueLoaderPlugin(),
 			new webpack.DefinePlugin({
 				__VUE_OPTIONS_API__: true,
 				__VUE_PROD_DEVTOOLS__: isDevelopmentMode,
 				__VUE_PROD_HYDRATION_MISMATCH_DETAILS__: false,
 			}),
+			new VueLoaderPlugin(),
 			new CopyWebpackPlugin({
 				patterns: [
 					{
@@ -103,8 +102,8 @@ export default env => {
 				filename: 'style.css',
 			}),
 			new HtmlWebpackPlugin({
-				template: path.resolve('./template/index.html'),
 				publicPath: '/',
+				template: path.resolve('./template/index.html'),
 			}),
 		],
 		optimization: {
