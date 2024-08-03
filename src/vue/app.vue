@@ -20,9 +20,14 @@ export default {
 	},
 	mounted() {
 		const fonts = new FontFaceObserver('LXGW WenKai');
-		fonts.load().then(() => {
-			this.loading = false;
-		});
+		fonts
+			.load()
+			.then(() => {
+				this.loading = false;
+			})
+			.catch(() => {
+				this.loading = false;
+			});
 	},
 };
 </script>
