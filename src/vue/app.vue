@@ -6,7 +6,7 @@
 <script>
 import Home from './home.vue';
 import loading from './loading.vue';
-import FontFaceObserver from 'fontfaceobserver';
+import { waitForFont } from '../js/utils.js';
 
 export default {
 	data() {
@@ -19,15 +19,9 @@ export default {
 		loading,
 	},
 	mounted() {
-		const fonts = new FontFaceObserver('LXGW WenKai');
-		fonts
-			.load()
-			.then(() => {
-				this.loading = false;
-			})
-			.catch(() => {
-				this.loading = false;
-			});
+		waitForFont('LXGW WenKai')
+			.catch(() => {})
+			.finally(() => (this.loading = false));
 	},
 };
 </script>

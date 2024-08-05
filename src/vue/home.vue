@@ -38,7 +38,7 @@
 			<!-- 技术栈 -->
 			<div class="paragraph">
 				<h1 class="text-2xl">技术栈</h1>
-				<div class="flex items-center space-x-1 pl-4">
+				<div class="flex flex-wrap items-center space-x-1 pl-4">
 					<p class="flex items-center space-x-1">
 						<javaScriptIcon />
 						<span>JavaScript</span>
@@ -71,7 +71,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="flex flex-row justify-center space-x-4">
+		<div class="flex flex-row flex-wrap justify-center space-x-4">
 			<a class="link" href="https://blog.sharpice.top">
 				<Rss_FeedIcon />
 				<span>个人博客</span>
