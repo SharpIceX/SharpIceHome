@@ -26,6 +26,7 @@ export default function vueSvgLoader(source) {
 
 	const svg = optimize($.xml(), {
 		path: this.resourcePath,
+		multipass: true,
 	});
 
 	const vue = util.format(template, svg.data, path.basename(this.resourcePath, '.svg'));

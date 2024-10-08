@@ -71,7 +71,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="flex flex-row flex-wrap justify-center space-x-4">
+		<div class="centered-flex-row">
 			<a class="link" href="https://blog.sharpice.top">
 				<Rss_FeedIcon />
 				<span>个人博客</span>
@@ -84,11 +84,15 @@
 				<bilibiliIcon />
 				<span>Bilibili</span>
 			</a>
-			<a class="link" href="https://zhihu.com/people/SharpIce"> 知乎 </a>
+			<a class="link" href="https://zhihu.com/people/SharpIce">知乎</a>
 			<a class="link" href="mailto:SharpIce@SharpIce.top">
 				<emailIcon />
 				<span>邮件</span>
 			</a>
+		</div>
+		<div class="centered-flex-row">
+			<a class="link" href="https://ifdian.net/a/SharpIce">爱发电</a>
+			<a class="link" href="https://ko-fi.com/sharpice">Ko-Fi</a>
 		</div>
 	</div>
 </template>
@@ -126,6 +130,10 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.centered-flex-row {
+	@apply flex flex-row flex-wrap justify-center space-x-4;
+}
+
 .separation {
 	@apply text-nord4;
 	font-style: normal;

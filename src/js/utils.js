@@ -1,4 +1,4 @@
-export const waitForFont = (font, timeout = 1500) => {
+export const waitForFont = (font, timeout = 3000) => {
 	return new Promise((resolve, reject) => {
 		const start = Date.now();
 
