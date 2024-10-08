@@ -5,34 +5,36 @@ import { EsbuildPlugin } from 'esbuild-loader';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import localPostcssOptions from './postcss.config.js';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import HtmlMinimizerPlugin from 'html-minimizer-webpack-plugin';
 
-/** @type {import("esbuild-loader").LoaderOptions}*/
-const esbuildOption = {
-	loader: 'js',
-	format: 'esm',
-	target: 'es6',
-
-	logLevel: 'info', // 设置了这个才有日志输出
-
-	color: true,
-	treeShaking: true,
-	sourcemap: 'external',
-	legalComments: 'eof', // 法律文本注释写入文件末尾
-};
-
 export default env => {
 	const isDevelopmentMode = env.WEBPACK_SERVE?.toString() === 'true';
+
+	/** @type {import("esbuild-loader").LoaderOptions}*/
+	const esbuildOption = {
+		loader: 'js',
+		format: 'esm',
+		target: 'es2020',
+
+		logLevel: 'info',
+
+		color: true,
+		treeShaking: true,
+		legalComments: 'eof', // 法律文本注释写入文件末尾
+		sourcemap: isDevelopmentMode ? 'inline' : false,
+	};
 
 	/** @type {import("webpack").Configuration} */
 	const config = {
 		entry: path.resolve('./src/js/main.js'),
 		output: {
 			clean: true,
-			filename: '__SharpIce__/assets/js/[name].[contenthash].js',
 			path: path.resolve('./build'),
+			filename: '__SharpIce__/assets/js/[name].[contenthash].js',
+			library: {
+				type: isDevelopmentMode ? 'umd2' : 'module',
+			},
 		},
 		devServer: {
 			hot: true,
@@ -53,7 +55,7 @@ export default env => {
 				{
 					test: /\.css$/,
 					use: [
-						MiniCssExtractPlugin.loader,
+						'style-loader',
 						'css-loader',
 						{
 							loader: 'postcss-loader',
@@ -66,7 +68,7 @@ export default env => {
 				{
 					test: /\.less$/,
 					use: [
-						MiniCssExtractPlugin.loader,
+						'style-loader',
 						'css-loader',
 						{
 							loader: 'postcss-loader',
@@ -78,7 +80,7 @@ export default env => {
 					],
 				},
 				{
-					test: /\.(woff|woff2)$/,
+					test: /\.woff2$/,
 					type: 'asset/resource',
 					generator: {
 						filename: '__SharpIce__/assets/fonts/[name].[contenthash].[ext]',
@@ -116,9 +118,6 @@ export default env => {
 					},
 				],
 			}),
-			new MiniCssExtractPlugin({
-				filename: '__SharpIce__/assets/css/[name].[contenthash].css',
-			}),
 			new HtmlWebpackPlugin({
 				publicPath: '/',
 				scriptLoading: 'module',
@@ -140,7 +139,7 @@ export default env => {
 				}),
 			],
 		},
-		devtool: 'source-map',
+		devtool: isDevelopmentMode ? 'eval-cheap-module-source-map' : 'source-map',
 	};
 
 	return config;

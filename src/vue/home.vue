@@ -4,7 +4,7 @@
 			<!-- 个人信息 -->
 			<div class="paragraph">
 				<div class="flex items-center space-x-1">
-					<img src="/favicon.png" title="SharpIce" width="40" height="40" />
+					<img src="/favicon.webp" title="SharpIce" width="40" height="40" />
 					<h1 class="text-3xl">锐冰</h1>
 				</div>
 				<div class="pl-4">
