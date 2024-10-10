@@ -1,5 +1,5 @@
 <template>
-	<div class="opacity-animation font-serif flex flex-col justify-center space-y-4 font-bold">
+	<div class="opacity-animation flex flex-col justify-center space-y-4">
 		<div class="space-y-4 rounded-lg border border-nord1 p-4 max-md:border-none">
 			<!-- 个人信息 -->
 			<div class="paragraph">
