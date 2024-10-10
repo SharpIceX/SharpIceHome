@@ -1,4 +1,4 @@
-export const waitForFont = (font, timeout = 1500) => {
+export const waitForFont = (font: string, timeout: number = 2000) => {
 	return new Promise((resolve, reject) => {
 		const start = Date.now();
 
@@ -20,7 +20,8 @@ export const waitForFont = (font, timeout = 1500) => {
 				resolve(true);
 			} else if (Date.now() - start > timeout) {
 				document.body.removeChild(testElement);
-				reject(new Error(`字体 "${font}" 在 ${timeout}ms 内未加载完成`));
+				console.warn(`字体 "${font}" 在 ${timeout}ms 内未加载完成`);
+				reject(false);
 			} else {
 				requestAnimationFrame(checkFont);
 			}

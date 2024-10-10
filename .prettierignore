@@ -2,4 +2,7 @@
 /node_modules
 
 # 构建输出
-/build
+/dist
+
+# pnpm
+/pnpm-lock.yaml

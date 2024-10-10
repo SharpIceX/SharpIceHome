@@ -6,8 +6,7 @@
 <script>
 import Home from './home.vue';
 import loading from './loading.vue';
-import { waitForFont } from '../js/utils.js';
-
+import { waitForFont } from '../ts/utils';
 export default {
 	data() {
 		return {

@@ -1,5 +1,5 @@
 <template>
-	<div class="opacity-animation flex flex-col justify-center space-y-4 font-LXGW font-bold">
+	<div class="opacity-animation font-serif flex flex-col justify-center space-y-4 font-bold">
 		<div class="space-y-4 rounded-lg border border-nord1 p-4 max-md:border-none">
 			<!-- 个人信息 -->
 			<div class="paragraph">
@@ -89,10 +89,6 @@
 				<emailIcon />
 				<span>邮件</span>
 			</a>
-		</div>
-		<div class="centered-flex-row">
-			<a class="link" href="https://ifdian.net/a/SharpIce">爱发电</a>
-			<a class="link" href="https://ko-fi.com/sharpice">Ko-Fi</a>
 		</div>
 	</div>
 </template>

@@ -2,15 +2,15 @@ import fs from 'node:fs';
 import url from 'node:url';
 import util from 'node:util';
 import path from 'node:path';
-import { load as cheerio } from 'cheerio';
 import { optimize } from 'svgo';
+import { load as cheerio } from 'cheerio';
 
 const template = fs.readFileSync(
 	path.resolve(path.dirname(url.fileURLToPath(import.meta.url)), 'template.vue'),
 	'utf-8',
 );
 
-export default function vueSvgLoader(source) {
+export default function vueToSvgLoader(source) {
 	const $ = cheerio(source, {
 		xmlMode: true,
 	});

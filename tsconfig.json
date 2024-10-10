@@ -1,0 +1,19 @@
+{
+	"compilerOptions": {
+		"strict": true,
+		"allowJs": true,
+		"sourceMap": true,
+		"target": "ESNext",
+		"module": "ESNext",
+		"esModuleInterop": true,
+		"moduleResolution": "Node"
+	},
+	"ts-node": {
+		"compilerOptions": {
+			"esm": true,
+			"target": "ES5",
+			"module": "CommonJS"
+		}
+	},
+	"include": ["./src/**/*", "./types/**/*"]
+}
