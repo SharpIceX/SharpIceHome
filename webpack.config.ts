@@ -123,8 +123,6 @@ export default (env: Record<string, unknown>) => {
 				],
 			}),
 			new HtmlWebpackPlugin({
-				publicPath: '/',
-				scriptLoading: 'module',
 				template: path.resolve('./template/index.html'),
 			}),
 			new MiniCssExtractPlugin({
