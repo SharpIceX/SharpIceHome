@@ -20,7 +20,7 @@ export default (env: Record<string, unknown>) => {
 		output: {
 			clean: true,
 			path: path.resolve('./dist'),
-			filename: '__SharpIce__/js/[name].[contenthash].js',
+			filename: 'js/[name].js',
 			library: {
 				type: 'umd2',
 			},
@@ -82,13 +82,6 @@ export default (env: Record<string, unknown>) => {
 					],
 				},
 				{
-					test: /\.woff2$/,
-					type: 'asset/resource',
-					generator: {
-						filename: '__SharpIce__/fonts/[name].[contenthash].[ext]',
-					},
-				},
-				{
 					test: /\.ts$/,
 					loader: 'ts-loader',
 				},
@@ -126,7 +119,7 @@ export default (env: Record<string, unknown>) => {
 				template: path.resolve('./template/index.html'),
 			}),
 			new MiniCssExtractPlugin({
-				filename: '__SharpIce__/css/[name].[contenthash].css',
+				filename: 'css/[name].css',
 			}),
 			env.analyze ? new BundleAnalyzerPlugin() : undefined,
 		],

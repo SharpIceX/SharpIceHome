@@ -1,6 +1,6 @@
 <template>
 	<div class="opacity-animation flex flex-col justify-center space-y-4">
-		<div class="space-y-4 rounded-lg border border-nord1 p-4 max-md:border-none">
+		<div class="card-bg space-y-4 rounded-lg border border-nord1 p-4 max-md:border-none">
 			<!-- 个人信息 -->
 			<div class="paragraph">
 				<div class="flex items-center space-x-1">
@@ -162,5 +162,10 @@ export default {
 			opacity: 1;
 		}
 	}
+}
+
+.card-bg {
+	@apply bg-nord4 bg-opacity-10;
+	backdrop-filter: blur(10px);
 }
 </style>
