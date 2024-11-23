@@ -1,11 +1,12 @@
 import eslint from '@eslint/js';
+import pluginVue from 'eslint-plugin-vue';
 import tseslint from 'typescript-eslint';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 
-/** @type {import('eslint').Linter.Config[]} */
-export default [
+export default tseslint.config(
 	eslint.configs.recommended,
 	...tseslint.configs.recommended,
+	...pluginVue.configs['flat/recommended'],
 	eslintPluginPrettierRecommended,
 	{
 		languageOptions: {
@@ -20,4 +21,4 @@ export default [
 		},
 		ignores: ['node_modules', '/dist'],
 	},
-];
+);

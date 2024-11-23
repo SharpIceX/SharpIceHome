@@ -1,6 +1,7 @@
 <template>
-	<div class="opacity-animation flex flex-col justify-center space-y-4">
-		<div class="card-bg space-y-4 rounded-lg border border-nord1 p-4 max-md:border-none">
+	<main class="flex flex-col justify-center space-y-4">
+		<div
+			class="advanced-blur-backdrop advanced-blur-card advanced-blur-shadow space-y-4 rounded-lg p-4 max-md:border-none">
 			<!-- 个人信息 -->
 			<div class="paragraph">
 				<div class="flex items-center space-x-1">
@@ -90,7 +91,7 @@
 				<span>邮件</span>
 			</a>
 		</div>
-	</div>
+	</main>
 </template>
 
 <script>
@@ -108,6 +109,7 @@ import bilibiliIcon from '@fortawesome/fontawesome-free/svgs/brands/bilibili.svg
 import favoriteBorderIcon from '@material-design-icons/svg/round/favorite_border.svg';
 
 export default {
+	name: 'HomePages',
 	components: {
 		vueIocn,
 		codeIocn,
@@ -149,23 +151,5 @@ export default {
 	&:hover {
 		@apply text-nord9;
 	}
-}
-
-.opacity-animation {
-	animation: opacity 1.5s;
-
-	@keyframes opacity {
-		0% {
-			opacity: 0;
-		}
-		100% {
-			opacity: 1;
-		}
-	}
-}
-
-.card-bg {
-	@apply bg-nord4 bg-opacity-10;
-	backdrop-filter: blur(10px);
 }
 </style>

@@ -1,0 +1,31 @@
+@import 'nord/src/lesscss/nord.less';
+
+.advanced-blur-before::before {
+	filter: blur(6px) contrast(1.05) saturate(1.05);
+	transition: filter 0.1s cubic-bezier(0.37, 0, 0.63, 1);
+}
+
+.advanced-blur-backdrop {
+	@apply bg-nord3 bg-opacity-10;
+	backdrop-filter: blur(9px) contrast(1.05) saturate(1.15) brightness(0.95);
+	transition: backdrop-filter 0.3s cubic-bezier(0.22, 1, 0.36, 1); /* 此处防止效果很奇怪 */
+}
+
+.advanced-blur-card {
+	@apply border border-nord0 border-opacity-60;
+}
+
+.advanced-blur-shadow {
+	@media (min-width: 1020px) {
+		filter: drop-shadow(2px 2px 4px @nord1);
+		transition: filter 0.2s cubic-bezier(0.37, 0, 0.63, 1);
+
+		&:hover {
+			filter: drop-shadow(2px 2px 2px @nord2);
+		}
+
+		&:not(:hover) {
+			filter: drop-shadow(2px 2px 4px @nord1);
+		}
+	}
+}

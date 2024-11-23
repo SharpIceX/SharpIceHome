@@ -2,7 +2,6 @@ import path from 'path';
 import webpack from 'webpack';
 import WebpackBar from 'webpackbar';
 import { VueLoaderPlugin } from 'vue-loader';
-import TerserPlugin from 'terser-webpack-plugin';
 import localPostcssOptions from './postcss.config';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
@@ -11,9 +10,21 @@ import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import type { WebpackConfiguration } from 'webpack-dev-server';
 import HtmlMinimizerPlugin from 'html-minimizer-webpack-plugin';
+import type svgToVueLoaderOptions from 'svg-to-vue-loader/options';
+import { EsbuildPlugin, type LoaderOptions } from 'esbuild-loader';
 
 export default (env: Record<string, unknown>) => {
 	const isDevelopmentMode = env.WEBPACK_SERVE?.toString() === 'true';
+
+	const esbuildOption: LoaderOptions = {
+		format: 'esm',
+		charset: 'utf8',
+		target: 'ES2020',
+		logLevel: 'info', // 设置了这个才有日志输出
+		platform: 'browser',
+		treeShaking: true,
+		legalComments: 'eof', // 法律文本注释写入文件末尾
+	};
 
 	return {
 		entry: path.resolve('./src/main.ts'),
@@ -30,10 +41,10 @@ export default (env: Record<string, unknown>) => {
 		},
 		devServer: {
 			hot: true,
-			port: 8200,
+			port: 8600,
 			open: false,
-			compress: true,
 			host: '127.0.0.1',
+			historyApiFallback: true,
 			static: [path.resolve('./public')],
 			client: {
 				overlay: false,
@@ -51,6 +62,15 @@ export default (env: Record<string, unknown>) => {
 						{
 							loader: 'css-loader',
 							options: {
+								url: {
+									filter: (url: string): boolean => {
+										if (url.startsWith('/')) {
+											return false;
+										}
+
+										return true;
+									},
+								},
 								importLoaders: 1,
 							},
 						},
@@ -69,6 +89,15 @@ export default (env: Record<string, unknown>) => {
 						{
 							loader: 'css-loader',
 							options: {
+								url: {
+									filter: (url: string): boolean => {
+										if (url.startsWith('/')) {
+											return false;
+										}
+
+										return true;
+									},
+								},
 								importLoaders: 2,
 							},
 						},
@@ -83,7 +112,21 @@ export default (env: Record<string, unknown>) => {
 				},
 				{
 					test: /\.ts$/,
-					loader: 'ts-loader',
+					loader: 'esbuild-loader',
+					exclude: /node_modules/,
+					options: {
+						loader: 'ts',
+						...esbuildOption,
+					},
+				},
+				{
+					test: /\.js$/,
+					loader: 'esbuild-loader',
+					exclude: /node_modules/,
+					options: {
+						loader: 'js',
+						...esbuildOption,
+					},
 				},
 				{
 					test: /\.vue$/,
@@ -91,7 +134,28 @@ export default (env: Record<string, unknown>) => {
 				},
 				{
 					test: /\.svg$/,
-					use: ['vue-loader', 'svg-to-vue-loader'],
+					use: [
+						'vue-loader',
+						{
+							loader: 'svg-to-vue-loader',
+							options: {
+								defaultSize: 20,
+								enableSvgo: true,
+								removeAllFill: true,
+								useFillCurrentColor: true,
+								svgoConfig: {
+									multipass: true,
+								},
+							} satisfies svgToVueLoaderOptions,
+						},
+					],
+				},
+				{
+					test: /\.webp$/,
+					type: 'asset/resource',
+					generator: {
+						filename: 'assets/images/[contenthash][ext]',
+					},
 				},
 			],
 		},
@@ -116,6 +180,7 @@ export default (env: Record<string, unknown>) => {
 				],
 			}),
 			new HtmlWebpackPlugin({
+				scriptLoading: 'module',
 				template: path.resolve('./template/index.html'),
 			}),
 			new MiniCssExtractPlugin({
@@ -124,23 +189,36 @@ export default (env: Record<string, unknown>) => {
 			env.analyze ? new BundleAnalyzerPlugin() : undefined,
 		],
 		optimization: {
+			usedExports: true,
+			sideEffects: true,
+			avoidEntryIife: true,
+			providedExports: true,
+			removeEmptyChunks: true,
+			flagIncludedChunks: true,
+			removeAvailableModules: true,
 			minimize: isDevelopmentMode ? false : true,
 			minimizer: [
-				new TerserPlugin({
-					terserOptions: {
-						ecma: 2020,
-						compress: {
-							drop_console: true,
-							dead_code: true,
-						},
-						mangle: {
-							keep_fnames: false,
-						},
-						output: {
-							comments: false,
-						},
+				new EsbuildPlugin({
+					...esbuildOption,
+					minify: true,
+					minifySyntax: true,
+					minifyWhitespace: true,
+					minifyIdentifiers: true,
+					drop: ['console', 'debugger'],
+				}),
+				new HtmlMinimizerPlugin({
+					minimizerOptions: {
+						caseSensitive: false,
+						collapseBooleanAttributes: true,
+						collapseWhitespace: true,
+						minifyCSS: true,
+						minifyJS: true,
+						removeComments: true,
+						useShortDoctype: true,
+						removeEmptyAttributes: true,
 					},
 				}),
+
 				new CssMinimizerPlugin({
 					minimizerOptions: {
 						preset: [
@@ -161,44 +239,7 @@ export default (env: Record<string, unknown>) => {
 						],
 					},
 				}),
-				new HtmlMinimizerPlugin({
-					minimizerOptions: {
-						caseSensitive: false,
-						collapseBooleanAttributes: true,
-						collapseWhitespace: true,
-						minifyCSS: true,
-						minifyJS: true,
-						removeComments: true,
-						useShortDoctype: true,
-						removeEmptyAttributes: true,
-					},
-				}),
 			],
-			splitChunks: {
-				chunks: 'all',
-				maxInitialRequests: Infinity,
-				minSize: 20000,
-				maxSize: 250000,
-				minChunks: 1,
-				maxAsyncRequests: 30,
-				automaticNameDelimiter: '~',
-				cacheGroups: {
-					vendors: {
-						name: 'vendors',
-						test: /[\\/]node_modules[\\/]/,
-						minSize: 0,
-						priority: -10,
-						reuseExistingChunk: true,
-					},
-					default: {
-						name: 'common',
-						minSize: 0,
-						minChunks: 2,
-						priority: -20,
-						reuseExistingChunk: true,
-					},
-				},
-			},
 		},
 		devtool: isDevelopmentMode ? 'eval-cheap-module-source-map' : false,
 	} satisfies WebpackConfiguration;

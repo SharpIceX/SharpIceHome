@@ -1,10 +1,19 @@
 import './styles/main.less';
 import loadjs from 'loadjs';
+import App from './app.vue';
+import router from './router';
 import { createApp } from 'vue';
-import App from './vue/app.vue';
+import Clarity from '@microsoft/clarity';
 import FontFaceObserver from 'fontfaceobserver';
 
+// 异步加载 Clarity
+Promise.resolve().then(() => {
+	Clarity.init('p2oa48b662');
+	Clarity.consent(false);
+});
+
 const app = createApp(App);
+app.use(router);
 
 Promise.all([
 	// 等待字体加载

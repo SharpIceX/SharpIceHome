@@ -3,7 +3,7 @@ import type { Config } from 'tailwindcss';
 import defaultTheme from 'tailwindcss/defaultTheme';
 
 export default {
-	content: ['./src/**/*{vue,js}', './template/**/*.html'],
+	content: ['./src/**/*{vue,ts}', './template/**/*.html'],
 	theme: {
 		fontFamily: {
 			serif: ['LXGW WenKai', ...defaultTheme.fontFamily.serif],
