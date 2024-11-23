@@ -10,7 +10,7 @@
 				<router-link to="/project">相关项目</router-link>
 			</li>
 			<li class="nav-item">
-				<router-link to="/link">亲友们</router-link>
+				<router-link to="/link">亲朋好友们</router-link>
 			</li>
 		</ul>
 	</nav>
@@ -18,7 +18,7 @@
 
 <style lang="less" scoped>
 .opacity-animation {
-	animation: opacity 0.8s;
+	animation: opacity 0.7s ease-in-out;
 
 	@keyframes opacity {
 		0% {
@@ -53,6 +53,19 @@
 }
 
 .nav-item {
-	@apply text-nord-8 hover:text-nord-9;
+	@apply text-nord-8;
+
+	&:hover {
+		@keyframes identifier {
+			0% {
+				@apply text-nord-8;
+			}
+			100% {
+				@apply text-nord10;
+			}
+		}
+
+		animation: identifier 0.75s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+	}
 }
 </style>

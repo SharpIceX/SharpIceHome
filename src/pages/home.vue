@@ -73,20 +73,20 @@
 			</div>
 		</div>
 		<div class="centered-flex-row">
-			<a class="link" href="https://blog.sharpice.top">
+			<a class="link-item" href="https://blog.sharpice.top">
 				<Rss_FeedIcon />
 				<span>个人博客</span>
 			</a>
-			<a class="link" href="https://github.com/FurryRbl">
+			<a class="link-item" href="https://github.com/FurryRbl">
 				<gitubIcon />
 				<span>GitHub</span>
 			</a>
-			<a class="link" href="https://space.bilibili.com/513364639">
+			<a class="link-item" href="https://space.bilibili.com/513364639">
 				<bilibiliIcon />
 				<span>Bilibili</span>
 			</a>
-			<a class="link" href="https://zhihu.com/people/SharpIce">知乎</a>
-			<a class="link" href="mailto:SharpIce@SharpIce.top">
+			<a class="link-item" href="https://zhihu.com/people/SharpIce">知乎</a>
+			<a class="link-item" href="mailto:SharpIce@SharpIce.top">
 				<emailIcon />
 				<span>邮件</span>
 			</a>
@@ -145,11 +145,20 @@ export default {
 	@apply space-y-2;
 }
 
-.link {
+.link-item {
 	@apply flex flex-row items-center space-x-1;
 
 	&:hover {
-		@apply text-nord9;
+		@keyframes identifier {
+			0% {
+				@apply text-nord4;
+			}
+			100% {
+				@apply text-nord9;
+			}
+		}
+
+		animation: identifier 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 	}
 }
 </style>
