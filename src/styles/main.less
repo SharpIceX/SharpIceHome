@@ -16,3 +16,12 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased;
 }
+
+.separation {
+	@apply text-nord4;
+	font-style: normal;
+
+	&::before {
+		content: '|';
+	}
+}

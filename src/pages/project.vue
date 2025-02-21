@@ -9,10 +9,10 @@
 					<ul>
 						<li>
 							<a href="https://www.npmjs.com/package/postcss-remove-format-fonts">
-								<npmIcon size="24" />
+								<npmIcon size="24" alt="NPM 包链接" />
 							</a>
 							<a href="https://github.com/FurryRbl/postcss-remove-format-fonts">
-								<gitubIcon size="24" />
+								<gitubIcon size="24" alt="GitHub 存储库链接" />
 							</a>
 						</li>
 					</ul>
@@ -25,10 +25,10 @@
 					<ul>
 						<li>
 							<a href="https://www.npmjs.com/package/svg-to-vue-loader">
-								<npmIcon size="24" />
+								<npmIcon size="24" alt="NPM 包链接" />
 							</a>
 							<a href="https://github.com/FurryRbl/svg-to-vue-loader">
-								<gitubIcon size="24" />
+								<gitubIcon size="24" alt="GitHub 存储库链接" />
 							</a>
 						</li>
 					</ul>
@@ -41,10 +41,10 @@
 					<ul>
 						<li>
 							<a href="https://www.npmjs.com/package/pkg-from-path">
-								<npmIcon size="24" />
+								<npmIcon size="24" alt="NPM 包链接" />
 							</a>
 							<a href="https://github.com/FurryRbl/pkg-from-path">
-								<gitubIcon size="24" />
+								<gitubIcon size="24" alt="GitHub 存储库链接" />
 							</a>
 						</li>
 					</ul>
