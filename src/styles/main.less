@@ -24,4 +24,15 @@ body {
 	&::before {
 		content: '|';
 	}
+
+	// 移动端
+	@media (max-width: 450px) {
+		position: absolute;
+		width: 0;
+		height: 0;
+		overflow: hidden;
+		&::before {
+			content: '';
+		}
+	}
 }

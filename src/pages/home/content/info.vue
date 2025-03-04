@@ -7,7 +7,7 @@
 		<div class="pl-4">
 			<h2 class="text-sm">Name: SharpIce</h2>
 			<h3 class="text-sm">Description: 世界很大，只是我的才华很有限，但我会继续学习的。</h3>
-			<ul class="flex space-x-2">
+			<ul class="flex space-x-2 max-[450px]:flex-wrap max-[450px]:justify-center">
 				<li class="flex items-center space-x-1">
 					<favoriteBorderIcon aria-hidden="true" />
 					<span>幻想生物（Fox）</span>

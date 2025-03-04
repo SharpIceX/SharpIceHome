@@ -1,6 +1,6 @@
 <template>
 	<main>
-		<ul class="w flex w-[88rem] flex-wrap justify-center gap-8 max-lg:w-auto max-lg:flex-col">
+		<ul class="flex w-[88rem] flex-wrap justify-center gap-8 max-lg:w-auto max-lg:flex-col">
 			<li :class="linkCardClass">
 				<a href="https://iy.ink/?ref=sharpice.top" aria-label="访问白墨的个人网站">
 					<div class="flex flex-row items-center space-x-4">

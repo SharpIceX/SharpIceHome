@@ -19,7 +19,7 @@ export default (env: Record<string, unknown>) => {
 	const esbuildOption: LoaderOptions = {
 		format: 'esm',
 		charset: 'utf8',
-		target: 'ES2020',
+		target: 'ES2022',
 		logLevel: 'info', // 设置了这个才有日志输出
 		platform: 'browser',
 		treeShaking: true,
@@ -240,24 +240,6 @@ export default (env: Record<string, unknown>) => {
 					},
 				}),
 			],
-			splitChunks: {
-				chunks: 'all',
-				minSize: 10000,
-				maxSize: 250000,
-				cacheGroups: {
-					vendor: {
-						test: /[\\/]node_modules[\\/]/,
-						name: 'vendor',
-						chunks: 'all',
-					},
-					common: {
-						name: 'common',
-						minChunks: 2,
-						chunks: 'all',
-						priority: 10,
-					},
-				},
-			},
 		},
 		stats: isDevelopmentMode ? 'minimal' : 'normal',
 		devtool: isDevelopmentMode ? 'eval-cheap-module-source-map' : false,
