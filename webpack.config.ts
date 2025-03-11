@@ -2,16 +2,17 @@ import path from 'path';
 import webpack from 'webpack';
 import WebpackBar from 'webpackbar';
 import { VueLoaderPlugin } from 'vue-loader';
+import TerserPlugin from 'terser-webpack-plugin';
 import localPostcssOptions from './postcss.config';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import type { LoaderOptions } from 'esbuild-loader';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import type { WebpackConfiguration } from 'webpack-dev-server';
 import HtmlMinimizerPlugin from 'html-minimizer-webpack-plugin';
 import type svgToVueLoaderOptions from 'svg-to-vue-loader/options';
-import { EsbuildPlugin, type LoaderOptions } from 'esbuild-loader';
 
 export default (env: Record<string, unknown>) => {
 	const isDevelopmentMode = env.WEBPACK_SERVE?.toString() === 'true';
@@ -19,11 +20,11 @@ export default (env: Record<string, unknown>) => {
 	const esbuildOption: LoaderOptions = {
 		format: 'esm',
 		charset: 'utf8',
-		target: 'ES2022',
+		target: 'ES2020',
 		logLevel: 'info', // 设置了这个才有日志输出
 		platform: 'browser',
 		treeShaking: true,
-		legalComments: 'eof', // 法律文本注释写入文件末尾
+		legalComments: 'none',
 	};
 
 	return {
@@ -32,9 +33,13 @@ export default (env: Record<string, unknown>) => {
 			clean: true,
 			path: path.resolve('./dist'),
 			filename: 'js/[name].js',
+			module: !isDevelopmentMode,
 			library: {
-				type: 'umd2',
+				type: isDevelopmentMode ? 'umd2' : 'module',
 			},
+		},
+		experiments: {
+			outputModule: !isDevelopmentMode,
 		},
 		cache: {
 			type: 'filesystem',
@@ -71,6 +76,7 @@ export default (env: Record<string, unknown>) => {
 										return true;
 									},
 								},
+								esModule: false,
 								importLoaders: 1,
 							},
 						},
@@ -98,6 +104,7 @@ export default (env: Record<string, unknown>) => {
 										return true;
 									},
 								},
+								esModule: false,
 								importLoaders: 2,
 							},
 						},
@@ -186,9 +193,13 @@ export default (env: Record<string, unknown>) => {
 			new MiniCssExtractPlugin({
 				filename: 'css/[name].css',
 			}),
+
+			isDevelopmentMode ? new webpack.optimize.ModuleConcatenationPlugin() : undefined,
+
 			env.analyze ? new BundleAnalyzerPlugin() : undefined,
 		],
 		optimization: {
+			innerGraph: true,
 			usedExports: true,
 			sideEffects: true,
 			avoidEntryIife: true,
@@ -198,41 +209,66 @@ export default (env: Record<string, unknown>) => {
 			removeAvailableModules: true,
 			minimize: isDevelopmentMode ? false : true,
 			minimizer: [
-				new EsbuildPlugin({
-					...esbuildOption,
-					minify: true,
-					minifySyntax: true,
-					minifyWhitespace: true,
-					minifyIdentifiers: true,
-					drop: ['console', 'debugger'],
-				}),
-				new HtmlMinimizerPlugin({
-					minimizerOptions: {
-						caseSensitive: false,
-						collapseBooleanAttributes: true,
-						collapseWhitespace: true,
-						minifyCSS: true,
-						minifyJS: true,
-						removeComments: true,
-						useShortDoctype: true,
-						removeEmptyAttributes: true,
+				new TerserPlugin({
+					parallel: true,
+					extractComments: false,
+					terserOptions: {
+						ecma: 2020,
+						mangle: true,
+						toplevel: true,
+						keep_fnames: true,
+						keep_classnames: true,
+						compress: {
+							passes: 3,
+							unused: true,
+							dead_code: true,
+							arguments: true,
+							drop_console: true,
+							drop_debugger: true,
+						},
+						output: {
+							comments: false,
+						},
 					},
 				}),
-
+				new HtmlMinimizerPlugin({
+					parallel: true,
+					minimizerOptions: {
+						minifyJS: true,
+						minifyCSS: true,
+						sortClassName: true,
+						removeComments: true,
+						sortAttributes: true,
+						caseSensitive: false,
+						useShortDoctype: true,
+						keepClosingSlash: false,
+						collapseWhitespace: true,
+						removeEmptyAttributes: true,
+						removeRedundantAttributes: true,
+						collapseBooleanAttributes: true,
+					},
+				}),
 				new CssMinimizerPlugin({
+					parallel: true,
 					minimizerOptions: {
 						preset: [
 							'default',
 							{
-								discardDuplicates: true,
 								mergeRules: true,
 								mergeMedia: true,
+								discardDuplicates: true,
+								discardComments: {
+									removeAll: true,
+								},
 								level: {
 									1: {
-										specialComments: 'none',
+										all: true,
 									},
 									2: {
 										removeUnused: true,
+										reduceNonAdjacentRules: true,
+										removeDuplicateFontRules: true,
+										removeDuplicateMediaBlocks: true,
 									},
 								},
 							},

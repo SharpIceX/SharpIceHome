@@ -1,7 +1,7 @@
 <template>
 	<div class="space-y-2">
 		<h2 class="text-2xl">关于我</h2>
-		<p class="pl-4">小鸽子一枚。喜欢前端开发，偶尔接触一下后端或者桌面开发~</p>
+		<p class="pl-4">小鸽子一枚。目前正在学习前端开发，偶然会接触其他领域~</p>
 	</div>
 </template>
 

@@ -1,7 +1,6 @@
 <template>
 	<main class="flex flex-col justify-center space-y-4">
-		<div
-			class="advanced-blur-backdrop advanced-blur-card advanced-blur-shadow space-y-4 rounded-lg p-4 max-md:border-none">
+		<div class="advanced-blur-backdrop advanced-blur-card space-y-4 rounded-lg p-4 max-md:border-none">
 			<!-- 个人信息 -->
 			<infoComponent />
 

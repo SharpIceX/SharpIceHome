@@ -1,48 +1,19 @@
 @import 'nord/src/lesscss/nord.less';
 
-.advanced-blur-before::before {
-	filter: blur(6px) contrast(1.05) saturate(1.05);
-	transition: filter 0.1s cubic-bezier(0.37, 0, 0.63, 1);
-}
-
-@media not all and (max-width: 768px) {
+@media not all and (max-width: 450px) {
 	.advanced-blur-backdrop {
 		will-change: transform, opacity, backdrop-filter;
 		transform: translateZ(0); /* 强制浏览器启用 GPU 加速 */
 
 		@apply bg-nord3 bg-opacity-10;
-		backdrop-filter: blur(9px) contrast(1.05) saturate(1.15) brightness(0.95);
+		backdrop-filter: blur(6px) contrast(1.05) saturate(1.15) brightness(0.9);
 		transition: backdrop-filter 0.3s cubic-bezier(0.22, 1, 0.36, 1); /* 此处防止效果很奇怪 */
 	}
+}
 
-	.advanced-blur-card {
-		@apply border border-nord0 border-opacity-60;
-	}
-
-	.advanced-blur-card-hover:hover {
-		@keyframes advanced-blur-card-hover {
-			20% {
-				@apply border-nord0;
-			}
-			50% {
-				@apply border-nord1;
-			}
-			100% {
-				@apply border-nord2;
-			}
-		}
-
-		animation: advanced-blur-card-hover 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-	}
-
-	.advanced-blur-shadow {
-		@media (min-width: 1020px) {
-			filter: drop-shadow(2px 2px 4px @nord1);
-			transition: filter 0.2s cubic-bezier(0.37, 0, 0.63, 1);
-
-			&:hover {
-				filter: drop-shadow(2px 2px 2px @nord2);
-			}
-		}
+@media not all and (min-width: 450px) {
+	.advanced-blur-before::before {
+		filter: blur(6px) contrast(1.05) saturate(1.05);
+		transition: filter 0.1s cubic-bezier(0.37, 0, 0.63, 1);
 	}
 }

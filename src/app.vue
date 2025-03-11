@@ -1,6 +1,13 @@
 <template>
+	<!-- 背景 -->
 	<div class="bg advanced-blur-before"></div>
+
+	<!-- 游戏推荐小组件 -->
+	<gameRecommendWidgets />
+
+	<!-- 页面 -->
 	<router-view class="opacity-animation"></router-view>
+
 	<nav class="flex justify-center p-2">
 		<ul class="flex space-x-3">
 			<li class="nav-item">
@@ -15,6 +22,17 @@
 		</ul>
 	</nav>
 </template>
+
+<script>
+import gameRecommendWidgets from './widgets/gameRecommend.vue';
+
+export default {
+	name: 'App',
+	components: {
+		gameRecommendWidgets,
+	},
+};
+</script>
 
 <style lang="less" scoped>
 .opacity-animation {
