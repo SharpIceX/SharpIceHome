@@ -1,6 +1,4 @@
 User-agent: *
-Disallow: /*
-
 Allow: /
 Allow: /link
 Allow: /project

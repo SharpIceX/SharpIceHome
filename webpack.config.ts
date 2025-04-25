@@ -21,9 +21,9 @@ export default (env: Record<string, unknown>) => {
 		format: 'esm',
 		charset: 'utf8',
 		target: 'ES2020',
-		logLevel: 'info', // 设置了这个才有日志输出
-		platform: 'browser',
+		logLevel: 'info',
 		treeShaking: true,
+		platform: 'browser',
 		legalComments: 'none',
 	};
 
@@ -42,7 +42,7 @@ export default (env: Record<string, unknown>) => {
 			outputModule: !isDevelopmentMode,
 		},
 		cache: {
-			type: 'filesystem',
+			type: isDevelopmentMode ? 'filesystem' : 'memory',
 		},
 		devServer: {
 			hot: true,
@@ -57,6 +57,9 @@ export default (env: Record<string, unknown>) => {
 		},
 		resolve: {
 			extensions: ['.ts', '.js'],
+			alias: {
+				vue$: 'vue/dist/vue.runtime.esm-bundler.js',
+			},
 		},
 		module: {
 			rules: [
@@ -216,8 +219,8 @@ export default (env: Record<string, unknown>) => {
 						ecma: 2020,
 						mangle: true,
 						toplevel: true,
-						keep_fnames: true,
-						keep_classnames: true,
+						keep_fnames: false,
+						keep_classnames: false,
 						compress: {
 							passes: 3,
 							unused: true,

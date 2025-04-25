@@ -22,9 +22,8 @@ Promise.all([
 	}),
 
 	// 等待图像加载
-	loadjs(['/favicon.webp', '/background.webp'], {
+	loadjs(['img!/favicon.webp', 'img!/background.webp'], {
 		async: true,
-		numRetries: 2,
 		error: (depsNotFound: string[]) => {
 			console.error('Failed to load images:', depsNotFound.join(', '));
 		},

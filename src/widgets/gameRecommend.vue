@@ -1,27 +1,28 @@
 <template>
 	<a
-		href="https://store.steampowered.com/app/3084280"
+		href="https://store.steampowered.com/app/3084280/?utm_source=sharpice.top&utm_medium=referral&utm_campaign=gamerecommend"
 		target="_blank"
-		class="main"
+		rel="noopener"
+		class="recommend-btn"
 		role="button"
-		itle="游戏推荐 —— 三相奇谈">
-		<gamesIcon />
+		title="游戏推荐 —— 三相奇谈">
+		<GamesIcon />
 	</a>
 </template>
 
 <script>
-import gamesIcon from '@material-design-icons/svg/outlined/games.svg';
+import GamesIcon from '@material-design-icons/svg/outlined/games.svg';
 
 export default {
 	name: 'GameRecommend',
 	components: {
-		gamesIcon,
+		GamesIcon,
 	},
 };
 </script>
 
 <style lang="less" scoped>
-.main {
+.recommend-btn {
 	/* 固定右上角 */
 	top: 0;
 	right: 0;

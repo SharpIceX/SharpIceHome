@@ -3,7 +3,7 @@
 @media not all and (max-width: 450px) {
 	.advanced-blur-backdrop {
 		will-change: transform, opacity, backdrop-filter;
-		transform: translateZ(0); /* 强制浏览器启用 GPU 加速 */
+		transform: translate3d(0, 0, 0); /* 强制浏览器启用 GPU 加速 */
 
 		@apply bg-nord3 bg-opacity-10;
 		backdrop-filter: blur(6px) contrast(1.05) saturate(1.15) brightness(0.9);
@@ -14,6 +14,6 @@
 @media not all and (min-width: 450px) {
 	.advanced-blur-before::before {
 		filter: blur(6px) contrast(1.05) saturate(1.05);
-		transition: filter 0.1s cubic-bezier(0.37, 0, 0.63, 1);
+		transition: filter 100ms cubic-bezier(0.37, 0, 0.63, 1);
 	}
 }
