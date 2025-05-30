@@ -167,6 +167,13 @@ export default (env: Record<string, unknown>) => {
 						filename: 'assets/images/[contenthash][ext]',
 					},
 				},
+				{
+					test: /\.woff2$/,
+					type: 'asset/resource',
+					generator: {
+						filename: 'assets/fonts/[contenthash][ext]',
+					},
+				},
 			],
 		},
 		plugins: [
@@ -174,7 +181,7 @@ export default (env: Record<string, unknown>) => {
 			new WebpackBar({
 				color: '#72C9FF',
 				name: 'SharpIce Home',
-				profile: isDevelopmentMode ? false : true,
+				profile: !isDevelopmentMode,
 			}),
 			new webpack.DefinePlugin({
 				__VUE_OPTIONS_API__: true,
@@ -210,7 +217,7 @@ export default (env: Record<string, unknown>) => {
 			removeEmptyChunks: true,
 			flagIncludedChunks: true,
 			removeAvailableModules: true,
-			minimize: isDevelopmentMode ? false : true,
+			minimize: !isDevelopmentMode,
 			minimizer: [
 				new TerserPlugin({
 					parallel: true,

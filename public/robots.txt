@@ -2,3 +2,5 @@ User-agent: *
 Allow: /
 Allow: /link
 Allow: /project
+
+Sitemap: https://sharpice.top/sitemap.xml

@@ -3,6 +3,7 @@ import loadjs from 'loadjs';
 import App from './app.vue';
 import router from './router';
 import { createApp } from 'vue';
+import '@fontsource/lxgw-wenkai';
 import Clarity from '@microsoft/clarity';
 import FontFaceObserver from 'fontfaceobserver';
 
