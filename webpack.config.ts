@@ -32,7 +32,7 @@ export default (env: Record<string, unknown>) => {
 		output: {
 			clean: true,
 			path: path.resolve('./dist'),
-			filename: 'js/[name].js',
+			filename: 'assets/js/[name].[contenthash].js',
 			module: !isDevelopmentMode,
 			library: {
 				type: isDevelopmentMode ? 'umd2' : 'module',
@@ -201,7 +201,7 @@ export default (env: Record<string, unknown>) => {
 				template: path.resolve('./template/index.html'),
 			}),
 			new MiniCssExtractPlugin({
-				filename: 'css/[name].css',
+				filename: 'assets/css/[name].[contenthash].css',
 			}),
 
 			isDevelopmentMode ? new webpack.optimize.ModuleConcatenationPlugin() : undefined,
