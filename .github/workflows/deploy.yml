@@ -1,0 +1,45 @@
+name: Build
+
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        permissions:
+            contents: read
+            deployments: write
+
+        steps:
+            - name: 签出代码
+              uses: actions/checkout@v4
+
+            - name: 安装 pnpm
+              uses: pnpm/action-setup@v4
+              with:
+                  version: 'latest'
+                  run_install: false
+
+            - name: 准备 Node.js 环境
+              uses: actions/setup-node@v4
+              with:
+                  node-version: '22'
+                  cache: 'pnpm'
+
+            - name: 安装依赖
+              run: pnpm install --frozen-lockfile --reporter=silent
+
+            - name: 构建
+              run: NODE_ENV=production pnpm run build
+
+            - name: Deploy to Cloudflare Pages
+              uses: cloudflare/wrangler-action@v3
+              with:
+                  apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+                  accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+                  command: pages deploy ./dist --project-name=sharpicehome
+                  directory: ./dist
+                  gitHubToken: ${{ secrets.GITHUB_TOKEN }}
