@@ -5,15 +5,15 @@
 		"sourceMap": true,
 		"target": "ES2020",
 		"module": "ESNext",
-		"skipLibCheck": false,
+		"skipLibCheck": true,
 		"esModuleInterop": true,
-		"moduleResolution": "Node"
+		"moduleResolution": "bundler"
 	},
 	"ts-node": {
 		"compilerOptions": {
 			"esm": true
 		}
 	},
-	"include": ["./src/**/*", "./types/**/*"],
+	"include": ["**/*.ts"],
 	"exclude": ["node_modules"]
 }

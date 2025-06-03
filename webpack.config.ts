@@ -167,13 +167,6 @@ export default (env: Record<string, unknown>) => {
 						filename: 'assets/images/[contenthash][ext]',
 					},
 				},
-				{
-					test: /\.woff2$/,
-					type: 'asset/resource',
-					generator: {
-						filename: 'assets/fonts/[contenthash][ext]',
-					},
-				},
 			],
 		},
 		plugins: [
@@ -287,7 +280,7 @@ export default (env: Record<string, unknown>) => {
 				}),
 			],
 		},
-		stats: isDevelopmentMode ? 'minimal' : 'normal',
+		stats: isDevelopmentMode ? 'minimal' : 'detailed',
 		devtool: isDevelopmentMode ? 'eval-cheap-module-source-map' : false,
 	} satisfies WebpackConfiguration;
 };

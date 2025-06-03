@@ -5,7 +5,7 @@
 			<li :class="projectCardClass">
 				<h1>postcss-remove-format-fonts</h1>
 				<p>一个简单的postcss插件，用于删除特定格式的字体。</p>
-				<nav>
+				<nav aria-label="项目链接">
 					<ul>
 						<li>
 							<a href="https://www.npmjs.com/package/postcss-remove-format-fonts">
@@ -21,7 +21,7 @@
 			<li :class="projectCardClass">
 				<h1>svg-to-vue-loader</h1>
 				<p>将svg动态转化为Vue3组件的Webpack Loader。</p>
-				<nav>
+				<nav aria-label="项目链接">
 					<ul>
 						<li>
 							<a href="https://www.npmjs.com/package/svg-to-vue-loader">
@@ -37,7 +37,7 @@
 			<li :class="projectCardClass">
 				<h1>pkg-from-path</h1>
 				<p>一个简单的NodeJS库，用于找到路径属于哪个包的库。</p>
-				<nav>
+				<nav aria-label="项目链接">
 					<ul>
 						<li>
 							<a href="https://www.npmjs.com/package/pkg-from-path">

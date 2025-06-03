@@ -1,13 +1,7 @@
 <template>
-	<a
-		href="https://store.steampowered.com/app/3084280/?utm_source=sharpice.top&utm_medium=referral&utm_campaign=gamerecommend"
-		target="_blank"
-		rel="noopener"
-		class="recommend-btn"
-		role="button"
-		title="游戏推荐 —— 三相奇谈">
+	<button class="recommend-btn" title="游戏推荐 —— 三相奇谈" @click="openGameLink">
 		<GamesIcon />
-	</a>
+	</button>
 </template>
 
 <script>
@@ -17,6 +11,15 @@ export default {
 	name: 'GameRecommend',
 	components: {
 		GamesIcon,
+	},
+	methods: {
+		openGameLink() {
+			window.open(
+				'https://store.steampowered.com/app/3084280/?utm_source=sharpice.top&utm_medium=referral&utm_campaign=gamerecommend',
+				'_blank',
+				'noopener',
+			);
+		},
 	},
 };
 </script>

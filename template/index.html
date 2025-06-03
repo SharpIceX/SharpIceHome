@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh" dir="ltr" data-overlayscrollbars-initialize>
+<html lang="zh" dir="ltr">
 	<head>
 		<!-- 编码 -->
 		<meta charset="utf-8" />
@@ -76,16 +76,35 @@
 		<meta name="robots" content="index, follow" />
 		<!-- Rbotos -->
 
+		<!-- DNS 预解析 -->
+		<link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
+		<link rel="dns-prefetch" href="//sharpice.top" />
+		<!-- DNS 预解析 -->
+
+		<!-- 连接预建立 -->
+		<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+		<link rel="preconnect" href="https://sharpice.top" crossorigin />
+		<!-- 连接预建立 -->
+
 		<!-- 预加载 -->
 		<link rel="preload" href="/favicon.webp" as="image" />
 		<link rel="preload" href="/background.webp" as="image" />
 		<!-- 预加载 -->
 
+		<!-- 字体 -->
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/lxgw-wenkai-web/1.510.0/lxgwwenkai-medium/result.min.css"
+			integrity="sha512-C+9vyM8Owv0VHseCyXg7+x08t9i1b4SiKYaDUxMj0fKACPb4sEH3hsRCIa/6c/0P4UX8V+FBmOJQWTn6qRWLDw=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer" />
+		<!-- 字体 -->
+
 		<!-- 禁用浏览器扩展 Dark Reader -->
 		<meta name="darkreader" content="false" />
 		<!-- 禁用浏览器扩展 Dark Reader -->
 	</head>
-	<body data-overlayscrollbars-initialize>
+	<body>
 		<div id="app">
 			<style>
 				/**

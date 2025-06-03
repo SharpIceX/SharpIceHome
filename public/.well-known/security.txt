@@ -1,0 +1,4 @@
+Contact: mailto:sharpice@sharpice.top
+Expires: 2025-06-03T19:05:15Z
+Preferred-Languages: zh, en
+Canonical: https://sharpice.top/.well-known/security.txt

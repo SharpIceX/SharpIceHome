@@ -1,14 +1,21 @@
 import './styles/main.less';
-import loadjs from 'loadjs';
 import App from './app.vue';
 import router from './router';
 import { createApp } from 'vue';
-import '@fontsource/lxgw-wenkai';
 import Clarity from '@microsoft/clarity';
 import FontFaceObserver from 'fontfaceobserver';
 
-// 异步加载 Clarity
-Promise.resolve().then(() => {
+const loadImage = (src: string): Promise<void> => {
+	return new Promise((resolve, reject) => {
+		const img = new Image();
+		img.src = src;
+		img.onload = () => resolve();
+		img.onerror = () => reject(new Error(`Failed to load image: ${src}`));
+	});
+};
+
+// 加载 Clarity
+queueMicrotask(() => {
 	Clarity.init('p2oa48b662');
 	Clarity.consent(false);
 });
@@ -18,16 +25,13 @@ app.use(router);
 
 Promise.all([
 	// 等待字体加载
-	new FontFaceObserver('LXGW WenKai').load('这是一个测试文本，Hi!', 2000).catch(() => {
-		console.error('Font "LXGW WenKai" loading failed');
+	new FontFaceObserver('LXGW WenKai').load('你好Hi!', 1000).catch(err => {
+		console.error('Font "LXGW WenKai" loading failed:', err);
 	}),
 
 	// 等待图像加载
-	loadjs(['img!/favicon.webp', 'img!/background.webp'], {
-		async: true,
-		error: (depsNotFound: string[]) => {
-			console.error('Failed to load images:', depsNotFound.join(', '));
-		},
+	Promise.all([loadImage('/favicon.webp'), loadImage('/background.webp')]).catch(failedSrc => {
+		console.error('Failed to load images:', failedSrc);
 	}),
 ]).finally(() => {
 	app.mount('#app');
