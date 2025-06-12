@@ -53,7 +53,6 @@
 		<meta name="twitter:title" content="锐冰 - 个人主页" />
 		<meta name="twitter:description" content="世界很大，只是我的才华很有限，但我会继续学习的。" />
 		<meta name="twitter:image" content="https://sharpice.top/banner.webp" />
-
 		<!-- Twitter卡片 -->
 
 		<!-- 版权 -->
@@ -91,6 +90,24 @@
 		<link rel="preload" href="/background.webp" as="image" />
 		<!-- 预加载 -->
 
+		<!-- 修复首屏显示问题 -->
+		<style data-pre-fix is:inline>
+			html {
+				background-color: #2e3440; /** 来自 Nord 0 配色 */
+				color: #d8dee9; /** 来自 Nord 4 配色 */
+				color-scheme: dark;
+			}
+
+			body {
+				width: 100vw;
+				height: 100vh;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+		</style>
+		<!-- 修复首屏显示问题 -->
+
 		<!-- 字体 -->
 		<link
 			rel="stylesheet"
@@ -101,7 +118,7 @@
 		<!-- 字体 -->
 
 		<!-- 禁用浏览器扩展 Dark Reader -->
-		<meta name="darkreader" content="false" />
+		<meta name="darkreader-lock" />
 		<!-- 禁用浏览器扩展 Dark Reader -->
 	</head>
 	<body>

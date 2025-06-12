@@ -9,3 +9,9 @@ declare module '*.svg' {
 	import type { componentType } from 'svg-to-vue-loader';
 	export default componentType;
 }
+
+declare module 'tailwind-nord' {
+	import type { PluginCreator } from 'tailwindcss/types/config';
+	const tailwindNord: PluginCreator;
+	export default tailwindNord;
+}

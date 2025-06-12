@@ -3,7 +3,6 @@ import App from './app.vue';
 import router from './router';
 import { createApp } from 'vue';
 import Clarity from '@microsoft/clarity';
-import FontFaceObserver from 'fontfaceobserver';
 
 const loadImage = (src: string): Promise<void> => {
 	return new Promise((resolve, reject) => {
@@ -23,16 +22,10 @@ queueMicrotask(() => {
 const app = createApp(App);
 app.use(router);
 
-Promise.all([
-	// 等待字体加载
-	new FontFaceObserver('LXGW WenKai').load('你好Hi!', 1000).catch(err => {
-		console.error('Font "LXGW WenKai" loading failed:', err);
-	}),
-
-	// 等待图像加载
-	Promise.all([loadImage('/favicon.webp'), loadImage('/background.webp')]).catch(failedSrc => {
+Promise.all([loadImage('/favicon.webp'), loadImage('/background.webp')])
+	.catch(failedSrc => {
 		console.error('Failed to load images:', failedSrc);
-	}),
-]).finally(() => {
-	app.mount('#app');
-});
+	})
+	.finally(() => {
+		app.mount('#app');
+	});

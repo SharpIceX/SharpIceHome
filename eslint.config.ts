@@ -1,7 +1,7 @@
 import globals from 'globals';
 import eslint from '@eslint/js';
-import pluginVue from 'eslint-plugin-vue';
 import tseslint from 'typescript-eslint';
+import pluginVue from 'eslint-plugin-vue';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 
 export default tseslint.config(
@@ -13,27 +13,26 @@ export default tseslint.config(
 	{
 		languageOptions: {
 			parserOptions: {
-				ecmaVersion: 'latest',
+				project: true,
 				sourceType: 'module',
+				ecmaVersion: 'latest',
+				tsconfigRootDir: import.meta.dirname,
+			},
+			globals: {
+				...globals.node,
+				...globals.browser,
 			},
 		},
 		rules: {
 			eqeqeq: ['error', 'always'],
-			'prettier/prettier': ['off', 'always'],
+			'prettier/prettier': 'off',
 		},
-		ignores: ['node_modules', '/dist'],
 	},
 	{
 		files: ['**/*.js'],
 		extends: [tseslint.configs.disableTypeChecked],
 	},
 	{
-		languageOptions: {
-			project: './tsconfig.json',
-			tsconfigRootDir: import.meta.dirname,
-			globals: {
-				...globals['shared-node-browser'],
-			},
-		},
+		ignores: ['**/node_modules/**', '**/dist'],
 	},
 );

@@ -51,7 +51,7 @@ export default {
 	name: 'LinkPages',
 	data() {
 		return {
-			linkCardClass: ['project-card', 'advanced-blur-backdrop', 'advanced-blur-card', 'advanced-blur-card-hover'],
+			linkCardClass: 'project-card advanced-blur-backdrop advanced-blur-card-hover',
 		};
 	},
 };

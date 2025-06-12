@@ -66,12 +66,7 @@ export default {
 	},
 	data() {
 		return {
-			projectCardClass: [
-				'project-card',
-				'advanced-blur-backdrop',
-				'advanced-blur-card',
-				'advanced-blur-card-hover',
-			],
+			projectCardClass: 'project-card advanced-blur-backdrop advanced-blur-card-hover',
 		};
 	},
 };
