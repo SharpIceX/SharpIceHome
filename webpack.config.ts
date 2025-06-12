@@ -219,12 +219,6 @@ export default (env: Record<string, unknown>) => {
 						ecma: 2020,
 						module: true,
 						toplevel: true,
-						mangle: {
-							toplevel: true,
-							properties: {
-								regex: /^_/,
-							},
-						},
 						keep_fnames: false,
 						keep_classnames: false,
 						compress: {
