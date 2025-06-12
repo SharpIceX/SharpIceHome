@@ -13,8 +13,8 @@ const loadImage = (src: string): Promise<void> => {
 	});
 };
 
-// 加载 Clarity
-queueMicrotask(() => {
+// 初始化 Clarity
+requestIdleCallback(() => {
 	Clarity.init('p2oa48b662');
 	Clarity.consent(false);
 });
@@ -22,10 +22,15 @@ queueMicrotask(() => {
 const app = createApp(App);
 app.use(router);
 
-Promise.all([loadImage('/favicon.webp'), loadImage('/background.webp')])
-	.catch(failedSrc => {
-		console.error('Failed to load images:', failedSrc);
-	})
-	.finally(() => {
-		app.mount('#app');
+// 并行加载图片和挂载应用
+Promise.allSettled([loadImage('/favicon.webp'), loadImage('/background.webp')]).finally(() => {
+	app.mount('#app');
+});
+
+// 页面加载完成后移除预加载样式
+window.addEventListener('load', () => {
+	requestIdleCallback(() => {
+		const styles = document.querySelectorAll('head style[data-pre-fix]');
+		styles.forEach(style => style.remove());
 	});
+});
