@@ -1,6 +1,5 @@
 <template>
 	<main>
-		<h1 class="my-4 text-xl">当前项目</h1>
 		<ul class="w flex w-[88rem] flex-wrap justify-center gap-8 max-lg:w-auto max-lg:flex-col">
 			<li :class="projectCardClass">
 				<h1>postcss-remove-format-fonts</h1>
@@ -34,22 +33,6 @@
 					</ul>
 				</nav>
 			</li>
-			<li :class="projectCardClass">
-				<h1>pkg-from-path</h1>
-				<p>一个简单的NodeJS库，用于找到路径属于哪个包的库。</p>
-				<nav aria-label="项目链接">
-					<ul>
-						<li>
-							<a href="https://www.npmjs.com/package/pkg-from-path">
-								<npmIcon size="24" alt="NPM 包链接" />
-							</a>
-							<a href="https://github.com/FurryRbl/pkg-from-path">
-								<gitubIcon size="24" alt="GitHub 存储库链接" />
-							</a>
-						</li>
-					</ul>
-				</nav>
-			</li>
 		</ul>
 	</main>
 </template>
@@ -66,7 +49,7 @@ export default {
 	},
 	data() {
 		return {
-			projectCardClass: 'project-card advanced-blur-backdrop advanced-blur-card-hover',
+			projectCardClass: 'project-card advanced-blur-backdrop',
 		};
 	},
 };

@@ -1,6 +1,6 @@
 <template>
 	<!-- 背景 -->
-	<div class="bg advanced-blur-before"></div>
+	<div class="bg bg-copyright-info advanced-blur-before"></div>
 
 	<!-- 游戏推荐小组件 -->
 	<gameRecommendWidgets />
@@ -56,7 +56,7 @@ export default {
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
-	background-image: url('/background.webp');
+	background-image: url('@kde/plasma-workspace-wallpapers/Flow/contents/images_dark/5120x2880.jpg');
 	opacity: 0;
 	animation: fadeIn 2s ease-in-out forwards;
 
@@ -70,8 +70,17 @@ export default {
 	}
 }
 
+.bg-copyright-info {
+	// 右下角固定显示文字，使用原生 CSS和content
+	&::after {
+		content: '壁纸：KDE Plasma · License: LGPL-3.0';
+		@apply fixed bottom-0 right-0;
+		@apply text-lg text-nord-8 text-opacity-50 p-2;
+	}
+}
+
 .nav-item {
-	@apply text-nord-8;
+	@apply text-nord-8 select-none;
 
 	&:hover {
 		@keyframes identifier {

@@ -1,5 +1,9 @@
 <template>
-	<button class="recommend-btn" title="游戏推荐 —— 三相奇谈" @click="openGameLink">
+	<button
+		class="recommend-btn"
+		title="游戏推荐 — 三相奇谈"
+		aria-label="打开三相奇谈游戏的 Steam 页面"
+		@click="openGameLink">
 		<GamesIcon />
 	</button>
 </template>
@@ -17,7 +21,7 @@ export default {
 			window.open(
 				'https://store.steampowered.com/app/3084280/?utm_source=sharpice.top&utm_medium=referral&utm_campaign=gamerecommend',
 				'_blank',
-				'noopener',
+				'noopener,noreferrer',
 			);
 		},
 	},
@@ -39,12 +43,12 @@ export default {
 	backdrop-filter: blur(10px);
 	@apply bg-nord6 bg-opacity-20;
 
+	transition:
+		transform 0.3s ease,
+		background-color 0.5s ease;
 	&:hover {
 		@apply bg-opacity-30;
 		transform: scale(1.1);
-		transition:
-			transform 0.3s,
-			background-color 0.5s;
 	}
 }
 </style>

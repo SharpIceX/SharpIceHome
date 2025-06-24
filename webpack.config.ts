@@ -32,7 +32,7 @@ export default (env: Record<string, unknown>) => {
 		output: {
 			clean: true,
 			path: path.resolve('./dist'),
-			filename: 'assets/js/[name].[contenthash].js',
+			filename: isDevelopmentMode ? 'assets/js/[name].js' : 'assets/js/[name].[contenthash].js',
 			module: !isDevelopmentMode,
 			library: {
 				type: isDevelopmentMode ? 'umd2' : 'module',
@@ -161,7 +161,7 @@ export default (env: Record<string, unknown>) => {
 					],
 				},
 				{
-					test: /\.webp$/,
+					test: /\.(jpg|webp)$/i,
 					type: 'asset/resource',
 					generator: {
 						filename: 'assets/images/[contenthash][ext]',
@@ -194,7 +194,7 @@ export default (env: Record<string, unknown>) => {
 				template: path.resolve('./template/index.html'),
 			}),
 			new MiniCssExtractPlugin({
-				filename: 'assets/css/[name].[contenthash].css',
+				filename: isDevelopmentMode ? 'assets/css/[name].css' : 'assets/css/[name].[contenthash].css',
 			}),
 
 			isDevelopmentMode ? new webpack.optimize.ModuleConcatenationPlugin() : undefined,

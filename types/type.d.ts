@@ -10,6 +10,16 @@ declare module '*.svg' {
 	export default componentType;
 }
 
+declare module '*.png' {
+	const value: string;
+	export default value;
+}
+
+declare module '*.webp' {
+	const value: string;
+	export default value;
+}
+
 declare module 'tailwind-nord' {
 	import type { PluginCreator } from 'tailwindcss/types/config';
 	const tailwindNord: PluginCreator;

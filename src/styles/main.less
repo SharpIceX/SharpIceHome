@@ -11,7 +11,6 @@ html {
 body {
 	@apply h-screen w-screen;
 	@apply flex items-center justify-center;
-	@apply selection:bg-nord6 selection:bg-opacity-40;
 
 	font-weight: 400;
 	font-display: swap;
@@ -26,6 +25,11 @@ body {
 	/* 增加字体渲染的对比度 */
 	font-variant-ligatures: none;
 	font-kerning: normal;
+
+	::selection {
+		@apply bg-nord9 bg-opacity-50 text-nord1;
+		text-shadow: 0 0 2px rgba(0, 0, 0, 0.25);
+	}
 }
 
 .separation {

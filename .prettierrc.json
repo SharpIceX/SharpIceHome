@@ -18,6 +18,12 @@
 	"plugins": ["prettier-plugin-toml", "@prettier/plugin-xml"],
 	"overrides": [
 		{
+			"files": "*.ts",
+			"options": {
+				"parser": "typescript"
+			}
+		},
+		{
 			"files": "*.yml",
 			"options": {
 				"useTabs": false

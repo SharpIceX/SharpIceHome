@@ -51,7 +51,7 @@ export default {
 	name: 'LinkPages',
 	data() {
 		return {
-			linkCardClass: 'project-card advanced-blur-backdrop advanced-blur-card-hover',
+			linkCardClass: 'project-card advanced-blur-backdrop',
 		};
 	},
 };
@@ -72,6 +72,7 @@ export default {
 
 	img {
 		@apply h-20 w-20;
+		@apply select-none;
 
 		border-radius: 50%;
 	}
