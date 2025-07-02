@@ -56,7 +56,7 @@ export default {
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
-	background-image: url('@kde/plasma-workspace-wallpapers/Flow/contents/images_dark/5120x2880.jpg');
+	background-image: url('@kde/plasma-workspace-wallpapers/Patak/contents/images_dark/3840x2160.png');
 	opacity: 0;
 	animation: fadeIn 2s ease-in-out forwards;
 

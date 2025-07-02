@@ -6,18 +6,19 @@ import TerserPlugin from 'terser-webpack-plugin';
 import localPostcssOptions from './postcss.config';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import type { LoaderOptions } from 'esbuild-loader';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import fontsMinify from '@sharpice_home/webpack-fonts-minify';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import type { WebpackConfiguration } from 'webpack-dev-server';
 import HtmlMinimizerPlugin from 'html-minimizer-webpack-plugin';
-import type svgToVueLoaderOptions from 'svg-to-vue-loader/options';
+import type { LoaderOptions as ESBuildLoaderOptions } from 'esbuild-loader';
+import type { LoaderOptions as svgToVueLoaderOptions } from 'svg-to-vue-loader';
 
 export default (env: Record<string, unknown>) => {
 	const isDevelopmentMode = env.WEBPACK_SERVE?.toString() === 'true';
 
-	const esbuildOption: LoaderOptions = {
+	const esbuildOption: ESBuildLoaderOptions = {
 		format: 'esm',
 		charset: 'utf8',
 		target: 'ES2022',
@@ -161,10 +162,17 @@ export default (env: Record<string, unknown>) => {
 					],
 				},
 				{
-					test: /\.(jpg|webp)$/i,
+					test: /\.(png|webp)$/i,
 					type: 'asset/resource',
 					generator: {
 						filename: 'assets/images/[contenthash][ext]',
+					},
+				},
+				{
+					test: /\.ttf$/i,
+					type: 'asset/resource',
+					generator: {
+						filename: 'assets/fonts/[contenthash][ext]',
 					},
 				},
 			],
@@ -212,6 +220,9 @@ export default (env: Record<string, unknown>) => {
 			removeAvailableModules: true,
 			minimize: !isDevelopmentMode,
 			minimizer: [
+				new fontsMinify({
+					scanPaths: [path.resolve('./src'), path.resolve('./template')],
+				}),
 				new TerserPlugin({
 					parallel: true,
 					extractComments: false,

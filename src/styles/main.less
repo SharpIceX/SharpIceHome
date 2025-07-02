@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+@import './fonts.less';
 @import './advanced-blur.less';
 
 html {
@@ -11,20 +12,6 @@ html {
 body {
 	@apply h-screen w-screen;
 	@apply flex items-center justify-center;
-
-	font-weight: 400;
-	font-display: swap;
-	font-family: 'LXGW WenKai', serif;
-
-	/* 优化字体可读性 */
-	text-rendering: optimizeLegibility;
-	-moz-osx-font-smoothing: grayscale;
-	-webkit-font-smoothing: antialiased;
-	-ms-font-smoothing: antialiased;
-
-	/* 增加字体渲染的对比度 */
-	font-variant-ligatures: none;
-	font-kerning: normal;
 
 	::selection {
 		@apply bg-nord9 bg-opacity-50 text-nord1;

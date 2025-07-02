@@ -27,7 +27,8 @@
 		}
 	],
 	"engines": {
-		"node": ">=22"
+		"node": ">=22",
+		"pnpm": ">=10.12"
 	},
 	"devEngines": {
 		"runtime": {
@@ -50,7 +51,8 @@
 	},
 	"dependencies": {
 		"@fortawesome/fontawesome-free": "^6.7.2",
-		"@kde/plasma-workspace-wallpapers": "git://git@github.com:KDE/plasma-workspace-wallpapers#v6.4.1",
+		"@kde/plasma-workspace-wallpapers": "github:KDE/plasma-workspace-wallpapers#v6.4.1",
+		"@lxgw/LxgwWenKai": "github:lxgw/LxgwWenKai#v1.520",
 		"@material-design-icons/svg": "^0.14.15",
 		"@microsoft/clarity": "^1.0.0",
 		"material-icon-theme": "^5.24.0",
@@ -60,8 +62,9 @@
 		"vue-router": "^4.5.1"
 	},
 	"devDependencies": {
-		"@eslint/js": "^9.30.0",
+		"@eslint/js": "^9.30.1",
 		"@prettier/plugin-xml": "^3.4.1",
+		"@sharpice_home/webpack-fonts-minify": "link:packages\\webpack-fonts-minify",
 		"@types/postcss-import": "^14.0.3",
 		"@types/webpack-bundle-analyzer": "^4.7.0",
 		"@vue/compiler-sfc": "^3.5.17",
@@ -71,11 +74,11 @@
 		"esbuild": "^0.25.5",
 		"esbuild-loader": "^4.3.0",
 		"esbuild-register": "^3.6.0",
-		"eslint": "^9.30.0",
+		"eslint": "^9.30.1",
 		"eslint-config-prettier": "^10.1.5",
 		"eslint-plugin-prettier": "^5.5.1",
-		"eslint-plugin-vue": "^10.2.0",
-		"globals": "^16.2.0",
+		"eslint-plugin-vue": "^10.3.0",
+		"globals": "^16.3.0",
 		"html-minimizer-webpack-plugin": "^5.0.2",
 		"html-webpack-plugin": "^5.6.3",
 		"jiti": "^2.4.2",
@@ -97,21 +100,13 @@
 		"terser-webpack-plugin": "^5.3.14",
 		"ts-loader": "^9.5.2",
 		"typescript": "^5.8.3",
-		"typescript-eslint": "^8.35.0",
+		"typescript-eslint": "^8.35.1",
+		"vue-eslint-parser": "^10.2.0",
 		"vue-loader": "^17.4.2",
 		"webpack": "^5.99.9",
 		"webpack-bundle-analyzer": "^4.10.2",
 		"webpack-cli": "^6.0.1",
 		"webpack-dev-server": "^5.2.2",
 		"webpackbar": "^7.0.0"
-	},
-	"pnpm": {
-		"onlyBuiltDependencies": [
-			"cwebp-bin",
-			"esbuild"
-		],
-		"overrides": {
-			"tailwindcss": "3.4.17"
-		}
 	}
 }
