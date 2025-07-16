@@ -6,7 +6,8 @@ declare module '*.vue' {
 
 declare module '*.svg' {
 	import type { ComponentType } from 'svg-to-vue-loader';
-	export default ComponentType;
+	const component: ComponentType;
+	export default component;
 }
 
 declare module '*.png' {

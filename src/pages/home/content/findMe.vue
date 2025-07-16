@@ -39,7 +39,7 @@ export default {
 
 <style lang="less" scoped>
 .link-item {
-	@apply flex flex-row items-center space-x-1 select-none;
+	@apply flex select-none flex-row items-center space-x-1;
 
 	&:hover {
 		@keyframes identifier {

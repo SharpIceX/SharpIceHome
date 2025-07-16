@@ -1,6 +1,6 @@
 import './styles/main.less';
-import App from './app.vue';
 import router from './router';
+import App from './app/app.vue';
 import { createApp } from 'vue';
 import Clarity from '@microsoft/clarity';
 import 'overlayscrollbars/overlayscrollbars.css';

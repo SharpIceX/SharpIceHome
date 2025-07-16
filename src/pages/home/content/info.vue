@@ -2,7 +2,7 @@
 	<div class="space-y-2">
 		<div class="flex items-center space-x-1">
 			<img src="/favicon.webp" title="SharpIce" alt="SharpIce的个人头像" width="40" height="40" />
-			<h1 class="text-3xl">锐冰</h1>
+			<h1 class="text-2xl">锐冰</h1>
 		</div>
 		<div class="pl-4">
 			<h2 class="text-sm">Name: SharpIce</h2>

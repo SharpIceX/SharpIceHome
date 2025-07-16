@@ -40,12 +40,6 @@ export default [
 		image: (await import('./avatar/snowlyicewolf.webp')).default,
 	},
 	{
-		title: 'Koto',
-		description: 'Koto的灌水站',
-		url: 'https://koto.cc/',
-		image: (await import('./avatar/Kato.webp')).default,
-	},
-	{
 		title: '中二蘑菇狐狸',
 		description: '一只狐狸敲出的一个奇迹',
 		url: 'https://imfurry.com/',

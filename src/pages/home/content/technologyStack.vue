@@ -1,6 +1,6 @@
 <template>
 	<div class="space-y-2">
-		<h2 class="text-2xl">技术栈</h2>
+		<h2 class="text-xl">技术栈</h2>
 		<ul class="flex flex-wrap items-center space-x-1 pl-4">
 			<li class="flex items-center space-x-1">
 				<typeScriptIcon aria-hidden="true" />

@@ -20,8 +20,7 @@ export default tseslint.config(
 				tsconfigRootDir: import.meta.dirname,
 			},
 			globals: {
-				...globals.node,
-				...globals.browser,
+				...globals['shared-node-browser'],
 			},
 		},
 		rules: {
@@ -36,6 +35,9 @@ export default tseslint.config(
 			parserOptions: {
 				parser: tseslint.parser,
 				extraFileExtensions: ['.vue'],
+			},
+			globals: {
+				...globals.browser,
 			},
 		},
 	},

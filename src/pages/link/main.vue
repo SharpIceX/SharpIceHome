@@ -4,13 +4,16 @@
 			<li v-for="(link, index) in LinkList" :key="index" class="advanced-blur-backdrop">
 				<a
 					:href="link.url + '?ref=sharpice.top'"
+					target="_blank"
 					:aria-label="'访问' + link.title + '的个人网站'"
-					class="flex items-center h-full">
-					<div class="flex flex-row items-center space-x-4 px-6 py-3 w-80 h-32">
+					class="flex h-full items-center">
+					<div class="flex h-32 w-80 flex-row items-center space-x-4 px-6 py-3">
 						<!-- 普通图片与 svg 组件 -->
 						<div class="avatar-image">
 							<LazyImage
 								v-if="typeof link.image === 'string'"
+								width="80"
+								height="80"
 								:src="link.image"
 								:title="link.title"
 								:alt="link.title + '的头像'" />

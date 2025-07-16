@@ -221,6 +221,9 @@ export default (env: Record<string, unknown>) => {
 			flagIncludedChunks: true,
 			removeAvailableModules: true,
 			minimize: !isDevelopmentMode,
+			splitChunks: {
+				chunks: 'all',
+			},
 			minimizer: [
 				new fontsMinify({
 					scanPaths: [path.resolve('./src'), path.resolve('./template')],

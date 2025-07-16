@@ -4,10 +4,8 @@
 			v-if="isLoaded"
 			:src="src"
 			:alt="alt"
-			v-bind="{
-				...(title ? { title } : {}),
-			}"
-			class="w-full h-auto object-cover" />
+			v-bind="{ title, width, height }"
+			class="h-auto w-full object-cover" />
 		<div v-else class="loader"></div>
 	</div>
 </template>
@@ -30,6 +28,14 @@ export default defineComponent({
 		title: {
 			type: String,
 			default: '',
+		},
+		width: {
+			type: Number,
+			default: undefined,
+		},
+		height: {
+			type: Number,
+			default: undefined,
 		},
 	},
 	setup(props) {

@@ -15,7 +15,8 @@
 	"vueIndentScriptAndStyle": false,
 	"embeddedLanguageFormatting": "auto",
 	"htmlWhitespaceSensitivity": "strict",
-	"plugins": ["prettier-plugin-toml", "@prettier/plugin-xml"],
+	"tailwindStylesheet": "./tailwind.config.ts",
+	"plugins": ["prettier-plugin-toml", "@prettier/plugin-xml", "prettier-plugin-tailwindcss"],
 	"overrides": [
 		{
 			"files": "*.ts",
