@@ -40,7 +40,7 @@ export default {
 /* 页面淡入淡出动画 */
 .fade-enter-active,
 .fade-leave-active {
-	transition: opacity 0.7s ease-in-out;
+	transition: opacity 0.5s ease-in-out;
 }
 .fade-enter-from,
 .fade-leave-to {

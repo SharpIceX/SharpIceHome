@@ -1,29 +1,25 @@
-import HomePage from './pages/home/main.vue';
-import LinkPage from './pages/link/main.vue';
-import ProjectPage from './pages/project.vue';
-import NotFoundPage from './pages/notFound.vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
 const routes = [
 	{
 		path: '/',
 		name: 'Home',
-		component: HomePage,
+		component: import(/* webpackChunkName: "home" */ './pages/home/main.vue'),
 	},
 	{
 		path: '/link',
 		name: 'Link',
-		component: LinkPage,
+		component: import(/* webpackChunkName: "link" */ './pages/link/main.vue'),
 	},
 	{
 		path: '/project',
 		name: 'Project',
-		component: ProjectPage,
+		component: import(/* webpackChunkName: "project" */ './pages/project.vue'),
 	},
 	{
 		path: '/:pathMatch(.*)*',
 		name: 'NotFound',
-		component: NotFoundPage,
+		component: import(/* webpackChunkName: "not-found" */ './pages/notFound.vue'),
 	},
 ];
 

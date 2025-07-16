@@ -36,7 +36,7 @@ export default {
 		// 悬浮效果
 		transition: color 0.3s ease;
 		&:hover {
-			color: theme('colors.nord10');
+			color: @nord10;
 		}
 	}
 }
