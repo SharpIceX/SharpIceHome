@@ -36,7 +36,7 @@ export default {
 	margin: 1rem;
 	position: fixed;
 
-	@apply text-nord10;
+	@apply text-nord8;
 
 	padding: 0.5rem;
 	border-radius: 100%;

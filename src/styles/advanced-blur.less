@@ -4,7 +4,9 @@
 	.advanced-blur-backdrop {
 		border-radius: 0.5rem;
 		will-change: transform, opacity, backdrop-filter;
-		transform: translate3d(0, 0, 0); /* 强制浏览器启用 GPU 加速 */
+
+		contain: paint;
+		transform: translate3d(0, 0, 0); /* 强制某些浏览器启用 GPU 加速 */
 
 		@apply bg-nord3 bg-opacity-10;
 
@@ -17,15 +19,15 @@
 			backdrop-filter 0.4s cubic-bezier(0.22, 1, 0.36, 1),
 			transform 0.4s ease,
 			box-shadow 0.4s ease;
+	}
 
-		// 悬停效果增强
-		&:hover {
-			transform: translateY(-8px) scale(1.02);
-			backdrop-filter: blur(24px) saturate(210%) contrast(1.08) brightness(0.98);
+	// 悬停效果
+	.advanced-blur-backdrop-hover:hover {
+		transform: translateY(-8px) scale(1.02);
+		backdrop-filter: blur(24px) saturate(210%) contrast(1.08) brightness(0.98);
 
-			&::before {
-				opacity: 0.4;
-			}
+		&::before {
+			opacity: 0.4;
 		}
 	}
 }

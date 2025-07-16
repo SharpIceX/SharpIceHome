@@ -17,7 +17,7 @@
 		"postcss-less": "^6.0.0",
 		"subset-font": "^2.4.0",
 		"typescript": "^5.8.3",
-		"webpack": "^5.99.9"
+		"webpack": "^5.100.2"
 	},
 	"devDependencies": {
 		"@types/css-tree": "^2.3.10",

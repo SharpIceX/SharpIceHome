@@ -18,12 +18,12 @@
 			</li>
 			<li class="separation" aria-hidden="true"></li>
 			<li class="flex items-center space-x-1">
-				<unocssIcon aria-hidden="true" />
+				<tailwindcssIcon aria-hidden="true" />
 				<span>TailwindCSS</span>
 			</li>
 			<li class="separation" aria-hidden="true"></li>
 			<li class="flex items-center space-x-1">
-				<tailwindcssIcon aria-hidden="true" />
+				<unocssIcon aria-hidden="true" />
 				<span>UnoCSS</span>
 			</li>
 			<li class="separation" aria-hidden="true"></li>

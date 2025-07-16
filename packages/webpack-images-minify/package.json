@@ -1,7 +1,0 @@
-{
-	"name": "@sharpice_home/webpack-images-minify",
-	"private": true,
-	"type": "module",
-	"version": "1.0.0",
-	"license": "MPL-2.0"
-}

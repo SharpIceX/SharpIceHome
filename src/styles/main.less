@@ -4,6 +4,7 @@
 
 @import './fonts.less';
 @import './advanced-blur.less';
+@import './overlayscrollbars.less';
 
 html {
 	@apply bg-nord0 text-nord4;
@@ -11,7 +12,7 @@ html {
 
 body {
 	@apply h-screen w-screen;
-	@apply flex items-center justify-center;
+	@apply grid place-items-center;
 
 	::selection {
 		@apply bg-nord9 bg-opacity-50 text-nord1;

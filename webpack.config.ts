@@ -1,4 +1,4 @@
-import path from 'path';
+import path from 'node:path';
 import webpack from 'webpack';
 import WebpackBar from 'webpackbar';
 import { VueLoaderPlugin } from 'vue-loader';
@@ -60,6 +60,8 @@ export default (env: Record<string, unknown>) => {
 			extensions: ['.ts', '.js'],
 			alias: {
 				vue$: 'vue/dist/vue.runtime.esm-bundler.js',
+				'@': path.resolve('./src'),
+				$: path.resolve('./node_modules'),
 			},
 		},
 		module: {

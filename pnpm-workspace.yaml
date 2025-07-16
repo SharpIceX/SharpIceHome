@@ -1,10 +1,10 @@
 packages:
-  - packages/**
+    - packages/**
 
 onlyBuiltDependencies:
-  - cwebp-bin
-  - esbuild
-  - ttf2woff2
+    - cwebp-bin
+    - esbuild
+    - ttf2woff2
 
 overrides:
-  tailwindcss: 3.4.17
+    tailwindcss: 3.4.17

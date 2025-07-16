@@ -1,66 +1,71 @@
 <template>
 	<!-- 背景 -->
-	<div class="bg bg-copyright-info advanced-blur-before"></div>
+	<div class="bg-image advanced-blur-before"></div>
 
 	<!-- 游戏推荐小组件 -->
-	<gameRecommendWidgets />
+	<GameRecommendWidgets />
 
-	<!-- 页面 -->
-	<router-view class="opacity-animation"></router-view>
+	<!-- 主要内容 -->
+	<div class="flex flex-col min-h-screen">
+		<!-- 导航栏 -->
+		<header class="my-8 flex justify-center">
+			<nav class="advanced-blur-backdrop">
+				<ul class="flex flex-row items-center justify-center nav-link">
+					<li><router-link class="nav-link" to="/">首页</router-link></li>
+					<li><router-link class="nav-link" to="/project">相关项目</router-link></li>
+					<li><router-link class="nav-link" to="/link">友谊链接</router-link></li>
+				</ul>
+			</nav>
+		</header>
 
-	<nav class="flex justify-center p-2">
-		<ul class="flex space-x-3">
-			<li class="nav-item">
-				<router-link to="/">首页</router-link>
-			</li>
-			<li class="nav-item">
-				<router-link to="/project">相关项目</router-link>
-			</li>
-			<li class="nav-item">
-				<router-link to="/link">亲朋好友们</router-link>
-			</li>
-		</ul>
-	</nav>
+		<!-- 主要组件 -->
+		<main class="flex-grow flex items-center justify-center px-4">
+			<router-view v-slot="{ Component }">
+				<transition name="fade" mode="out-in">
+					<component :is="Component" />
+				</transition>
+			</router-view>
+		</main>
+	</div>
 </template>
 
 <script>
-import gameRecommendWidgets from './widgets/gameRecommend.vue';
+import GameRecommendWidgets from './widgets/gameRecommend.vue';
 
 export default {
 	name: 'App',
 	components: {
-		gameRecommendWidgets,
+		GameRecommendWidgets,
 	},
 };
 </script>
 
 <style lang="less" scoped>
-.opacity-animation {
-	animation: opacity 0.7s ease-in-out;
-
-	@keyframes opacity {
-		0% {
-			opacity: 0;
-		}
-		100% {
-			opacity: 1;
-		}
-	}
+/* 页面淡入淡出动画 */
+.fade-enter-active,
+.fade-leave-active {
+	transition: opacity 0.7s ease-in-out;
+}
+.fade-enter-from,
+.fade-leave-to {
+	opacity: 0;
+}
+.fade-enter-to,
+.fade-leave-from {
+	opacity: 1;
 }
 
-.bg::before {
-	@apply h-screen w-screen;
-	@apply fixed left-0 top-0;
+/* 背景 */
+.bg-image::before {
+	inset: 0;
+	opacity: 0;
 	content: '';
 	z-index: -1;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-image: url('@kde/plasma-workspace-wallpapers/Patak/contents/images_dark/3840x2160.png');
-	opacity: 0;
-	animation: fadeIn 2s ease-in-out forwards;
+	position: fixed;
+	animation: bg-fade-in 1.5s ease-in-out forwards;
+	background: url('/background.webp') center/cover no-repeat;
 
-	@keyframes fadeIn {
+	@keyframes bg-fade-in {
 		50% {
 			opacity: 0;
 		}
@@ -70,29 +75,15 @@ export default {
 	}
 }
 
-.bg-copyright-info {
-	// 右下角固定显示文字，使用原生 CSS和content
-	&::after {
-		content: '壁纸：KDE Plasma · License: LGPL-3.0';
-		@apply fixed bottom-0 right-0;
-		@apply text-lg text-nord-8 text-opacity-50 p-2;
-	}
-}
+.nav-link {
+	li {
+		@apply p-4;
 
-.nav-item {
-	@apply text-nord-8 select-none;
-
-	&:hover {
-		@keyframes identifier {
-			0% {
-				@apply text-nord-8;
-			}
-			100% {
-				@apply text-nord10;
-			}
+		// 悬浮效果
+		transition: color 0.3s ease;
+		&:hover {
+			color: theme('colors.nord10');
 		}
-
-		animation: identifier 0.75s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 	}
 }
 </style>
