@@ -4,22 +4,22 @@ const routes = [
 	{
 		path: '/',
 		name: 'Home',
-		component: import(/* webpackChunkName: "home" */ './pages/home/main.vue'),
+		component: () => import(/* webpackChunkName: "home" */ './pages/home/main.vue'),
 	},
 	{
 		path: '/link',
 		name: 'Link',
-		component: import(/* webpackChunkName: "link" */ './pages/link/main.vue'),
+		component: () => import(/* webpackChunkName: "link" */ './pages/link/main.vue'),
 	},
 	{
 		path: '/project',
 		name: 'Project',
-		component: import(/* webpackChunkName: "project" */ './pages/project.vue'),
+		component: () => import(/* webpackChunkName: "project" */ './pages/project.vue'),
 	},
 	{
 		path: '/:pathMatch(.*)*',
 		name: 'NotFound',
-		component: import(/* webpackChunkName: "not-found" */ './pages/notFound.vue'),
+		component: () => import(/* webpackChunkName: "not-found" */ './pages/notFound.vue'),
 	},
 ];
 
