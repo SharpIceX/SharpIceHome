@@ -1,10 +1,12 @@
+import NotFound from './pages/notFound.vue';
+import HomePage from './pages/home/main.vue';
 import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router';
 
 const routes = [
 	{
 		path: '/',
 		name: 'Home',
-		component: () => import(/* webpackChunkName: "home", webpackPrefetch: true */ './pages/home/main.vue'),
+		component: HomePage,
 		meta: { title: '首页' },
 	},
 	{
@@ -22,8 +24,8 @@ const routes = [
 	{
 		path: '/:pathMatch(.*)*',
 		name: 'NotFound',
-		component: () => import(/* webpackChunkName: "404" */ './pages/notFound.vue'),
-		meta: { title: '404' },
+		component: NotFound,
+		meta: { title: '页面未找到' },
 	},
 ] satisfies RouteRecordRaw[];
 
