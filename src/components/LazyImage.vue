@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts">
-import { loadImage as preloadImage } from '@/utils/load';
+import { loadImage as preloadImage } from '$/scripts/utils/load';
 import { defineComponent, ref, onMounted, onBeforeUnmount } from 'vue';
 
 export default defineComponent({

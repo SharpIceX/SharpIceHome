@@ -13,9 +13,9 @@
 		<!-- 主要组件 -->
 		<main class="flex flex-grow items-center justify-center px-4">
 			<router-view v-slot="{ Component }">
-				<transition name="fade" mode="out-in">
+				<keep-alive :max="10">
 					<component :is="Component" />
-				</transition>
+				</keep-alive>
 			</router-view>
 		</main>
 	</div>
@@ -35,19 +35,3 @@ export default {
 	},
 };
 </script>
-
-<style lang="less" scoped>
-/* 页面淡入淡出动画 */
-.fade-enter-active,
-.fade-leave-active {
-	transition: opacity 0.5s ease-in-out;
-}
-.fade-enter-from,
-.fade-leave-to {
-	opacity: 0;
-}
-.fade-enter-to,
-.fade-leave-from {
-	opacity: 1;
-}
-</style>

@@ -1,47 +1,19 @@
 <template>
 	<div class="space-y-2">
 		<h2 class="text-xl">技术栈</h2>
-		<ul class="flex flex-wrap items-center space-x-1 pl-4">
-			<li class="flex items-center space-x-1">
-				<typeScriptIcon aria-hidden="true" />
-				<span>TypeScript</span>
-			</li>
-			<li class="separation" aria-hidden="true"></li>
-			<li class="flex items-center space-x-1">
-				<javaScriptIcon aria-hidden="true" />
-				<span>JavaScript</span>
-			</li>
-			<li class="separation" aria-hidden="true"></li>
-			<li class="flex items-center space-x-1">
-				<vueIcon aria-hidden="true" />
-				<span>Vue.js</span>
-			</li>
-			<li class="separation" aria-hidden="true"></li>
-			<li class="flex items-center space-x-1">
-				<tailwindcssIcon aria-hidden="true" />
-				<span>TailwindCSS</span>
-			</li>
-			<li class="separation" aria-hidden="true"></li>
-			<li class="flex items-center space-x-1">
-				<unocssIcon aria-hidden="true" />
-				<span>UnoCSS</span>
-			</li>
-			<li class="separation" aria-hidden="true"></li>
-			<li class="flex items-center space-x-1">
-				<nodejsIcon aria-hidden="true" />
-				<span>Node.js</span>
-			</li>
-			<li class="separation" aria-hidden="true"></li>
-			<li class="flex items-center space-x-1">
-				<csharpIcon aria-hidden="true" />
-				<span>C#.NET</span>
+		<ul class="flex flex-wrap items-center space-x-2 pl-4">
+			<li v-for="tech in stack" :key="tech.name" class="flex items-center">
+				<Component :is="tech.icon" class="h-5 w-5" />
+				<span>{{ tech.name }}</span>
 			</li>
 		</ul>
 	</div>
 </template>
 
 <script>
+import { markRaw } from 'vue';
 import vueIcon from 'material-icon-theme/icons/vue.svg';
+import nuxtIcon from 'material-icon-theme/icons/nuxt.svg';
 import csharpIcon from 'material-icon-theme/icons/csharp.svg';
 import nodejsIcon from 'material-icon-theme/icons/nodejs.svg';
 import unocssIcon from 'material-icon-theme/icons/unocss.svg';
@@ -51,14 +23,19 @@ import tailwindcssIcon from 'material-icon-theme/icons/tailwindcss.svg';
 
 export default {
 	name: 'TechnologyStackComponent',
-	components: {
-		vueIcon,
-		unocssIcon,
-		csharpIcon,
-		nodejsIcon,
-		javaScriptIcon,
-		typeScriptIcon,
-		tailwindcssIcon,
+	data() {
+		return {
+			stack: [
+				{ name: 'TypeScript', icon: markRaw(typeScriptIcon) },
+				{ name: 'JavaScript', icon: markRaw(javaScriptIcon) },
+				{ name: 'Vue.js', icon: markRaw(vueIcon) },
+				{ name: 'Nuxt', icon: markRaw(nuxtIcon) },
+				{ name: 'TailwindCSS', icon: markRaw(tailwindcssIcon) },
+				{ name: 'UnoCSS', icon: markRaw(unocssIcon) },
+				{ name: 'Node.js', icon: markRaw(nodejsIcon) },
+				{ name: 'C#.NET', icon: markRaw(csharpIcon) },
+			],
+		};
 	},
 };
 </script>

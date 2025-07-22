@@ -1,6 +1,6 @@
 <template>
 	<div class="space-y-2">
-		<ul class="flex flex-wrap items-center justify-center space-x-1 pl-4">
+		<ul class="flex flex-wrap items-center justify-center space-x-2 pl-4">
 			<li>
 				<p>我在做什么 / </p>
 			</li>
@@ -8,12 +8,10 @@
 				<healingIcon aria-hidden="true" />
 				<span>移植</span>
 			</li>
-			<li class="separation" aria-hidden="true"></li>
 			<li class="flex items-center space-x-1">
 				<codeIcon aria-hidden="true" />
 				<span>开发</span>
 			</li>
-			<li class="separation" aria-hidden="true"></li>
 			<li class="flex items-center space-x-1">
 				<translateIcon aria-hidden="true" />
 				<span>本地化</span>

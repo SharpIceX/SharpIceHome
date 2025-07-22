@@ -35,7 +35,7 @@
 
 <script>
 import LinkList from './List';
-import LazyImage from '@/components/LazyImage.vue';
+import LazyImage from '$/components/LazyImage.vue';
 
 export default {
 	name: 'LinkPages',

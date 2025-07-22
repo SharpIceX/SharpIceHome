@@ -19,7 +19,6 @@ export default [
 		title: '泛泛',
 		description: '这里是泛泛，一枚工作了五年的Web开发工程师。时而埋头苦干，时而日常摆烂。',
 		url: 'https://sothx.com/',
-		image: (await import('./avatar/sothx.webp')).default,
 	},
 	{
 		title: '绀漓',
@@ -31,7 +30,6 @@ export default [
 		title: '飞羽',
 		description: '一个菜鸡的博客',
 		url: 'https://zoxoy.club/',
-		image: (await import('./avatar/zoxoy.webp')).default,
 	},
 	{
 		title: '初雪·冰',

@@ -25,7 +25,6 @@ export default tseslint.config(
 		},
 		rules: {
 			eqeqeq: ['error', 'always'],
-			'prettier/prettier': 'off',
 		},
 	},
 	{

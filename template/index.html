@@ -8,8 +8,8 @@
 		<!-- 编码 -->
 
 		<!-- 标题 -->
-		<title>锐冰 - 个人主页</title>
-		<meta name="title" content="锐冰 - 个人主页" />
+		<title>锐冰</title>
+		<meta name="title" content="锐冰" />
 		<!-- 标题 -->
 
 		<!-- 描述 -->
@@ -38,7 +38,7 @@
 		<meta property="og:locale" content="zh_CN" />
 		<meta property="og:type" content="website" />
 		<meta property="og:site_name" content="锐冰" />
-		<meta property="og:title" content="锐冰 - 个人主页" />
+		<meta property="og:title" content="锐冰" />
 		<meta property="og:description" content="世界很大，只是我的才华很有限，但我会继续学习的。" />
 		<meta property="og:url" content="https://sharpice.top" />
 		<meta property="og:image" content="https://sharpice.top/banner.webp" />
@@ -50,7 +50,7 @@
 
 		<!-- Twitter卡片 -->
 		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:title" content="锐冰 - 个人主页" />
+		<meta name="twitter:title" content="锐冰" />
 		<meta name="twitter:description" content="世界很大，只是我的才华很有限，但我会继续学习的。" />
 		<meta name="twitter:image" content="https://sharpice.top/banner.webp" />
 		<!-- Twitter卡片 -->
@@ -99,9 +99,8 @@
 			body {
 				width: 100vw;
 				height: 100vh;
-				display: flex;
-				align-items: center;
-				justify-content: center;
+				display: grid;
+				place-items: center;
 			}
 		</style>
 		<!-- 修复首屏显示问题 -->
@@ -109,6 +108,13 @@
 		<!-- 禁用浏览器扩展 Dark Reader -->
 		<meta name="darkreader-lock" />
 		<!-- 禁用浏览器扩展 Dark Reader -->
+
+		<!-- Umami -->
+		<script
+			defer
+			src="https://cloud.umami.is/script.js"
+			data-website-id="b6742863-140b-4cd8-a798-b69603cd771e"></script>
+		<!-- Umami -->
 	</head>
 	<body>
 		<div id="app">
@@ -162,7 +168,7 @@
 		</div>
 
 		<noscript
-			class="fixed top-0 z-10 flex h-screen w-screen select-none flex-col items-center justify-center space-y-5 bg-black bg-opacity-60 text-white">
+			class="fixed top-0 z-10 flex h-screen w-screen flex-col items-center justify-center space-y-5 bg-black bg-opacity-60 text-white">
 			<p class="lg:text-5xl">哎呀，你没有启用 JavaScript 支持或你的浏览器不支持 JavaScript</p>
 			<p class="lg:text-2xl">请务必启用 JavaScript，这样才能让这个网站正常显示页面哦！</p>
 		</noscript>

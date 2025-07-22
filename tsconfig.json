@@ -10,8 +10,8 @@
 		"isolatedModules": true,
 		"moduleResolution": "bundler",
 		"paths": {
-			"@/*": ["./src/*"],
-			"$/*": ["./node_modules/*"]
+			"$/*": ["./src/*"],
+			"@/*": ["./node_modules/*"]
 		}
 	},
 	"include": ["**/*.ts", "**/*.vue"],

@@ -2,10 +2,9 @@ import './styles/main.less';
 import router from './router';
 import App from './app/app.vue';
 import { createApp } from 'vue';
-import Clarity from '@microsoft/clarity';
 import 'overlayscrollbars/overlayscrollbars.css';
-import { loadFont, loadImage } from './utils/load';
 import { OverlayScrollbars } from 'overlayscrollbars';
+import { loadFont, loadImage } from './scripts/utils/load';
 
 // 滚动条样式
 requestIdleCallback(() => {
@@ -25,12 +24,6 @@ window.addEventListener('load', () => {
 		const styles = document.querySelectorAll('head style[data-pre-fix]');
 		styles.forEach(style => style.remove());
 	});
-});
-
-// 初始化 Clarity
-requestIdleCallback(() => {
-	Clarity.init('p2oa48b662');
-	Clarity.consent(false);
 });
 
 // 等待所有资源

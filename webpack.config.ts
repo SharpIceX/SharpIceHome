@@ -1,7 +1,6 @@
 import path from 'node:path';
 import webpack from 'webpack';
 import WebpackBar from 'webpackbar';
-import { VueLoaderPlugin } from 'vue-loader';
 import TerserPlugin from 'terser-webpack-plugin';
 import localPostcssOptions from './postcss.config';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
@@ -12,6 +11,7 @@ import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import type { WebpackConfiguration } from 'webpack-dev-server';
 import HtmlMinimizerPlugin from 'html-minimizer-webpack-plugin';
+import { VueLoaderPlugin, type VueLoaderOptions } from 'vue-loader';
 import type { LoaderOptions as ESBuildLoaderOptions } from 'esbuild-loader';
 import type { LoaderOptions as svgToVueLoaderOptions } from 'svg-to-vue-loader';
 
@@ -58,11 +58,20 @@ export default (env: Record<string, unknown>) => {
 		},
 		resolve: {
 			extensions: ['.ts', '.js'],
-			alias: {
-				vue$: 'vue/dist/vue.runtime.esm-bundler.js',
-				'@': path.resolve('./src'),
-				$: path.resolve('./node_modules'),
-			},
+			alias: [
+				{
+					name: 'vue$',
+					alias: 'vue/dist/vue.runtime.esm-bundler.js',
+				},
+				{
+					name: '@',
+					alias: path.resolve('./node_modules'),
+				},
+				{
+					name: '$',
+					alias: path.resolve('./src'),
+				},
+			],
 		},
 		module: {
 			rules: [
@@ -144,6 +153,9 @@ export default (env: Record<string, unknown>) => {
 				{
 					test: /\.vue$/,
 					loader: 'vue-loader',
+					options: {
+						hotReload: isDevelopmentMode,
+					} satisfies VueLoaderOptions,
 				},
 				{
 					test: /\.svg$/,
@@ -215,6 +227,7 @@ export default (env: Record<string, unknown>) => {
 			innerGraph: true,
 			usedExports: true,
 			sideEffects: true,
+			runtimeChunk: true,
 			avoidEntryIife: true,
 			providedExports: true,
 			removeEmptyChunks: true,
