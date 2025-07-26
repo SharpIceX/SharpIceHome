@@ -12,8 +12,8 @@
 						<div class="avatar-image">
 							<LazyImage
 								v-if="typeof link.image === 'string'"
-								width="80"
-								height="80"
+								:width="80"
+								:height="80"
 								:src="link.image"
 								:title="link.title"
 								:alt="link.title + '的头像'" />
@@ -33,21 +33,11 @@
 	</main>
 </template>
 
-<script>
+<script setup>
 import LinkList from './List';
 import LazyImage from '$/components/LazyImage.vue';
 
-export default {
-	name: 'LinkPages',
-	components: {
-		LazyImage,
-	},
-	data() {
-		return {
-			LinkList,
-		};
-	},
-};
+defineOptions({ name: 'LinkPage' });
 </script>
 
 <style lang="less" scoped>

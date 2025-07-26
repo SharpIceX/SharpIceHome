@@ -16,7 +16,7 @@
 	"embeddedLanguageFormatting": "auto",
 	"htmlWhitespaceSensitivity": "strict",
 	"tailwindStylesheet": "./tailwind.config.ts",
-	"plugins": ["prettier-plugin-toml", "@prettier/plugin-xml", "prettier-plugin-tailwindcss"],
+	"plugins": ["prettier-plugin-tailwindcss"],
 	"overrides": [
 		{
 			"files": "*.ts",
@@ -35,14 +35,6 @@
 			"options": {
 				"tabWidth": 2,
 				"useTabs": false
-			}
-		},
-		{
-			"files": "*.xml",
-			"options": {
-				"xmlSelfClosingSpace": true,
-				"xmlSortAttributesByKey": true,
-				"xmlQuoteAttributes": "double"
 			}
 		}
 	]

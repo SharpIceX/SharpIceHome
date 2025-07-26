@@ -27,7 +27,7 @@ import technologyStackComponent from './content/technologyStack.vue';
 import technicalStrengthComponent from './content/technicalStrength.vue';
 
 export default {
-	name: 'HomePages',
+	name: 'HomePage',
 	components: {
 		infoComponent,
 		findMeComponent,

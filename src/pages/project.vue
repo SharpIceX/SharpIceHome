@@ -42,7 +42,7 @@ import npmIcon from 'material-icon-theme/icons/npm.svg';
 import gitubIcon from '@fortawesome/fontawesome-free/svgs/brands/github.svg';
 
 export default {
-	name: 'ProjectPages',
+	name: 'ProjectPage',
 	components: {
 		npmIcon,
 		gitubIcon,

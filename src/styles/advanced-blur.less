@@ -1,6 +1,4 @@
-@import 'nord/src/lesscss/nord.less';
-
-@media not all and (max-width: 450px) {
+@media (min-width: 450px) {
 	.advanced-blur-backdrop {
 		border-radius: 0.5rem;
 		will-change: transform, opacity, backdrop-filter;
@@ -10,15 +8,16 @@
 
 		@apply bg-nord3 bg-opacity-10;
 
-		/* 主要效果 */
-		backdrop-filter: blur(20px) saturate(190%) contrast(1.05) brightness(0.95);
+		/* 背景与滤镜 */
 		background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.12));
+		backdrop-filter: blur(20px) saturate(190%) contrast(1.05) brightness(0.95);
 
-		/* 此处防止效果很奇怪 */
+		/* 动效 */
 		transition:
 			backdrop-filter 0.4s cubic-bezier(0.22, 1, 0.36, 1),
 			transform 0.4s ease,
 			box-shadow 0.4s ease;
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 	}
 
 	// 悬停效果
@@ -32,9 +31,11 @@
 	}
 }
 
-@media not all and (min-width: 450px) {
-	.advanced-blur-before::before {
-		filter: blur(6px) contrast(1.05) saturate(1.05);
-		transition: filter 100ms cubic-bezier(0.37, 0, 0.63, 1);
+@media (max-width: 450px) {
+	.advanced-blur-before {
+		&::before {
+			filter: blur(6px) contrast(1.05) saturate(1.05);
+			transition: filter 100ms cubic-bezier(0.37, 0, 0.63, 1);
+		}
 	}
 }

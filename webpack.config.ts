@@ -160,7 +160,12 @@ export default (env: Record<string, unknown>) => {
 				{
 					test: /\.svg$/,
 					use: [
-						'vue-loader',
+						{
+							loader: 'vue-loader',
+							options: {
+								hotReload: isDevelopmentMode,
+							} satisfies VueLoaderOptions,
+						},
 						{
 							loader: 'svg-to-vue-loader',
 							options: {
@@ -202,6 +207,9 @@ export default (env: Record<string, unknown>) => {
 				__VUE_OPTIONS_API__: true,
 				__VUE_PROD_DEVTOOLS__: isDevelopmentMode,
 				__VUE_PROD_HYDRATION_MISMATCH_DETAILS__: false,
+
+				// 开发环境特殊变量
+				__DEV__: JSON.stringify(isDevelopmentMode),
 			}),
 			new CopyWebpackPlugin({
 				patterns: [

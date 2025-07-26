@@ -110,12 +110,6 @@ export default [
 		image: (await import('./avatar/hooskai.webp')).default,
 	},
 	{
-		title: 'Sparrow',
-		description: 'Sparrow 的小博客',
-		url: 'https://blog.sparrowhe.top/',
-		image: (await import('./avatar/sparrowhe.webp')).default,
-	},
-	{
 		title: '渣渣120',
 		description: '也许是一名不合格的全栈开发者',
 		url: 'https://zhazha120.cn/',

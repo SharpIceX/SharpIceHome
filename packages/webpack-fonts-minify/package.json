@@ -6,8 +6,8 @@
 	"license": "MPL-2.0",
 	"main": "./src/main.ts",
 	"dependencies": {
-		"@vue/compiler-dom": "^3.5.17",
-		"@vue/compiler-sfc": "^3.5.17",
+		"@vue/compiler-dom": "^3.5.18",
+		"@vue/compiler-sfc": "^3.5.18",
 		"acorn": "^8.15.0",
 		"acorn-walk": "^8.3.4",
 		"css-tree": "^3.1.0",

@@ -2,17 +2,9 @@
 	<header class="my-8 flex justify-center">
 		<nav class="advanced-blur-backdrop">
 			<ul class="nav-link flex flex-row items-center justify-center">
-				<li>
-					<router-link class="nav-link" to="/" exact-active-class="nav-link-active"> 首页 </router-link>
-				</li>
-				<li>
-					<router-link class="nav-link" to="/project" exact-active-class="nav-link-active">
-						相关项目
-					</router-link>
-				</li>
-				<li>
-					<router-link class="nav-link" to="/link" exact-active-class="nav-link-active">
-						友谊链接
+				<li v-for="route in navRoutes" :key="route.name">
+					<router-link class="nav-link" :to="route.path" exact-active-class="nav-link-active">
+						{{ route.name }}
 					</router-link>
 				</li>
 			</ul>
@@ -20,10 +12,20 @@
 	</header>
 </template>
 
-<script>
-export default {
-	name: 'AppHeader',
-};
+<script setup>
+import { routes } from '$/router';
+defineOptions({ name: 'AppHeader' });
+
+/* * 生成导航栏数据
+ * 过滤掉路径为 '/:pathMatch(.*)*' 的路由
+ * 并且只保留有 meta.title 的路由
+ */
+const navRoutes = routes
+	.filter(route => route.path !== '/:pathMatch(.*)*' && route.meta && route.meta.title)
+	.map(route => ({
+		name: route.meta.title,
+		path: route.path,
+	}));
 </script>
 
 <style lang="less" scoped>
