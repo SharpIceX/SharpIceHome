@@ -1,11 +1,8 @@
-import { markRaw } from 'vue';
-import type { ComponentType as SvgComponentType } from 'svg-to-vue-loader';
-
 type LinkListType = {
 	title: string;
 	description: string;
 	url: string;
-	image?: string | Promise<string> | SvgComponentType | Promise<SvgComponentType>;
+	image?: string | Promise<string>;
 }[];
 
 export default [
@@ -19,12 +16,6 @@ export default [
 		title: '泛泛',
 		description: '这里是泛泛，一枚工作了五年的Web开发工程师。时而埋头苦干，时而日常摆烂。',
 		url: 'https://sothx.com/',
-	},
-	{
-		title: '绀漓',
-		description: '这里是绀漓的杂货铺。看起来好像没人在这里，要不然偷一块面包？',
-		url: 'https://blog.sevtinge.cc/',
-		image: (await import('./avatar/sevtinge.webp')).default,
 	},
 	{
 		title: '飞羽',
@@ -114,11 +105,5 @@ export default [
 		description: '也许是一名不合格的全栈开发者',
 		url: 'https://zhazha120.cn/',
 		image: (await import('./avatar/zhazha120.webp')).default,
-	},
-	{
-		title: 'FurDevsCN',
-		description: '一个有态度的小动物开发团体',
-		url: 'https://furdevs.cn/',
-		image: markRaw(((await import('./avatar/FurDevsCN.svg')) as { default: SvgComponentType }).default),
 	},
 ] satisfies LinkListType;

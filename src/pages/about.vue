@@ -29,8 +29,8 @@
 			<p>
 				<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
 				<span>
-					是，也不是，但我并不想承认我是<strong>Furry</strong>，
-					我更倾向于承认我自己是<strong>幻想生物</strong>。
+					不是哦，我是
+					<strong>幻想生物</strong>/<strong>人外</strong>。
 				</span>
 			</p>
 		</section>
@@ -60,18 +60,23 @@ defineOptions({ name: 'AboutPage' });
 	h1 {
 		@apply mb-4 mt-6 text-2xl font-bold;
 	}
+
 	h2 {
 		@apply mb-3 mt-5 text-xl font-semibold;
 	}
+
 	h3 {
 		@apply mb-2 mt-4 text-lg font-medium;
 	}
+
 	h4 {
 		@apply mb-2 mt-3 text-base font-medium;
 	}
+
 	h5 {
 		@apply mb-1 mt-2 text-sm font-medium;
 	}
+
 	h6 {
 		@apply mb-1 mt-2 text-xs;
 	}

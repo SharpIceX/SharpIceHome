@@ -17,8 +17,6 @@
 								:src="link.image"
 								:title="link.title"
 								:alt="link.title + '的头像'" />
-
-							<component :is="link.image" v-else :title="link.title" size="5rem" />
 						</div>
 						<div class="w-3/5">
 							<h2 :title="link.title" class="truncate">{{ link.title }}</h2>
