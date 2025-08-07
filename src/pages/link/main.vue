@@ -9,7 +9,7 @@
 					class="flex h-full items-center">
 					<div class="flex h-32 w-80 flex-row items-center space-x-4 px-6 py-3">
 						<!-- 普通图片与 svg 组件 -->
-						<div class="avatar-image">
+						<div v-if="link.image" class="avatar-image">
 							<LazyImage
 								v-if="typeof link.image === 'string'"
 								:width="80"
@@ -18,9 +18,12 @@
 								:title="link.title"
 								:alt="link.title + '的头像'" />
 						</div>
-						<div class="w-3/5">
-							<h2 :title="link.title" class="truncate">{{ link.title }}</h2>
-							<p :title="link.description" class="line-clamp-2 overflow-hidden text-ellipsis">
+						<div>
+							<h2 :title="link.title" class="truncate text-xl font-bold">{{ link.title }}</h2>
+							<p
+								v-if="link.description"
+								:title="link.description"
+								class="line-clamp-2 overflow-hidden text-ellipsis">
 								{{ link.description }}
 							</p>
 						</div>
@@ -40,8 +43,13 @@ defineOptions({ name: 'LinkPage' });
 
 <style lang="less" scoped>
 .avatar-image {
-	@apply flex items-center justify-center;
-	@apply h-20 w-20;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	@apply min-h-20 min-w-20;
+	@apply max-h-20 max-w-20;
+
 	@apply select-none;
 
 	* {

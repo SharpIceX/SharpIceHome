@@ -1,20 +1,18 @@
 type LinkListType = {
 	title: string;
-	description: string;
+	description?: string;
 	url: string;
 	image?: string | Promise<string>;
 }[];
 
 export default [
 	{
-		title: '白墨',
-		description: '嗯',
+		title: '白山白墨',
 		url: 'https://iy.ink/',
 		image: (await import('./avatar/iy.webp')).default,
 	},
 	{
 		title: '泛泛',
-		description: '这里是泛泛，一枚工作了五年的Web开发工程师。时而埋头苦干，时而日常摆烂。',
 		url: 'https://sothx.com/',
 	},
 	{
@@ -24,49 +22,39 @@ export default [
 	},
 	{
 		title: '初雪·冰',
-		description: '凤梨狼的小窝。',
 		url: 'https://wolf.snowlyicewolf.club/',
 		image: (await import('./avatar/snowlyicewolf.webp')).default,
 	},
+	/* TODO: 宕机
 	{
 		title: '中二蘑菇狐狸',
 		description: '一只狐狸敲出的一个奇迹',
 		url: 'https://imfurry.com/',
 		image: (await import('./avatar/zebwqfox.webp')).default,
 	},
+	*/
 	{
 		title: '迷失的小K',
-		description: '一同畅游代码的海洋，感受极客世界的无限可能。',
 		url: 'https://blog.kclub.tech/',
 		image: (await import('./avatar/kclub.webp')).default,
 	},
 	{
 		title: '西西',
-		description: '嘻嘻西西CC吸吸',
 		url: 'https://xxand.cc/',
 		image: (await import('./avatar/xxand.webp')).default,
 	},
 	{
-		title: "Hello! I'm 0o酱",
-		description: '光阴如梦，昨日随风',
+		title: '0o酱',
 		url: 'https://blog.im0o.top/',
 		image: (await import('./avatar/im0o.webp')).default,
 	},
 	{
 		title: 'F_Qilin',
-		description: '一个小小的个人博客',
 		url: 'https://blog.fqilin.top/',
 		image: (await import('./avatar/fqilin.webp')).default,
 	},
 	{
-		title: '〖天蓝〗の小窝',
-		description: '这里是〖天藍〗，18岁，学生です，是Furry哦~',
-		url: 'https://blog.meta1937.top/',
-		image: (await import('./avatar/meta1937.webp')).default,
-	},
-	{
 		title: '嗨皮',
-		description: '憨憨',
 		url: 'https://www.owk.ink/',
 		image: (await import('./avatar/owk.webp')).default,
 	},
@@ -78,13 +66,11 @@ export default [
 	},
 	{
 		title: 'XME Notes Library',
-		description: 'xzadudu179的小窝',
 		url: 'https://blog.xzadudu179.top/',
 		image: (await import('./avatar/xzadudu179.webp')).default,
 	},
 	{
 		title: '洺渊',
-		description: '不知道写什么，那就owo一下~',
 		url: 'https://blog.fmyron.com/',
 		image: (await import('./avatar/fmyron.webp')).default,
 	},
@@ -96,7 +82,6 @@ export default [
 	},
 	{
 		title: '胡斯凯',
-		description: '胡斯凯的足迹',
 		url: 'https://hooskai.top/',
 		image: (await import('./avatar/hooskai.webp')).default,
 	},
@@ -105,5 +90,14 @@ export default [
 		description: '也许是一名不合格的全栈开发者',
 		url: 'https://zhazha120.cn/',
 		image: (await import('./avatar/zhazha120.webp')).default,
+	},
+	{
+		title: '炎天',
+		description: '如燎原之火，燃我心海；似璀璨星辰，映照苍穹。',
+		url: 'https://yawntee.top/',
+	},
+	{
+		title: '炽煋',
+		url: 'https://blog.fluffycx.cn/',
 	},
 ] satisfies LinkListType;
