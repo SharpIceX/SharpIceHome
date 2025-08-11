@@ -4,7 +4,7 @@
 			<Rss_FeedIcon aria-hidden="true" />
 			<span>个人博客</span>
 		</a>
-		<a class="link-item" href="https://github.com/FurryRbl">
+		<a class="link-item" href="https://github.com/SharpIceX">
 			<gitubIcon aria-hidden="true" />
 			<span>GitHub</span>
 		</a>
