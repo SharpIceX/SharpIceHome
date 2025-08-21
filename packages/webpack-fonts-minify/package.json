@@ -6,8 +6,8 @@
 	"license": "MPL-2.0",
 	"main": "./src/main.ts",
 	"dependencies": {
-		"@vue/compiler-dom": "^3.5.18",
-		"@vue/compiler-sfc": "^3.5.18",
+		"@vue/compiler-dom": "^3.5.19",
+		"@vue/compiler-sfc": "^3.5.19",
 		"acorn": "^8.15.0",
 		"acorn-walk": "^8.3.4",
 		"css-tree": "^3.1.0",
@@ -17,7 +17,7 @@
 		"postcss-less": "^6.0.0",
 		"subset-font": "^2.4.0",
 		"typescript": "^5.9.2",
-		"webpack": "^5.101.0"
+		"webpack": "^5.101.3"
 	},
 	"devDependencies": {
 		"@types/css-tree": "^2.3.10",
