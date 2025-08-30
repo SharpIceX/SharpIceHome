@@ -3,9 +3,9 @@
 		<nav class="advanced-blur-backdrop">
 			<ul class="nav-link flex flex-row items-center justify-center">
 				<li v-for="route in navRoutes" :key="route.name">
-					<router-link class="nav-link" :to="route.path" exact-active-class="nav-link-active">
+					<NuxtLink class="nav-link" :to="route.path" exact-active-class="nav-link-active">
 						{{ route.name }}
-					</router-link>
+					</NuxtLink>
 				</li>
 			</ul>
 		</nav>

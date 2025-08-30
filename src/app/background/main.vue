@@ -16,6 +16,7 @@ export default {
 	z-index: -1;
 	position: fixed;
 	will-change: opacity;
+	filter: blur(2px);
 	animation: fade-in 1s ease-in-out forwards;
 	background: url('./background.webp') center/cover no-repeat;
 }
