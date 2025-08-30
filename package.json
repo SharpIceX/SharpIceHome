@@ -41,8 +41,8 @@
 		"clean": "rimraf dist .output"
 	},
 	"dependencies": {
-		"@lxgw/LxgwBright": "github:lxgw/LxgwBright#v5.526",
 		"@fortawesome/fontawesome-free": "^7.0.0",
+		"@lxgw/LxgwBright": "github:lxgw/LxgwBright#v5.526",
 		"@material-design-icons/svg": "^0.14.15",
 		"@unocss/reset": "^66.4.2",
 		"@vueuse/integrations": "^13.8.0",
@@ -75,6 +75,7 @@
 		"typescript": "^5.9.2",
 		"typescript-eslint": "^8.41.0",
 		"unocss": "^66.4.2",
-		"vue-eslint-parser": "^10.2.0"
+		"vue-eslint-parser": "^10.2.0",
+		"wrangler": "^4.33.1"
 	}
 }
