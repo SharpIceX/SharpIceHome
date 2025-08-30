@@ -33,7 +33,7 @@ jobs:
               run: pnpm install --frozen-lockfile
 
             - name: 构建
-              run: NODE_ENV=production pnpm run build
+              run: NODE_ENV=production pnpm run generate
 
             - name: 部署到 Cloudflare Pages
               uses: cloudflare/wrangler-action@v3

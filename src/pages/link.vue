@@ -37,7 +37,7 @@
 </template>
 
 <script lang="ts" setup>
-import { LinkLists } from './list';
+import { LinkLists } from '../data/LinkList/main';
 import LazyImage from '@/components/wait-image.vue';
 
 defineOptions({ name: 'LinkPage' });
