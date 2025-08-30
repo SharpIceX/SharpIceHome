@@ -1,11 +1,4 @@
-packages:
-    - packages/**
-
 onlyBuiltDependencies:
-    - cwebp-bin
+    - '@parcel/watcher'
     - esbuild
-    - ttf2woff2
-
-overrides:
-    tailwindcss: 3.4.17 # 使用 Tailwindecss 3，因为 Tailwindcss 4破坏了兼容性
-    less: 4.3.0 # less 4.4.0 破坏了兼容性
+    - unrs-resolver

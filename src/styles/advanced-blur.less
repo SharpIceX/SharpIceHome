@@ -6,24 +6,23 @@
 		contain: paint;
 		transform: translate3d(0, 0, 0); /* 强制某些浏览器启用 GPU 加速 */
 
-		@apply bg-nord3 bg-opacity-10;
+		@apply "bg-nord8 bg-opacity-10";
 
 		/* 背景与滤镜 */
-		background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.12));
-		backdrop-filter: blur(20px) saturate(190%) contrast(1.05) brightness(0.95);
+		backdrop-filter: blur(15px) saturate(190%) contrast(1.05) brightness(0.95);
 
 		/* 动效 */
 		transition:
 			backdrop-filter 0.4s cubic-bezier(0.22, 1, 0.36, 1),
 			transform 0.4s ease,
 			box-shadow 0.4s ease;
-		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 	}
 
 	// 悬停效果
 	.advanced-blur-backdrop-hover:hover {
 		transform: translateY(-8px) scale(1.02);
-		backdrop-filter: blur(24px) saturate(210%) contrast(1.08) brightness(0.98);
+		backdrop-filter: blur(20px) saturate(190%) contrast(1.08) brightness(0.98);
 
 		&::before {
 			opacity: 0.4;

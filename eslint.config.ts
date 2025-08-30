@@ -1,16 +1,60 @@
 import globals from 'globals';
 import eslint from '@eslint/js';
-import tseslint from 'typescript-eslint';
+import jsdoc from 'eslint-plugin-jsdoc';
 import pluginVue from 'eslint-plugin-vue';
 import vueParser from 'vue-eslint-parser';
+import eslintPluginUnicorn from 'eslint-plugin-unicorn';
 import eslintConfigPrettier from 'eslint-config-prettier/flat';
+import tseslint, { type InfiniteDepthConfigWithExtends } from 'typescript-eslint';
 
-export default tseslint.config(
+const TypeScriptConfig: InfiniteDepthConfigWithExtends = {
+	extends: [tseslint.configs.strict, tseslint.configs.stylistic, jsdoc.configs['flat/recommended-typescript']],
+	languageOptions: {
+		parser: tseslint.parser,
+		parserOptions: {
+			projectService: true,
+			sourceType: 'module',
+			ecmaVersion: 'latest',
+			tsconfigRootDir: import.meta.dirname,
+		},
+	},
+};
+
+const config: InfiniteDepthConfigWithExtends = tseslint.config(
 	eslint.configs.recommended,
+	eslintPluginUnicorn.configs.recommended,
 	tseslint.configs.strict,
 	tseslint.configs.stylistic,
 	...pluginVue.configs['flat/recommended'],
 	eslintConfigPrettier,
+
+	{
+		...TypeScriptConfig,
+		files: ['**/*.ts'],
+		languageOptions: {
+			parserOptions: {
+				extraFileExtensions: ['.vue'],
+			},
+			globals: {
+				...globals['shared-node-browser'],
+			},
+		},
+	},
+	{
+		...TypeScriptConfig,
+		files: ['**/*.vue'],
+		languageOptions: {
+			parser: vueParser,
+			parserOptions: {
+				parser: tseslint.parser,
+				extraFileExtensions: ['.vue'],
+			},
+		},
+	},
+	...(await (async () => {
+		const nuxtConfigModule = await import('./.nuxt/eslint.config.mjs');
+		return nuxtConfigModule.default();
+	})()),
 	{
 		languageOptions: {
 			parserOptions: {
@@ -24,27 +68,13 @@ export default tseslint.config(
 			},
 		},
 		rules: {
+			'vue/html-self-closing': 'off',
 			eqeqeq: ['error', 'always'],
 		},
 	},
 	{
-		files: ['**/*.vue'],
-		languageOptions: {
-			parser: vueParser,
-			parserOptions: {
-				parser: tseslint.parser,
-				extraFileExtensions: ['.vue'],
-			},
-			globals: {
-				...globals.browser,
-			},
-		},
-	},
-	{
-		files: ['**/*.js'],
-		extends: [tseslint.configs.disableTypeChecked],
-	},
-	{
-		ignores: ['**/node_modules/**', '**/dist', '**/*.d.ts'],
+		ignores: ['**/*.d.ts', '**/dits/**', '**/.nuxt/**', '**/node_modules/**'],
 	},
 );
+
+export default config;

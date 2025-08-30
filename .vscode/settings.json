@@ -1,6 +1,8 @@
 {
-	"css.customData": [".vscode/tailwind.json"],
-	"tailwindCSS.includeLanguages": {
-		"vue": "html"
-	}
+	"unocss.autocomplete.matchType": "fuzzy",
+	"typescript.tsdk": "node_modules/typescript/lib",
+	"typescript.enablePromptUseWorkspaceTsdk": true,
+	"eslint.validate": ["typescript", "vue"],
+	"css.customData": [".vscode/unocss.json"],
+	"unocss.languageIds": ["typescript", "less", "vue"]
 }

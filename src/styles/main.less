@@ -1,22 +1,29 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url('$/@unocss/reset/tailwind.css'); /* 样式重置 */
+
+@import url('overlayscrollbars/overlayscrollbars.css');
 
 @import './fonts.less';
 @import './nprogress.less';
+@import './animations.less';
 @import './advanced-blur.less';
 @import './overlayscrollbars.less';
 
 html {
-	@apply bg-nord0 text-nord4;
+	@apply "bg-nord0 text-nord4";
 }
 
 body {
-	@apply h-screen w-screen;
-	@apply grid place-items-center;
+	@apply "h-screen w-screen";
+	@apply "grid place-items-center";
 
 	::selection {
-		@apply bg-nord9 bg-opacity-50 text-nord1;
+		@apply "bg-nord9 bg-opacity-50 text-nord1";
 		text-shadow: 0 0 2px rgba(0, 0, 0, 0.25);
 	}
+}
+
+svg {
+	width: 1em;
+	height: 1em;
+	fill: currentColor;
 }

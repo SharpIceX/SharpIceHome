@@ -1,8 +1,0 @@
-User-agent: *
-Disallow: /.well-known/
-Disallow: /assets/
-Disallow: /background.webp
-Disallow: /banner.webp
-Disallow: /favicon.webp
-
-Sitemap: https://sharpice.top/sitemap.xml

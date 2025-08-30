@@ -1,19 +1,38 @@
 {
+	"extends": "./.nuxt/tsconfig.json",
 	"compilerOptions": {
 		"strict": true,
 		"allowJs": true,
+		"target": "ES2022",
+		"module": "ES2022",
 		"sourceMap": true,
-		"target": "ESNext",
-		"module": "ESNext",
-		"skipLibCheck": true,
+		"declaration": true,
+		"alwaysStrict": true,
+		"skipLibCheck": false,
+		"noImplicitAny": true,
+		"declarationMap": true,
+		"noUnusedLocals": true,
+		"noImplicitThis": true,
 		"esModuleInterop": true,
 		"isolatedModules": true,
+		"strictNullChecks": true,
+		"resolveJsonModule": true,
+		"noImplicitReturns": true,
+		"noImplicitOverride": true,
+		"noUnusedParameters": true,
+		"strictFunctionTypes": true,
+		"strictBindCallApply": true,
 		"moduleResolution": "bundler",
+		"noUncheckedIndexedAccess": true,
+		"exactOptionalPropertyTypes": true,
+		"noFallthroughCasesInSwitch": true,
+		"strictPropertyInitialization": true,
+		"allowSyntheticDefaultImports": true,
+		"forceConsistentCasingInFileNames": true,
+		"noPropertyAccessFromIndexSignature": true,
 		"paths": {
-			"$/*": ["./src/*"],
-			"@/*": ["./node_modules/*"]
+			"@/*": ["./src/*"],
+			"$/*": ["./node_modules/*"]
 		}
-	},
-	"include": ["**/*.ts", "**/*.vue"],
-	"exclude": ["node_modules", "dist"]
+	}
 }

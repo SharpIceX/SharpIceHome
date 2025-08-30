@@ -8,4 +8,9 @@
 node_modules
 
 # 构建输出
-/dist
+.output
+.data
+.nuxt
+.nitro
+.cache
+dist

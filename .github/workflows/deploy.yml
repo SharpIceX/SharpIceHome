@@ -23,22 +23,23 @@ jobs:
                   version: 'latest'
                   run_install: false
 
-            - name: 准备 Node.js 环境
+            - name: 安装 Node.js 环境
               uses: actions/setup-node@v4
               with:
-                  node-version: '22'
+                  node-version-file: 'package.json'
                   cache: 'pnpm'
 
             - name: 安装依赖
-              run: pnpm install --frozen-lockfile --reporter=silent
+              run: pnpm install --frozen-lockfile
 
             - name: 构建
               run: NODE_ENV=production pnpm run build
 
-            - name: Deploy to Cloudflare Pages
+            - name: 部署到 Cloudflare Pages
               uses: cloudflare/wrangler-action@v3
               with:
+                  packageManager: pnpm
                   apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
                   accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-                  command: pages deploy ./dist --project-name=sharpicehome
                   gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+                  command: pages deploy ./dist --project-name=sharpicehome
