@@ -29,14 +29,6 @@ const LinkLists = [
 		url: 'https://wolf.snowlyicewolf.club/',
 		image: (await import('./avatar/snowlyicewolf.webp')).default,
 	},
-	/* TODO: 宕机
-	{
-		title: '中二蘑菇狐狸',
-		description: '一只狐狸敲出的一个奇迹',
-		url: 'https://imfurry.com/',
-		image: (await import('./avatar/zebwqfox.webp')).default,
-	},
-	*/
 	{
 		title: '迷失的小K',
 		url: 'https://blog.kclub.tech/',

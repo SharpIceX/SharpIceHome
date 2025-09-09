@@ -1,5 +1,5 @@
 <template>
-	<div class="w-9/12">
+	<div class="w-8/12">
 		<article class="advanced-blur-backdrop advanced-blur-backdrop-hover advanced-blur-before">
 			<section class="post-content">
 				<h1>关于我</h1>
@@ -40,7 +40,7 @@ definePageMeta({
 	@apply "px-8 py-4";
 	backdrop-filter: brightness(0.9);
 
-	// 通用段落样式
+	// 段落
 	p {
 		@apply "mb-4";
 	}
@@ -49,55 +49,55 @@ definePageMeta({
 		display: inline-block;
 	}
 
-	// 标题样式
+	// 标题
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		line-height: 1.25;
+	}
 
 	h1 {
 		font-size: 1.5rem;
-		font-weight: bold;
 		margin-top: 1.5rem;
 		margin-bottom: 1rem;
 	}
 
 	h2 {
-		font-weight: 600;
 		font-size: 1.25rem;
 		margin-top: 1.25rem;
 		margin-bottom: 0.75rem;
 	}
 
 	h3 {
-		margin-top: 1rem;
-		font-weight: 500;
 		font-size: 1.125rem;
+		margin-top: 1rem;
 		margin-bottom: 0.5rem;
 	}
 
 	h4 {
 		font-size: 1rem;
-		font-weight: 500;
 		margin-top: 0.75rem;
 		margin-bottom: 0.5rem;
 	}
 
 	h5 {
-		font-weight: 500;
-		margin-top: 0.5rem;
 		font-size: 0.875rem;
+		margin-top: 0.5rem;
 		margin-bottom: 0.25rem;
 	}
 
 	h6 {
-		margin-top: 0.5rem;
 		font-size: 0.75rem;
+		margin-top: 0.5rem;
 		margin-bottom: 0.25rem;
 	}
 
 	// 链接
 	a {
-		@apply "text-nord8";
-		@apply "hover:text-nord10";
-		// @apply "visited:text-nord11";
-		@apply "focus:outline-none focus:ring-2 focus:ring-nord9";
+		@apply "text-nord8 hover:text-nord10 focus:outline-none focus:ring-2 focus:ring-nord9";
 	}
 }
 </style>

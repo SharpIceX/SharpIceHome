@@ -8,14 +8,12 @@
 					:aria-label="`访问${link.title}的个人网站`"
 					class="flex h-full items-center">
 					<article class="flex h-32 w-80 flex-row items-center space-x-4 px-6 py-3">
-						<div v-if="link.image" class="avatar-image">
+						<div v-if="link.image" aria-hidden="true" class="avatar-image">
 							<LazyImage
-								v-if="typeof link.image === 'string'"
+								v-if="link.image"
 								:width="80"
 								:height="80"
 								:src="link.image"
-								:title="link.title"
-								:alt="`${link.title}的头像`"
 								:class="link.noRounded ? 'no-rounded' : ''" />
 						</div>
 						<div>

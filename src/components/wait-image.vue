@@ -11,7 +11,7 @@ import { waitImage } from '@/utils/load';
 
 const properties = defineProps<{
 	src: string;
-	alt: string;
+	alt?: string;
 }>();
 
 const isLoaded = ref(false);

@@ -5,7 +5,7 @@
 			<!-- 个人信息 -->
 			<div class="space-y-2">
 				<div class="flex items-center space-x-1">
-					<img src="./avatar.webp" title="SharpIce" alt="SharpIce的个人头像" width="40" height="40" />
+					<img src="/favicon.ico" title="SharpIce" alt="SharpIce的个人头像" width="40" height="40" />
 					<h1 class="text-2xl">锐冰</h1>
 				</div>
 				<div class="pl-4">
@@ -14,7 +14,7 @@
 					<ul class="flex space-x-2 max-[450px]:flex-wrap max-[450px]:justify-center">
 						<li class="flex items-center space-x-2">
 							<favoriteBorderIcon aria-hidden="true" />
-							<span>幻想生物/人外</span>
+							<span>幻想生物</span>
 						</li>
 						<li class="flex items-center space-x-1">
 							<codeIcon aria-hidden="true" />
