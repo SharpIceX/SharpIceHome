@@ -12,10 +12,12 @@ const TypeScriptConfig: InfiniteDepthConfigWithExtends = {
 	languageOptions: {
 		parser: tseslint.parser,
 		parserOptions: {
-			projectService: true,
 			sourceType: 'module',
 			ecmaVersion: 'latest',
 			tsconfigRootDir: import.meta.dirname,
+			projectService: {
+				defaultProject: './tsconfig.eslint.json',
+			},
 		},
 	},
 };
@@ -34,9 +36,6 @@ const config: InfiniteDepthConfigWithExtends = tseslint.config(
 		languageOptions: {
 			parserOptions: {
 				extraFileExtensions: ['.vue'],
-			},
-			globals: {
-				...globals['shared-node-browser'],
 			},
 		},
 	},
@@ -57,12 +56,6 @@ const config: InfiniteDepthConfigWithExtends = tseslint.config(
 	})()),
 	{
 		languageOptions: {
-			parserOptions: {
-				projectService: true,
-				sourceType: 'module',
-				ecmaVersion: 'latest',
-				tsconfigRootDir: import.meta.dirname,
-			},
 			globals: {
 				...globals['shared-node-browser'],
 			},
