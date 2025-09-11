@@ -3,26 +3,14 @@
 		<article class="advanced-blur-backdrop advanced-blur-backdrop-hover advanced-blur-before">
 			<section class="post-content">
 				<h1>关于我</h1>
-				<p>
-					<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-					<span>你可以叫我 <strong>锐冰</strong>，也可以叫我的全名 <strong>锐冰龙</strong>。</span>
-					<span>我目前主要做个人项目开发以及个人本地化工作。</span>
-				</p>
+				<p> 你可以叫我<strong>锐冰</strong>，也可以叫我的全名<strong>锐冰龙</strong>。目前我主要做个人项目开发以及为一些开源项目贡献本地化。 </p>
 				<h2>本地化工作</h2>
 				<p>
-					<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-					<span>
-						目前我主要为
-						<a href="https://github.com/tom5454/CustomPlayerModels" target="_blank">Custom Player Models</a>
-						做简体中文本地化工作。
-					</span>
-					<span>在做翻译及本地化过程性我难免会使用到<strong>机器翻译</strong>来改善翻译质量。</span>
-				</p>
-				<p>
-					<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-					<span>2019 至 2020 年间，我曾在一个汉化组参与翻译工作。</span>
-					<span>此后的一段时间，我主要从事一些闭源软件的逆向翻译工作。</span>
-					<span>目前，我将精力集中于为开源项目贡献本地化内容。</span>
+					目前我主要为
+					<NuxtLink to="https://github.com/tom5454/CustomPlayerModels" target="_blank">Custom Player Models</NuxtLink>
+					和
+					<NuxtLink to="https://kde.org/zh-cn" target="_blank">KDE</NuxtLink>
+					做简体中文本地化工作。
 				</p>
 			</section>
 		</article>

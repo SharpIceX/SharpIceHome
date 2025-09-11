@@ -97,6 +97,12 @@ const LinkLists = [
 		title: '炽煋',
 		url: 'https://blog.fluffycx.cn/',
 	},
+	{
+		title: '夏枫',
+		description: '一只会敲代码的笨笨猫咪',
+		url: 'https://blog.mcxiafeng.top/',
+		image: (await import('./avatar/xiafeng.webp')).default,
+	},
 ] satisfies LinkType[];
 
 export { LinkLists };
