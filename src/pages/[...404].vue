@@ -1,11 +1,13 @@
 <template>
-	<main class="flex flex-col items-center justify-center space-y-2 text-nord13">
-		<h1 class="text-4xl">404 Not Found</h1>
-		<p class="text-lg">你访问的页面不存在</p>
-		<NuxtLink to="/" class="advanced-blur-backdrop flex items-center gap-2 p-4">
-			<backArrowIcon aria-hidden="true" />
-			<span>返回首页</span>
-		</NuxtLink>
+	<main class="grid place-items-center text-nord13 min-h-screen">
+		<div class="grid gap-2 justify-items-center">
+			<h1 class="text-4xl">404 Not Found</h1>
+			<p class="text-lg">你访问的页面不存在</p>
+			<NuxtLink to="/" class="advanced-blur-backdrop grid grid-flow-col items-center gap-2 p-4">
+				<backArrowIcon aria-hidden="true" />
+				<span>返回首页</span>
+			</NuxtLink>
+		</div>
 	</main>
 </template>
 

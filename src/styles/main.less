@@ -8,18 +8,23 @@
 @import './advanced-blur.less';
 @import './overlayscrollbars.less';
 
-html {
-	@apply "bg-nord0 text-nord4";
+html,
+body {
+	height: 100%;
+	margin: 0;
 }
 
-body {
-	@apply "h-screen w-screen";
-	@apply "grid place-items-center";
-
+html {
+	@apply "bg-nord0 text-nord4";
 	::selection {
 		@apply "bg-nord9 bg-opacity-50 text-nord1";
 		text-shadow: 0 0 2px rgba(0, 0, 0, 0.25);
 	}
+}
+
+body {
+	display: grid;
+	place-items: center;
 }
 
 svg {

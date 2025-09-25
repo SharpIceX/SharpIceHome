@@ -1,9 +1,9 @@
 <template>
-	<header class="my-8 flex justify-center">
+	<header class="w-full grid justify-center py-4">
 		<nav class="advanced-blur-backdrop">
-			<ul class="nav-link flex flex-row items-center justify-center">
+			<ul class="nav-link">
 				<li v-for="route in navRoutes" :key="route.name">
-					<NuxtLink class="nav-link" :to="route.path" exact-active-class="nav-link-active">
+					<NuxtLink :to="route.path" exact-active-class="nav-link-active">
 						{{ route.name }}
 					</NuxtLink>
 				</li>
@@ -26,30 +26,32 @@ const navRoutes = [
 @import 'nord/src/lesscss/nord.less';
 
 .nav-link {
+	gap: 0.5rem;
+	display: grid;
+	grid-auto-flow: column;
+
 	li {
 		@apply "p-4";
 
 		// 悬浮效果
-		transition: color 0.3s ease;
+		transition: color 0.25s ease;
 		&:hover {
 			color: @nord10;
 		}
 	}
 }
 .nav-link-active {
-	@apply "inline-flex items-center justify-center";
-
 	position: relative;
+	display: inline-grid;
 
 	&::after {
-		content: '';
-		position: absolute;
 		left: 50%;
-		transform: translateX(-50%);
-		bottom: -0.3rem;
-		width: 100%;
 		height: 4px;
+		content: '';
+		bottom: -0.3rem;
+		position: absolute;
 		background-color: @nord9;
+		transform: translateX(-50%);
 
 		animation: nav-link-active 0.5s ease-in-out forwards;
 		@keyframes nav-link-active {

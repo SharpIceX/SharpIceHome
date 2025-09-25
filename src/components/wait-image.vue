@@ -1,7 +1,7 @@
 <template>
 	<div ref="containerReference" v-bind="$attrs">
 		<img v-if="isLoaded" :src="src" :alt="alt" class="h-auto w-full object-cover" v-bind="$attrs" />
-		<div v-else class="loader" />
+		<div v-else class="loader"></div>
 	</div>
 </template>
 
@@ -64,7 +64,7 @@ onBeforeUnmount(() => {
 /* By https://css-loaders.com */
 .loader {
 	width: 50px;
-	padding: 8px;
+	padding: 3px;
 	aspect-ratio: 1;
 	border-radius: 50%;
 	background: @nord7;

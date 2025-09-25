@@ -2,8 +2,8 @@
 	<main>
 		<ul class="flex w-[88rem] flex-wrap justify-center gap-8 max-lg:w-auto max-lg:flex-col">
 			<li v-for="link in LinkLists" :key="link.url" class="advanced-blur-backdrop advanced-blur-backdrop-hover">
-				<a
-					:href="`${link.url}?ref=sharpice.top`"
+				<NuxtLink
+					:to="`${link.url}?ref=sharpice.top`"
 					target="_blank"
 					:aria-label="`访问${link.title}的个人网站`"
 					class="flex h-full items-center">
@@ -28,7 +28,7 @@
 							</p>
 						</div>
 					</article>
-				</a>
+				</NuxtLink>
 			</li>
 		</ul>
 	</main>

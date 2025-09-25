@@ -15,8 +15,7 @@ export default {
 	content: '';
 	z-index: -1;
 	position: fixed;
-	will-change: opacity;
-	animation: fade-in 1s ease-in-out forwards;
+	animation: fade-in 0.65s ease-in-out forwards;
 	background: url('./background.webp') center/cover no-repeat;
 }
 </style>
