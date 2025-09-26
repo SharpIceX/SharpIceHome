@@ -84,9 +84,6 @@ importers:
       isomorphic-git:
         specifier: ^1.33.2
         version: 1.33.2
-      jiti:
-        specifier: ^2.6.0
-        version: 2.6.0
       less:
         specifier: ^4.4.1
         version: 4.4.1
