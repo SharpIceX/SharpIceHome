@@ -11,14 +11,15 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import AppHeader from './app/header.vue';
-import AppBackground from './app/background/main.vue';
 import { OverlayScrollbars } from 'overlayscrollbars';
+import { onMounted, defineAsyncComponent } from 'vue';
 import { useNProgress } from '@vueuse/integrations/useNProgress';
 
 defineOptions({ name: 'App' });
+
+const AppBackground = defineAsyncComponent(() => import('./app/background/main.vue'));
 
 if (import.meta.browser) {
 	// 滚动条样式
