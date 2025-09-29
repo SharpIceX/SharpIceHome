@@ -30,6 +30,12 @@ const LinkLists = [
 		image: (await import('./avatar/snowlyicewolf.webp')).default,
 	},
 	{
+		title: '中二狐狸',
+		description: '一只狐狸敲出的一个奇迹',
+		url: 'https://imfurry.com/',
+		image: (await import('./avatar/imfurry.webp')).default,
+	},
+	{
 		title: '迷失的小K',
 		url: 'https://blog.kclub.tech/',
 		image: (await import('./avatar/kclub.webp')).default,
