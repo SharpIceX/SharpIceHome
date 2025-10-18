@@ -1,7 +1,6 @@
 <template>
-	<main class="flex flex-col justify-center space-y-4">
-		<div
-			class="advanced-blur-backdrop advanced-blur-card advanced-blur-backdrop-hover space-y-4 rounded-lg p-4 py-5 max-md:border-none">
+	<div class="flex justify-center items-center h-full">
+		<div class="flex flex-col gap-3">
 			<!-- 个人信息 -->
 			<div class="space-y-2">
 				<div class="flex items-center space-x-1">
@@ -11,7 +10,7 @@
 				<div class="pl-4">
 					<h2 class="text-sm">Name: SharpIce</h2>
 					<h3 class="text-sm">Description: 世界很大，只是我的知识有限，但我会继续学习的。</h3>
-					<ul class="flex space-x-2 max-[450px]:flex-wrap max-[450px]:justify-center">
+					<ul class="flex space-x-2">
 						<li class="flex items-center space-x-2">
 							<favoriteBorderIcon aria-hidden="true" />
 							<span>幻想生物</span>
@@ -31,7 +30,7 @@
 			<!-- 关于我 -->
 			<div class="space-y-2">
 				<h2 class="text-xl">关于我</h2>
-				<p class="pl-4">开源社区独立开发者一枚，目前正在开发一个世界观项目</p>
+				<p class="pl-4">开源社区志愿者，目前正在完善我的个人世界观项目</p>
 			</div>
 
 			<!-- 技术栈 -->
@@ -61,28 +60,25 @@
 					</li>
 				</ul>
 			</div>
+
+			<!-- 联系方式 -->
+			<div class="flex flex-row flex-wrap justify-center space-x-4">
+				<a class="link-item" href="https://github.com/SharpIceX">
+					<gitubIcon aria-hidden="true" />
+					<span>GitHub</span>
+				</a>
+				<a class="link-item" href="https://space.bilibili.com/513364639">
+					<bilibiliIcon aria-hidden="true" />
+					<span>哔哩哔哩</span>
+				</a>
+				<a class="link-item" href="https://zhihu.com/people/SharpIce">知乎</a>
+				<a class="link-item" href="mailto:SharpIce@SharpIce.top">
+					<emailIcon aria-hidden="true" />
+					<span>邮件</span>
+				</a>
+			</div>
 		</div>
-		<!-- 联系方式 -->
-		<div class="flex flex-row flex-wrap justify-center space-x-4">
-			<a class="link-item" href="https://blog.sharpice.top">
-				<Rss_FeedIcon aria-hidden="true" />
-				<span>个人博客</span>
-			</a>
-			<a class="link-item" href="https://github.com/SharpIceX">
-				<gitubIcon aria-hidden="true" />
-				<span>GitHub</span>
-			</a>
-			<a class="link-item" href="https://space.bilibili.com/513364639">
-				<bilibiliIcon aria-hidden="true" />
-				<span>哔哩哔哩</span>
-			</a>
-			<a class="link-item" href="https://zhihu.com/people/SharpIce">知乎</a>
-			<a class="link-item" href="mailto:SharpIce@SharpIce.top">
-				<emailIcon aria-hidden="true" />
-				<span>邮件</span>
-			</a>
-		</div>
-	</main>
+	</div>
 </template>
 
 <script setup>
@@ -97,7 +93,6 @@ import unocssIcon from 'material-icon-theme/icons/unocss.svg';
 import javaScriptIcon from 'material-icon-theme/icons/javascript.svg';
 import typeScriptIcon from 'material-icon-theme/icons/typescript.svg';
 import tailwindcssIcon from 'material-icon-theme/icons/tailwindcss.svg';
-import Rss_FeedIcon from '@material-design-icons/svg/round/rss_feed.svg';
 import codeIcon from '@fortawesome/fontawesome-free/svgs/solid/code.svg';
 import gitubIcon from '@fortawesome/fontawesome-free/svgs/brands/github.svg';
 import translateIcon from '@material-design-icons/svg/outlined/translate.svg';

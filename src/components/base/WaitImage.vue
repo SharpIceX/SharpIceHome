@@ -1,5 +1,5 @@
 <template>
-	<div ref="containerReference" v-bind="$attrs">
+	<div ref="containerReference">
 		<img v-if="isLoaded" :src="src" :alt="alt" class="h-auto w-full object-cover" v-bind="$attrs" />
 		<div v-else class="loader"></div>
 	</div>
@@ -32,21 +32,21 @@ const loadImage = async () => {
 
 onMounted(() => {
 	if (!containerReference.value) return;
-	observer = new IntersectionObserver(
-		entries => {
-			for (const entry of entries) {
-				if (entry.isIntersecting) {
-					loadImage();
-					if (containerReference.value) {
-						observer?.unobserve(containerReference.value);
+	requestIdleCallback?.(() => {
+		observer = new IntersectionObserver(
+			entries => {
+				for (const entry of entries) {
+					if (entry.isIntersecting) {
+						loadImage();
+						if (containerReference.value) observer?.unobserve(containerReference.value);
 					}
 				}
-			}
-		},
-		{ threshold: 0.1 },
-	);
-	observer.observe(containerReference.value);
-	console.log('开始监听懒加载图片:', properties.src);
+			},
+			{ threshold: 0.1 },
+		);
+		observer!.observe(containerReference.value as HTMLElement);
+		console.log('开始监听懒加载图片:', properties.src);
+	});
 });
 
 onBeforeUnmount(() => {
@@ -61,23 +61,17 @@ onBeforeUnmount(() => {
 <style lang="less" scoped>
 @import url('nord/src/lesscss/nord.less');
 
-/* By https://css-loaders.com */
 .loader {
 	width: 50px;
-	padding: 3px;
-	aspect-ratio: 1;
+	height: 50px;
 	border-radius: 50%;
-	background: @nord7;
-	--_m: conic-gradient(#0000 10%, #000), linear-gradient(#000 0 0) content-box;
-	-webkit-mask: var(--_m);
-	mask: var(--_m);
-	-webkit-mask-composite: source-out;
-	mask-composite: subtract;
-	animation: l3 1s infinite linear;
+	border: 5px solid @nord9;
+	border-top-color: transparent;
+	animation: spin 1s linear infinite;
 
-	@keyframes l3 {
+	@keyframes spin {
 		to {
-			transform: rotate(1turn);
+			transform: rotate(360deg);
 		}
 	}
 }

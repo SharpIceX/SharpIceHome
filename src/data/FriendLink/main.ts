@@ -5,7 +5,7 @@ interface LinkType {
 	title: string;
 	noRounded?: boolean;
 	description?: string;
-	image?: string | Promise<string>;
+	image?: string;
 }
 
 const LinkLists = [

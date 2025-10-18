@@ -11,7 +11,7 @@ export default defineNuxtConfig({
 	telemetry: false,
 	buildId: await git.resolveRef({ fs, dir: import.meta.dirname, ref: 'HEAD' }),
 	appId: 'sharpice-home',
-	compatibilityDate: '2025-08-28',
+	compatibilityDate: '2025-10-17',
 	srcDir: path.resolve(import.meta.dirname, './src'),
 	modules: ['nuxt-svgo', '@unocss/nuxt', '@nuxt/eslint', '@nuxtjs/seo'],
 	css: ['@/styles/main.less'],

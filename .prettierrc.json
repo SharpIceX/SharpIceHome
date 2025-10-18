@@ -23,12 +23,6 @@
 			}
 		},
 		{
-			"files": "src/pages/about.vue",
-			"options": {
-				"printWidth": 180
-			}
-		},
-		{
 			"files": "*.md",
 			"options": {
 				"tabWidth": 2,

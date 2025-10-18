@@ -1,20 +1,20 @@
 <template>
-	<div class="w-8/12">
-		<article class="advanced-blur-backdrop advanced-blur-backdrop-hover advanced-blur-before">
-			<section class="post-content">
-				<h1>关于我</h1>
-				<p> 你可以叫我<strong>锐冰</strong>，也可以叫我的全名<strong>锐冰龙</strong>。目前我主要做个人项目开发以及为一些开源项目贡献本地化。 </p>
-				<h2>本地化工作</h2>
-				<p>
-					目前我主要为
-					<NuxtLink to="https://github.com/tom5454/CustomPlayerModels" target="_blank">Custom Player Models</NuxtLink>
-					和
-					<NuxtLink to="https://kde.org/zh-cn" target="_blank">KDE</NuxtLink>
-					做简体中文本地化工作。
-				</p>
-			</section>
-		</article>
-	</div>
+	<article>
+		<section class="post-content">
+			<h1>关于我</h1>
+			<p>
+				你可以叫我<strong>锐冰</strong>，也可以叫我的全名<strong>锐冰龙</strong>。目前我主要做个人项目开发以及为一些开源项目贡献本地化。
+			</p>
+			<h2>本地化工作</h2>
+			<p>
+				目前我主要为
+				<a href="https://github.com/tom5454/CustomPlayerModels" target="_blank">Custom Player Models</a>
+				和
+				<a href="https://kde.org/zh-cn" target="_blank">KDE</a>
+				做简体中文本地化工作。
+			</p>
+		</section>
+	</article>
 </template>
 
 <script setup>

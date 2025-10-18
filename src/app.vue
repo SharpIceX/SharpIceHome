@@ -1,51 +1,51 @@
 <template>
-	<ClientOnly>
-		<AppBackground />
-	</ClientOnly>
 	<div class="h-screen w-screen flex flex-col">
-		<AppHeader />
-		<main class="flex justify-center flex-1">
-			<NuxtPage />
-		</main>
+		<div class="flex flex-1 overflow-hidden">
+			<AppSidebar />
+			<main ref="mainElement" class="flex-1 w-full h-full overflow-auto">
+				<NuxtPage />
+			</main>
+		</div>
+		<AppFooter class="h-12 flex-shrink-0" />
 	</div>
 </template>
 
 <script lang="ts" setup>
-import { useRouter } from 'vue-router';
-import AppHeader from './app/header.vue';
+import AppFooter from './app/footer.vue';
+import AppSidebar from './app/sidebar.vue';
 import { OverlayScrollbars } from 'overlayscrollbars';
-import { onMounted, defineAsyncComponent } from 'vue';
 import { useNProgress } from '@vueuse/integrations/useNProgress';
 
 defineOptions({ name: 'App' });
 
-const AppBackground = defineAsyncComponent(() => import('./app/background/main.vue'));
-
 if (import.meta.browser) {
-	// 滚动条样式
-	requestIdleCallback(() => {
-		OverlayScrollbars(document.body, {
-			scrollbars: {
-				autoHideDelay: 400,
-				autoHide: 'scroll',
-				autoHideSuspend: true,
-				theme: 'os-theme-nord',
-			},
-		});
+	// 滚动条
+	const mainElement = ref<HTMLElement | undefined>(undefined);
+	let osInstance: OverlayScrollbars | null;
+	const idle =
+		globalThis.requestIdleCallback || ((function_: FrameRequestCallback) => globalThis.setTimeout(function_, 1));
+	idle(() => {
+		if (mainElement.value) {
+			osInstance = OverlayScrollbars(mainElement.value, {
+				scrollbars: {
+					autoHideDelay: 400,
+					autoHide: 'scroll',
+					autoHideSuspend: true,
+					theme: 'os-theme-nord',
+				},
+			});
+		}
 	});
 
-	// 加载动画
+	// 路由加载动画
 	const router = useRouter();
 	const { start, done } = useNProgress();
-	onMounted(() => {
-		router.beforeEach((_to, _from, next) => {
-			start(); // 开始加载
-			next();
-		});
-
-		router.afterEach(() => {
-			done(); // 加载完成
-		});
+	router.beforeEach((_to, _from, next) => {
+		start();
+		next();
 	});
+	router.afterEach((_to, _from) => done());
+
+	onUnmounted(() => osInstance?.destroy());
 }
 </script>
