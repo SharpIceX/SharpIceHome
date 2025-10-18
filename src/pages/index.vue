@@ -1,50 +1,34 @@
 <template>
-	<div class="flex justify-center items-center h-full">
+	<div class="flex justify-center items-center h-full px-4">
 		<div class="flex flex-col gap-3">
 			<!-- 个人信息 -->
-			<div class="space-y-2">
-				<div class="flex items-center space-x-1">
+			<div class="flex flex-col gap-y-2">
+				<div class="flex items-center gap-x-1">
 					<img src="/favicon.ico" title="SharpIce" alt="SharpIce的个人头像" width="40" height="40" />
 					<h1 class="text-2xl">锐冰</h1>
 				</div>
 				<div class="pl-4">
 					<h2 class="text-sm">Name: SharpIce</h2>
 					<h3 class="text-sm">Description: 世界很大，只是我的知识有限，但我会继续学习的。</h3>
-					<ul class="flex space-x-2">
-						<li class="flex items-center space-x-2">
-							<favoriteBorderIcon aria-hidden="true" />
-							<span>幻想生物</span>
-						</li>
-						<li class="flex items-center space-x-2">
-							<bookIcon aria-hidden="true" />
-							<span>架空世界观</span>
-						</li>
-						<li class="flex items-center space-x-2">
-							<videocamBorderIcon aria-hidden="true" />
-							<span>剧情与内容</span>
-						</li>
-						<li class="flex items-center space-x-1">
-							<codeIcon aria-hidden="true" />
-							<span>前端开发者</span>
-						</li>
-						<li class="flex items-center space-x-1">
-							<codeIcon aria-hidden="true" />
-							<span>C#.NET</span>
+					<ul class="flex gap-2 flex-wrap">
+						<li v-for="like in likeList" :key="like.name" class="flex items-center gap-1">
+							<Component :is="like.icon" class="h-5 w-5" />
+							<span>{{ like.name }}</span>
 						</li>
 					</ul>
 				</div>
 			</div>
 
 			<!-- 关于我 -->
-			<div class="space-y-2">
+			<div class="flex flex-col gap-y-2">
 				<h2 class="text-xl">关于我</h2>
 				<p class="pl-4">开源社区志愿者，目前正在完善架空世界观项目</p>
 			</div>
 
 			<!-- 技术栈 -->
-			<div class="space-y-2">
+			<div class="flex flex-col gap-y-2">
 				<h2 class="text-xl">技术栈</h2>
-				<ul class="flex flex-wrap items-center space-x-2 pl-4">
+				<ul class="flex flex-wrap items-center gap-x-2 pl-4">
 					<li v-for="tech in stackList" :key="tech.name" class="flex items-center">
 						<Component :is="tech.icon" class="h-5 w-5" />
 						<span>{{ tech.name }}</span>
@@ -53,16 +37,16 @@
 			</div>
 
 			<!-- 技术力 -->
-			<div class="space-y-2">
-				<ul class="flex flex-wrap items-center justify-center space-x-2 pl-4">
+			<div class="flex flex-col gap-y-2">
+				<ul class="flex flex-wrap items-center justify-center gap-2 pl-4">
 					<li>
 						<p>我在做什么 / </p>
 					</li>
-					<li class="flex items-center space-x-1">
+					<li class="flex items-center gap-1">
 						<codeIcon aria-hidden="true" />
 						<span>开发</span>
 					</li>
-					<li class="flex items-center space-x-1">
+					<li class="flex items-center gap-1">
 						<translateIcon aria-hidden="true" />
 						<span>本地化</span>
 					</li>
@@ -70,7 +54,7 @@
 			</div>
 
 			<!-- 联系方式 -->
-			<div class="flex flex-row flex-wrap justify-center space-x-4">
+			<div class="flex flex-row flex-wrap justify-center gap-x-4">
 				<a class="link-item" href="https://github.com/SharpIceX">
 					<gitubIcon aria-hidden="true" />
 					<span>GitHub</span>
@@ -89,7 +73,7 @@
 	</div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { markRaw } from 'vue';
 
 import vueIcon from 'material-icon-theme/icons/vue.svg';
@@ -110,6 +94,18 @@ import videocamBorderIcon from '@material-design-icons/svg/round/videocam.svg';
 import bilibiliIcon from '@fortawesome/fontawesome-free/svgs/brands/bilibili.svg';
 import favoriteBorderIcon from '@material-design-icons/svg/round/favorite_border.svg';
 
+definePageMeta({
+	title: '首页',
+});
+
+const likeList = [
+	{ name: '幻想生物', icon: markRaw(favoriteBorderIcon) },
+	{ name: '架空世界观', icon: markRaw(bookIcon) },
+	{ name: '剧情与内容', icon: markRaw(videocamBorderIcon) },
+	{ name: '前端开发者', icon: markRaw(codeIcon) },
+	{ name: 'C#.NET', icon: markRaw(codeIcon) },
+];
+
 const stackList = [
 	{ name: 'Linux', icon: markRaw(linuxIcon) },
 	{ name: 'TypeScript', icon: markRaw(typeScriptIcon) },
@@ -121,27 +117,10 @@ const stackList = [
 	{ name: 'Node.js', icon: markRaw(nodejsIcon) },
 	{ name: 'C#.NET', icon: markRaw(csharpIcon) },
 ];
-
-definePageMeta({
-	title: '首页',
-});
 </script>
 
 <style lang="less" scoped>
 .link-item {
-	@apply "flex flex-row items-center space-x-1";
-
-	&:hover {
-		@keyframes textColorChange {
-			0% {
-				@apply "text-nord4";
-			}
-			100% {
-				@apply "text-nord9";
-			}
-		}
-
-		animation: textColorChange 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-	}
+	@apply "flex flex-row items-center gap-x-2 hover:text-nord9 transition-colors duration-300";
 }
 </style>

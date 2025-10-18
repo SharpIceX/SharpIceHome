@@ -1,7 +1,7 @@
 <template>
 	<Card>
 		<a :href="`${url}?ref=sharpice.top`" target="_blank" class="flex h-full items-center">
-			<article class="flex h-32 w-80 flex-row items-center space-x-4 px-6 py-3">
+			<article class="flex h-32 w-80 flex-row items-center gap-4 px-6 py-3">
 				<div v-if="image" aria-hidden="true" class="avatar-image">
 					<LazyImage
 						v-if="image"
