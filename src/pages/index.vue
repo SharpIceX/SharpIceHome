@@ -15,6 +15,14 @@
 							<favoriteBorderIcon aria-hidden="true" />
 							<span>幻想生物</span>
 						</li>
+						<li class="flex items-center space-x-2">
+							<bookIcon aria-hidden="true" />
+							<span>架空世界观</span>
+						</li>
+						<li class="flex items-center space-x-2">
+							<videocamBorderIcon aria-hidden="true" />
+							<span>剧情与内容</span>
+						</li>
 						<li class="flex items-center space-x-1">
 							<codeIcon aria-hidden="true" />
 							<span>前端开发者</span>
@@ -30,7 +38,7 @@
 			<!-- 关于我 -->
 			<div class="space-y-2">
 				<h2 class="text-xl">关于我</h2>
-				<p class="pl-4">开源社区志愿者，目前正在完善我的个人世界观项目</p>
+				<p class="pl-4">开源社区志愿者，目前正在完善架空世界观项目</p>
 			</div>
 
 			<!-- 技术栈 -->
@@ -90,16 +98,20 @@ import emailIcon from 'material-icon-theme/icons/email.svg';
 import csharpIcon from 'material-icon-theme/icons/csharp.svg';
 import nodejsIcon from 'material-icon-theme/icons/nodejs.svg';
 import unocssIcon from 'material-icon-theme/icons/unocss.svg';
+import bookIcon from '@material-design-icons/svg/round/book.svg';
 import javaScriptIcon from 'material-icon-theme/icons/javascript.svg';
 import typeScriptIcon from 'material-icon-theme/icons/typescript.svg';
 import tailwindcssIcon from 'material-icon-theme/icons/tailwindcss.svg';
 import codeIcon from '@fortawesome/fontawesome-free/svgs/solid/code.svg';
+import linuxIcon from '@fortawesome/fontawesome-free/svgs/brands/linux.svg';
 import gitubIcon from '@fortawesome/fontawesome-free/svgs/brands/github.svg';
 import translateIcon from '@material-design-icons/svg/outlined/translate.svg';
+import videocamBorderIcon from '@material-design-icons/svg/round/videocam.svg';
 import bilibiliIcon from '@fortawesome/fontawesome-free/svgs/brands/bilibili.svg';
 import favoriteBorderIcon from '@material-design-icons/svg/round/favorite_border.svg';
 
 const stackList = [
+	{ name: 'Linux', icon: markRaw(linuxIcon) },
 	{ name: 'TypeScript', icon: markRaw(typeScriptIcon) },
 	{ name: 'JavaScript', icon: markRaw(javaScriptIcon) },
 	{ name: 'Vue.js', icon: markRaw(vueIcon) },

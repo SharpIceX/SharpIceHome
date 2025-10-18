@@ -1,6 +1,6 @@
 <template>
 	<div class="h-screen w-screen flex flex-col">
-		<div class="flex flex-1 overflow-hidden max-sm:flex-row">
+		<div class="flex flex-1 overflow-hidden max-lg:flex-col">
 			<AppSidebar />
 			<main ref="mainElement" class="flex-1 w-full h-full overflow-auto">
 				<NuxtPage />
@@ -20,21 +20,26 @@ defineOptions({ name: 'App' });
 
 if (import.meta.browser) {
 	// 滚动条
-	const mainElement = ref<HTMLElement | undefined>(undefined);
-	let osInstance: OverlayScrollbars | null;
+	let osInstance: OverlayScrollbars | null = null;
 	const idle =
 		globalThis.requestIdleCallback || ((function_: FrameRequestCallback) => globalThis.setTimeout(function_, 1));
 	idle(() => {
-		if (mainElement.value) {
-			osInstance = OverlayScrollbars(mainElement.value, {
+		osInstance = OverlayScrollbars(
+			{
+				target: document.querySelector('main') as HTMLElement,
+				elements: {
+					viewport: document.querySelector('main') as HTMLElement,
+				},
+			},
+			{
 				scrollbars: {
 					autoHideDelay: 400,
 					autoHide: 'scroll',
 					autoHideSuspend: true,
 					theme: 'os-theme-nord',
 				},
-			});
-		}
+			},
+		);
 	});
 
 	// 路由加载动画

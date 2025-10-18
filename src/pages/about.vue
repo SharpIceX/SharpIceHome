@@ -13,6 +13,13 @@
 				<a href="https://kde.org/zh-cn" target="_blank">KDE</a>
 				做简体中文本地化工作。
 			</p>
+			<h2>关于我自己的世界观</h2>
+			<p>
+				从 2020
+				年开始，我一直在构筑属于自己的世界观。虽然这一路经历了许多重大变更，一度无法完整呈现，但如今它正在慢慢成形。你可以在
+				<a href="https://ts.sharpice.top" target="_blank">这里</a>
+				了解更多。
+			</p>
 		</section>
 	</article>
 </template>

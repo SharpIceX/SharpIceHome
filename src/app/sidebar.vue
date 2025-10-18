@@ -1,7 +1,7 @@
 <template>
-	<aside class="flex items-center px-12">
-		<nav>
-			<ul class="gap-6 flex flex-col">
+	<aside class="flex items-center px-12 max-lg:px-0 max-lg:h-18">
+		<nav class="w-full">
+			<ul class="gap-6 flex flex-col max-lg:flex-row max-lg:justify-center">
 				<li v-for="route in navRoutes" :key="route.name" class="hover:text-nord10 transition-colors">
 					<NuxtLink :to="route.path" exact-active-class="nav-link-active">
 						{{ route.name }}

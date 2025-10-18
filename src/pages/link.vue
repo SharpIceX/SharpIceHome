@@ -1,5 +1,5 @@
 <template>
-	<ul class="flex flex-wrap justify-center items-center h-full gap-4">
+	<ul class="flex flex-wrap justify-center items-center h-full gap-4 py-10">
 		<li v-for="link in LinkLists" :key="link.url">
 			<FriendLinkCard
 				:title="link.title"
