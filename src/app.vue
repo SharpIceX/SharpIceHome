@@ -1,6 +1,6 @@
 <template>
 	<div class="h-screen w-screen flex flex-col">
-		<div class="flex flex-1 overflow-hidden">
+		<div class="flex flex-1 overflow-hidden max-sm:flex-row">
 			<AppSidebar />
 			<main ref="mainElement" class="flex-1 w-full h-full overflow-auto">
 				<NuxtPage />

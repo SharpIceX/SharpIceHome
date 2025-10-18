@@ -42,7 +42,6 @@
 	},
 	"dependencies": {
 		"@fortawesome/fontawesome-free": "^7.1.0",
-		"@lxgw/LxgwBright": "github:lxgw/LxgwBright#v5.527",
 		"@material-design-icons/svg": "^0.14.15",
 		"@unocss/reset": "^66.5.4",
 		"@vueuse/integrations": "^13.9.0",

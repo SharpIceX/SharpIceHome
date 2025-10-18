@@ -11,9 +11,6 @@ importers:
       '@fortawesome/fontawesome-free':
         specifier: ^7.1.0
         version: 7.1.0
-      '@lxgw/LxgwBright':
-        specifier: github:lxgw/LxgwBright#v5.527
-        version: https://codeload.github.com/lxgw/LxgwBright/tar.gz/519f16ce370219b6753ea8ca52e09a477ea4bf59
       '@material-design-icons/svg':
         specifier: ^0.14.15
         version: 0.14.15
@@ -884,10 +881,6 @@ packages:
 
   '@kwsites/promise-deferred@1.1.1':
     resolution: {integrity: sha512-GaHYm+c0O9MjZRu0ongGBRbinu8gVAMd2UZjji6jVmqKtZluZnptXGWhz1E8j8D2HJ3f/yMxKAUC0b+57wncIw==}
-
-  '@lxgw/LxgwBright@https://codeload.github.com/lxgw/LxgwBright/tar.gz/519f16ce370219b6753ea8ca52e09a477ea4bf59':
-    resolution: {tarball: https://codeload.github.com/lxgw/LxgwBright/tar.gz/519f16ce370219b6753ea8ca52e09a477ea4bf59}
-    version: 0.0.0
 
   '@mapbox/node-pre-gyp@2.0.0':
     resolution: {integrity: sha512-llMXd39jtP0HpQLVI37Bf1m2ADlEb35GYSh1SDSLsBhR+5iCxiNGlT31yqbNtVHygHAtMy6dWFERpU2JgufhPg==}
@@ -6320,8 +6313,6 @@ snapshots:
       - supports-color
 
   '@kwsites/promise-deferred@1.1.1': {}
-
-  '@lxgw/LxgwBright@https://codeload.github.com/lxgw/LxgwBright/tar.gz/519f16ce370219b6753ea8ca52e09a477ea4bf59': {}
 
   '@mapbox/node-pre-gyp@2.0.0':
     dependencies:
