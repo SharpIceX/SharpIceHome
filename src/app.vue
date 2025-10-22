@@ -20,7 +20,7 @@ defineOptions({ name: 'App' });
 
 if (import.meta.browser) {
 	// 滚动条
-	let osInstance: OverlayScrollbars | null = null;
+	let osInstance: OverlayScrollbars | null;
 	const idle =
 		globalThis.requestIdleCallback || ((function_: FrameRequestCallback) => globalThis.setTimeout(function_, 1));
 	idle(() => {
