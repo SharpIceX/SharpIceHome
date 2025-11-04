@@ -90,7 +90,6 @@ const LinkLists = [
 	},
 	{
 		title: '渣渣120',
-		description: '也许是一名不合格的全栈开发者',
 		url: 'https://zhazha120.cn/',
 		image: (await import('./avatar/zhazha120.webp')).default,
 	},

@@ -4,6 +4,8 @@ import git from 'isomorphic-git';
 import appConfig from './app.config';
 import { defineNuxtConfig } from 'nuxt/config';
 
+const isProduction = process.env['NODE_ENV'] === 'production';
+
 export default defineNuxtConfig({
 	ssr: true,
 	pages: true,
@@ -11,7 +13,7 @@ export default defineNuxtConfig({
 	telemetry: false,
 	buildId: await git.resolveRef({ fs, dir: import.meta.dirname, ref: 'HEAD' }),
 	appId: 'sharpice-home',
-	compatibilityDate: '2025-10-17',
+	compatibilityDate: 'latest',
 	srcDir: path.resolve(import.meta.dirname, './src'),
 	modules: ['nuxt-svgo', '@unocss/nuxt', '@nuxt/eslint', '@nuxtjs/seo'],
 	css: ['@/styles/main.less'],
@@ -43,6 +45,11 @@ export default defineNuxtConfig({
 		},
 	},
 	experimental: {
+		headNext: isProduction,
+		asyncEntry: isProduction,
+		viewTransition: isProduction,
+		writeEarlyHints: isProduction,
+		inlineRouteRules: isProduction,
 		payloadExtraction: false,
 	},
 	devServer: {
