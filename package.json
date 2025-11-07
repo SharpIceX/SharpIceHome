@@ -48,9 +48,9 @@
 		"material-icon-theme": "^5.28.0",
 		"nord": "^0.2.1",
 		"nprogress": "^0.2.0",
-		"nuxt": "^4.2.0",
+		"nuxt": "^4.2.1",
 		"overlayscrollbars": "^2.12.0",
-		"vue": "^3.5.22",
+		"vue": "^3.5.23",
 		"vue-router": "^4.6.3"
 	},
 	"devDependencies": {
@@ -75,6 +75,6 @@
 		"typescript-eslint": "^8.46.3",
 		"unocss": "^66.5.4",
 		"vue-eslint-parser": "^10.2.0",
-		"wrangler": "^4.45.3"
+		"wrangler": "^4.46.0"
 	}
 }
