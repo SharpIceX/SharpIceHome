@@ -29,7 +29,7 @@
 			<div class="flex flex-col gap-y-2">
 				<h2 class="text-xl">技术栈</h2>
 				<ul class="flex flex-wrap items-center gap-x-2 pl-4">
-					<li v-for="tech in stackList" :key="tech.name" class="flex items-center">
+					<li v-for="tech in stackList" :key="tech.name" class="flex items-center gap-x-1">
 						<Component :is="tech.icon" class="h-5 w-5" />
 						<span>{{ tech.name }}</span>
 					</li>
