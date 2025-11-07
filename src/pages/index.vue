@@ -1,10 +1,10 @@
 <template>
-	<div class="flex justify-center items-center h-full px-4">
-		<div class="flex flex-col gap-3">
+	<div class="flex justify-center items-center h-full max-lg:px-4">
+		<div class="flex flex-col gap-y-3">
 			<!-- 个人信息 -->
-			<div class="flex flex-col gap-y-2">
+			<div class="flex flex-col">
 				<div class="flex items-center gap-x-1">
-					<img src="/favicon.ico" title="SharpIce" alt="SharpIce的个人头像" width="40" height="40" />
+					<img src="/favicon.ico" title="SharpIce" alt="SharpIce的个人头像" class="w-10 h-10" />
 					<h1 class="text-2xl">锐冰</h1>
 				</div>
 				<div class="pl-4">
