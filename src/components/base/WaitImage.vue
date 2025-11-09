@@ -34,7 +34,7 @@ onMounted(() => {
 	if (!containerReference.value) return;
 	requestIdleCallback?.(() => {
 		observer = new IntersectionObserver(
-			entries => {
+			(entries) => {
 				for (const entry of entries) {
 					if (entry.isIntersecting) {
 						loadImage();

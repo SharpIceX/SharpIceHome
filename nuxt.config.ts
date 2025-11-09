@@ -11,12 +11,15 @@ export default defineNuxtConfig({
 	pages: true,
 	app: appConfig,
 	telemetry: false,
-	buildId: await git.resolveRef({ fs, dir: import.meta.dirname, ref: 'HEAD' }),
 	appId: 'sharpice-home',
 	compatibilityDate: 'latest',
 	srcDir: path.resolve(import.meta.dirname, './src'),
+	buildId: await git.resolveRef({ fs, dir: import.meta.dirname, ref: 'HEAD' }),
 	modules: ['nuxt-svgo', '@unocss/nuxt', '@nuxt/eslint', '@nuxtjs/seo'],
 	css: ['@/styles/main.less'],
+	devtools: {
+		enabled: !isProduction,
+	},
 	alias: {
 		'@': path.resolve(import.meta.dirname, './src'),
 		$: path.resolve(import.meta.dirname, './node_modules'),
@@ -46,11 +49,11 @@ export default defineNuxtConfig({
 	},
 	experimental: {
 		headNext: isProduction,
+		payloadExtraction: false,
 		asyncEntry: isProduction,
 		viewTransition: isProduction,
 		writeEarlyHints: isProduction,
 		inlineRouteRules: isProduction,
-		payloadExtraction: false,
 	},
 	devServer: {
 		port: 8600,
@@ -59,8 +62,8 @@ export default defineNuxtConfig({
 		resolve: {
 			preserveSymlinks: true,
 		},
-		build: {
-			target: 'es2022',
+		esbuild: {
+			drop: isProduction ? ['console', 'debugger'] : [],
 		},
 	},
 	unocss: {

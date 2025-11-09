@@ -1,5 +1,13 @@
 <template>
-	<div class="flex justify-center items-center h-full max-lg:px-4">
+	<div class="flex justify-center items-center h-full max-lg:px-4 relative">
+		<!-- 标语 -->
+		<div class="absolute top-2 flex justify-center items-center gap-2 text-lg">
+			<balanceIcon class="h-5 w-5" aria-hidden="true" />
+			<p>技术&开源无国界，但伦理有底线</p>
+			<balanceIcon class="h-5 w-5" aria-hidden="true" />
+		</div>
+
+		<!-- 主要内容 -->
 		<div class="flex flex-col gap-y-3">
 			<!-- 个人信息 -->
 			<div class="flex flex-col">
@@ -22,13 +30,13 @@
 			<!-- 关于我 -->
 			<div class="flex flex-col gap-y-2">
 				<h2 class="text-xl">关于我</h2>
-				<p class="pl-4">开源社区志愿者，目前正在完善架空世界观项目</p>
+				<p class="pl-4">开源社区志愿者，目前正在完善架空世界观项目和尝试新技术。</p>
 			</div>
 
 			<!-- 技术栈 -->
 			<div class="flex flex-col gap-y-2">
 				<h2 class="text-xl">技术栈</h2>
-				<ul class="flex flex-wrap items-center gap-x-2 pl-4">
+				<ul class="flex flex-wrap max-w-3xl gap-x-2 gap-y-2 pl-4">
 					<li v-for="tech in stackList" :key="tech.name" class="flex items-center gap-x-1">
 						<Component :is="tech.icon" class="h-5 w-5" />
 						<span>{{ tech.name }}</span>
@@ -87,6 +95,7 @@ import javaScriptIcon from 'material-icon-theme/icons/javascript.svg';
 import typeScriptIcon from 'material-icon-theme/icons/typescript.svg';
 import tailwindcssIcon from 'material-icon-theme/icons/tailwindcss.svg';
 import codeIcon from '@fortawesome/fontawesome-free/svgs/solid/code.svg';
+import balanceIcon from '@material-design-icons/svg/outlined/balance.svg';
 import linuxIcon from '@fortawesome/fontawesome-free/svgs/brands/linux.svg';
 import gitubIcon from '@fortawesome/fontawesome-free/svgs/brands/github.svg';
 import translateIcon from '@material-design-icons/svg/outlined/translate.svg';
@@ -107,7 +116,6 @@ const likeList = [
 ];
 
 const stackList = [
-	{ name: 'Linux', icon: markRaw(linuxIcon) },
 	{ name: 'TypeScript', icon: markRaw(typeScriptIcon) },
 	{ name: 'JavaScript', icon: markRaw(javaScriptIcon) },
 	{ name: 'Vue.js', icon: markRaw(vueIcon) },
@@ -116,6 +124,7 @@ const stackList = [
 	{ name: 'UnoCSS', icon: markRaw(unocssIcon) },
 	{ name: 'Node.js', icon: markRaw(nodejsIcon) },
 	{ name: 'C#.NET', icon: markRaw(csharpIcon) },
+	{ name: 'Linux', icon: markRaw(linuxIcon) },
 ];
 </script>
 
