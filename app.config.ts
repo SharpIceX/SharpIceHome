@@ -11,11 +11,6 @@ export default {
 		htmlAttrs: {
 			lang: 'zh-CN',
 			dir: 'ltr',
-			'data-overlayscrollbars-initialize': '',
-		},
-
-		bodyAttrs: {
-			'data-overlayscrollbars-initialize': '',
 		},
 
 		meta: [

@@ -41,11 +41,6 @@ export default defineNuxtConfig({
 				dir: path.resolve(import.meta.dirname, './public'),
 			},
 		],
-		esbuild: {
-			options: {
-				target: 'es2022',
-			},
-		},
 	},
 	experimental: {
 		headNext: isProduction,

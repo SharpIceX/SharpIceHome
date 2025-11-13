@@ -18,28 +18,32 @@ import { useNProgress } from '@vueuse/integrations/useNProgress';
 
 defineOptions({ name: 'App' });
 
+const mainElement = ref<HTMLElement | null>(null);
+
 if (import.meta.browser) {
 	// 滚动条
 	let osInstance: OverlayScrollbars | null;
 	const idle =
 		globalThis.requestIdleCallback || ((function_: FrameRequestCallback) => globalThis.setTimeout(function_, 1));
 	idle(() => {
-		osInstance = OverlayScrollbars(
-			{
-				target: document.querySelector('main') as HTMLElement,
-				elements: {
-					viewport: document.querySelector('main') as HTMLElement,
+		if (mainElement.value) {
+			osInstance = OverlayScrollbars(
+				{
+					target: mainElement.value,
+					elements: {
+						viewport: mainElement.value,
+					},
 				},
-			},
-			{
-				scrollbars: {
-					autoHideDelay: 400,
-					autoHide: 'scroll',
-					autoHideSuspend: true,
-					theme: 'os-theme-nord',
+				{
+					scrollbars: {
+						autoHideDelay: 400,
+						autoHide: 'scroll',
+						autoHideSuspend: true,
+						theme: 'os-theme-nord',
+					},
 				},
-			},
-		);
+			);
+		}
 	});
 
 	// 路由加载动画
