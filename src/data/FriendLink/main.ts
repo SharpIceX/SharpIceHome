@@ -108,6 +108,12 @@ const LinkLists = [
 		url: 'https://blog.mcxiafeng.top/',
 		image: (await import('./avatar/xiafeng.webp')).default,
 	},
+	{
+		title: '李子小大',
+		description: '不正经做MC动画的，视频实验技术向',
+		url: 'https://lizi-owo.xyz/',
+		image: (await import('./avatar/lizi-owo.webp')).default,
+	},
 ] satisfies LinkType[];
 
 export { LinkLists };
