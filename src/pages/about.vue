@@ -20,6 +20,8 @@
 				<a href="https://ts.sharpice.top" target="_blank">这里</a>
 				了解更多。
 			</p>
+			<h2>开发经验</h2>
+			<p> 我自2020年开始学习编程，到目前为止接触了多种编程语言和技术栈，也有开源社区团队开发经验。 </p>
 		</section>
 	</article>
 </template>
