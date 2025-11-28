@@ -63,18 +63,17 @@
 
 			<!-- 联系方式 -->
 			<div class="flex flex-row flex-wrap justify-center gap-x-4">
-				<a class="link-item" href="https://github.com/SharpIceX">
-					<gitubIcon aria-hidden="true" />
-					<span>GitHub</span>
-				</a>
-				<a class="link-item" href="https://space.bilibili.com/513364639">
-					<bilibiliIcon aria-hidden="true" />
-					<span>哔哩哔哩</span>
-				</a>
-				<a class="link-item" href="https://zhihu.com/people/SharpIce">知乎</a>
-				<a class="link-item" href="mailto:SharpIce@SharpIce.top">
-					<emailIcon aria-hidden="true" />
-					<span>邮件</span>
+				<a
+					v-for="item in connectList"
+					:key="item.name"
+					class="link-item"
+					:href="item.url"
+					target="_blank"
+					rel="noopener noreferrer">
+					<template v-if="item.icon">
+						<Component :is="item.icon" aria-hidden="true" />
+					</template>
+					<span>{{ item.name }}</span>
 				</a>
 			</div>
 		</div>
@@ -125,6 +124,13 @@ const stackList = [
 	{ name: 'Node.js', icon: markRaw(nodejsIcon) },
 	{ name: 'C#.NET', icon: markRaw(csharpIcon) },
 	{ name: 'Linux', icon: markRaw(linuxIcon) },
+];
+
+const connectList = [
+	{ name: 'GitHub', icon: markRaw(gitubIcon), url: 'https://github.com/SharpIceX' },
+	{ name: '哔哩哔哩', icon: markRaw(bilibiliIcon), url: 'https://space.bilibili.com/513364639' },
+	{ name: '知乎', icon: null, url: 'https://zhihu.com/people/SharpIce' },
+	{ name: '邮件', icon: markRaw(emailIcon), url: 'mailto:SharpIce@SharpIce.top' },
 ];
 </script>
 

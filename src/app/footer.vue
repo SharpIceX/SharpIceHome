@@ -5,8 +5,7 @@
 			<a
 				href="https://github.com/SharpIceX/SharpIceHome"
 				target="_blank"
-				rel="noopener noreferrer"
-				class="ext-nord8 hover:text-nord9 transition-colors">
+				class="ext-nord8 hover:text-nord10 text-nord7 transition-colors">
 				SharpIceX/SharpIceHome
 			</a>
 		</p>
