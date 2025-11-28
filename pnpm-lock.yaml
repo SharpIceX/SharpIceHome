@@ -20,6 +20,9 @@ importers:
       '@vueuse/integrations':
         specifier: ^14.1.0
         version: 14.1.0(change-case@5.4.4)(fuse.js@7.1.0)(jwt-decode@4.0.0)(nprogress@0.2.0)(vue@3.5.25(typescript@5.9.3))
+      LufsX/Cloudflare-Data-Center-IATA-Code-list:
+        specifier: github:LufsX/Cloudflare-Data-Center-IATA-Code-list
+        version: https://codeload.github.com/LufsX/Cloudflare-Data-Center-IATA-Code-list/tar.gz/6194019e42eb7df90affec6b32ab4acaf98ac669
       material-icon-theme:
         specifier: ^5.29.0
         version: 5.29.0
@@ -2463,6 +2466,10 @@ packages:
 
   '@xtuc/long@4.2.2':
     resolution: {integrity: sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==}
+
+  LufsX/Cloudflare-Data-Center-IATA-Code-list@https://codeload.github.com/LufsX/Cloudflare-Data-Center-IATA-Code-list/tar.gz/6194019e42eb7df90affec6b32ab4acaf98ac669:
+    resolution: {tarball: https://codeload.github.com/LufsX/Cloudflare-Data-Center-IATA-Code-list/tar.gz/6194019e42eb7df90affec6b32ab4acaf98ac669}
+    version: 0.0.0
 
   abbrev@3.0.1:
     resolution: {integrity: sha512-AO2ac6pjRB3SJmGJo+v5/aK6Omggp6fsLrs6wN9bd35ulu4cCwaAU9+7ZhXjeqHVkaHThLuzH0nZr0YpCDhygg==}
@@ -8239,6 +8246,8 @@ snapshots:
   '@xtuc/ieee754@1.2.0': {}
 
   '@xtuc/long@4.2.2': {}
+
+  LufsX/Cloudflare-Data-Center-IATA-Code-list@https://codeload.github.com/LufsX/Cloudflare-Data-Center-IATA-Code-list/tar.gz/6194019e42eb7df90affec6b32ab4acaf98ac669: {}
 
   abbrev@3.0.1: {}
 
