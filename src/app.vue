@@ -6,7 +6,7 @@
 				<NuxtPage />
 			</main>
 		</div>
-		<AppFooter class="h-12 flex-shrink-0" />
+		<AppFooter class="flex-shrink-0" />
 	</div>
 </template>
 
