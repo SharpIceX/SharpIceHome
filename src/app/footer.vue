@@ -30,21 +30,21 @@ if (import.meta.browser) {
 		// 获取 Cloudflare 提供的 trace 信息
 		try {
 			const response = await fetch(`${useSiteConfig().url}/cdn-cgi/trace`);
-			if (response.headers.get('content-type') == 'text/plain') {
+			if (response.headers.get('content-type') === 'text/plain') {
 				const text = await response.text();
 
 				// 以每行查找，找到开头为`colo=`的行然后转化为对应的中文名称
 				const lines = text.split('\n');
 				for (const line of lines) {
 					if (line.startsWith('colo=')) {
-						const colo = line.substring(5).trim();
+						const colo = line.slice(5).trim();
 						dataCenter.value = (cfDataCentersRaw as Record<string, string>)[colo] || colo;
 						break;
 					}
 				}
 			}
-		} catch (e) {
-			// 忽略错误
+		} catch {
+			/** 忽略错误 */
 		}
 	});
 }
