@@ -1,6 +1,6 @@
 /* eslint-disable unicorn/no-await-expression-member */
 
-interface LinkType {
+interface FriendLinkType {
 	url: string;
 	title: string;
 	noRounded?: boolean;
@@ -8,7 +8,7 @@ interface LinkType {
 	image?: string;
 }
 
-const LinkLists = [
+const FriendLinkData: FriendLinkType[] = [
 	{
 		title: '白山白墨',
 		noRounded: true,
@@ -114,6 +114,7 @@ const LinkLists = [
 		url: 'https://lizi-owo.xyz/',
 		image: (await import('./avatar/lizi-owo.webp')).default,
 	},
-] satisfies LinkType[];
+];
 
-export { LinkLists };
+export { FriendLinkData };
+export type { FriendLinkType };

@@ -66,15 +66,6 @@ const config = defineConfig(
 			eqeqeq: 'error',
 			'vue/html-self-closing': 'off',
 			'unicorn/no-null': 'off',
-			'unicorn/filename-case': [
-				'error',
-				{
-					cases: {
-						kebabCase: true,
-						pascalCase: true,
-					},
-				},
-			],
 		},
 	},
 	{

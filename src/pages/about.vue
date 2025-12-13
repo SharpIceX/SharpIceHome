@@ -27,6 +27,7 @@
 <script setup>
 definePageMeta({
 	title: '关于我',
+	description: '了解更多关于我的信息',
 });
 </script>
 

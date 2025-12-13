@@ -37,6 +37,11 @@
 			<div class="flex flex-col gap-y-2">
 				<h2 class="text-xl">技术栈</h2>
 				<ul class="flex flex-wrap max-w-3xl gap-x-2 gap-y-2 pl-4">
+					<li class="flex items-center gap-x-1">
+						<javaScriptIcon />
+						<typeScriptIcon />
+						<span>JS/TS</span>
+					</li>
 					<li v-for="tech in stackList" :key="tech.name" class="flex items-center gap-x-1">
 						<Component :is="tech.icon" class="h-5 w-5" />
 						<span>{{ tech.name }}</span>
@@ -104,6 +109,7 @@ import favoriteBorderIcon from '@material-design-icons/svg/round/favorite_border
 
 definePageMeta({
 	title: '首页',
+	description: '欢迎来到我的个人网站！',
 });
 
 const likeList = [
@@ -115,8 +121,6 @@ const likeList = [
 ];
 
 const stackList = [
-	{ name: 'TypeScript', icon: markRaw(typeScriptIcon) },
-	{ name: 'JavaScript', icon: markRaw(javaScriptIcon) },
 	{ name: 'Vue.js', icon: markRaw(vueIcon) },
 	{ name: 'Nuxt', icon: markRaw(nuxtIcon) },
 	{ name: 'TailwindCSS', icon: markRaw(tailwindcssIcon) },

@@ -8,10 +8,11 @@
 
 <script lang="ts" setup>
 import { GameData } from '../data/GameData/main';
-import GameLinkCard from '@/components/utils/GameLinkCard.vue';
+import GameLinkCard from '@/components/utils/game-card.vue';
 
 defineOptions({ name: 'GamePage' });
 definePageMeta({
 	title: '游戏推荐',
+	description: '一些好玩的游戏',
 });
 </script>

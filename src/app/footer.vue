@@ -23,7 +23,6 @@ import cfDataCentersRaw from 'LufsX/Cloudflare-Data-Center-IATA-Code-list/cloudf
 
 defineOptions({ name: 'AppFooter' });
 
-// dataCenter 作为响应式变量
 const dataCenter = ref<string | undefined>(undefined);
 if (import.meta.browser) {
 	onMounted(async () => {

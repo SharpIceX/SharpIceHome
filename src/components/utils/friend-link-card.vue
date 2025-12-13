@@ -24,16 +24,11 @@
 </template>
 
 <script lang="ts" setup>
-import Card from '../base/Card.vue';
-import LazyImage from '@/components/base/WaitImage.vue';
+import Card from '../base/card.vue';
+import LazyImage from '@/components/base/wait-image.vue';
+import type { FriendLinkType } from '@/data/FriendLinkData/main';
 
-defineProps<{
-	title: string;
-	url: string;
-	image?: string | undefined;
-	description?: string | undefined;
-	noRounded?: boolean | undefined;
-}>();
+defineProps<FriendLinkType>();
 </script>
 
 <style lang="less" scoped>

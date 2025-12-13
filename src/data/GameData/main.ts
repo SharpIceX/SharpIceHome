@@ -12,7 +12,7 @@ interface GameDataType {
 	}>;
 }
 
-const GameData = [
+const GameData: GameDataType[] = [
 	{
 		name: 'Stray',
 		cover: (await import('./assets/Stray/cover.webp')).default,
@@ -65,7 +65,7 @@ const GameData = [
 			steam: '3084280',
 		},
 	},
-] satisfies GameDataType[];
+];
 
 export { GameData };
 export type { GameDataType };

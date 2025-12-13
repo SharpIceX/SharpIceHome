@@ -6,7 +6,7 @@ export default {
 		viewport: 'width=device-width, initial-scale=1.0, viewport-fit=cover',
 
 		// 标题模板
-		titleTemplate: '%s | 锐冰',
+		titleTemplate: '%s | 锐冰 SharpIce',
 
 		htmlAttrs: {
 			lang: 'zh-CN',
@@ -63,6 +63,12 @@ export default {
 			{
 				name: 'color-scheme',
 				content: 'dark',
+			},
+
+			// SEO 相关
+			{
+				name: 'robots',
+				content: 'noimageindex',
 			},
 		],
 
