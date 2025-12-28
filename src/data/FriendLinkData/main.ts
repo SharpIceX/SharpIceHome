@@ -114,6 +114,11 @@ const FriendLinkData: FriendLinkType[] = [
 		url: 'https://lizi-owo.xyz/',
 		image: (await import('./avatar/lizi-owo.webp')).default,
 	},
+	{
+		title: '明宇',
+		url: 'https://blog.xming.cloud/',
+		image: (await import('./avatar/xming.webp')).default,
+	},
 ];
 
 export { FriendLinkData };
