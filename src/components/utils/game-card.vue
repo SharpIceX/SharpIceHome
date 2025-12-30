@@ -9,7 +9,11 @@
 				<ul class="flex flex-row flex-wrap gap-4">
 					<li v-for="(value, key) in link" :key="key">
 						<!-- 官网 -->
-						<a v-if="key === 'official'" :href="`${value}?ref=sharpice.top`" target="_blank">
+						<a
+							v-if="key === 'official'"
+							:href="`${value}?ref=sharpice.top`"
+							target="_blank"
+							aria-label="官网">
 							<languageIcon />
 						</a>
 
@@ -17,7 +21,8 @@
 						<a
 							v-else-if="key === 'steam'"
 							:href="`https://store.steampowered.com/app/${value}?ref=sharpice.top`"
-							target="_blank">
+							target="_blank"
+							aria-label="Steam">
 							<steamIcon />
 						</a>
 
@@ -25,7 +30,8 @@
 						<a
 							v-else-if="key === 'epic'"
 							:href="`https://www.epicgames.com/store/p/${value}?ref=sharpice.top`"
-							target="_blank">
+							target="_blank"
+							aria-label="Epic Games">
 							<epicGameIcon />
 						</a>
 					</li>
