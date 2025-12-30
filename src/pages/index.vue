@@ -103,20 +103,18 @@ import balanceIcon from '@material-design-icons/svg/outlined/balance.svg';
 import linuxIcon from '@fortawesome/fontawesome-free/svgs/brands/linux.svg';
 import gitubIcon from '@fortawesome/fontawesome-free/svgs/brands/github.svg';
 import translateIcon from '@material-design-icons/svg/outlined/translate.svg';
-import videocamBorderIcon from '@material-design-icons/svg/round/videocam.svg';
 import bilibiliIcon from '@fortawesome/fontawesome-free/svgs/brands/bilibili.svg';
 import favoriteBorderIcon from '@material-design-icons/svg/round/favorite_border.svg';
 
 definePageMeta({
 	title: '首页',
-	description: '欢迎来到我的个人网站！',
+	description: '循此苦旅，终抵群星',
 });
 
 const likeList = [
 	{ name: '幻想生物', icon: markRaw(favoriteBorderIcon) },
 	{ name: '架空世界观', icon: markRaw(bookIcon) },
-	{ name: '剧情与内容', icon: markRaw(videocamBorderIcon) },
-	{ name: '前端开发者', icon: markRaw(codeIcon) },
+	{ name: 'JS/TS 开发者', icon: markRaw(codeIcon) },
 	{ name: 'C#.NET', icon: markRaw(codeIcon) },
 ];
 

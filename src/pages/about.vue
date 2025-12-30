@@ -20,6 +20,13 @@
 				<a href="https://ts.sharpice.top" target="_blank">这里</a>
 				了解更多。
 			</p>
+			<h2>技术栈</h2>
+			<p>
+				说来话长~
+				<br />
+				我目前主要使用 TypeScript 和少量的 C# 来开发我自己的项目，不过我曾经也用过 Python、Lua、Java、Go
+				等语言进行过一些小项目的开发，但很少深入，因为我的项目大多数需求主要集中在前端或者 cli 工具上。
+			</p>
 		</section>
 	</article>
 </template>

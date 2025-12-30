@@ -10,6 +10,12 @@ interface FriendLinkType {
 
 const FriendLinkData: FriendLinkType[] = [
 	{
+		title: '应龙笔记',
+		description: '应龙笔记是一个专注于知识分享的网站',
+		url: 'https://www.silverdragon.cn/',
+		image: (await import('./avatar/silverdragon.webp')).default,
+	},
+	{
 		title: '白山白墨',
 		noRounded: true,
 		url: 'https://iy.ink/',
@@ -60,12 +66,6 @@ const FriendLinkData: FriendLinkType[] = [
 		title: '嗨皮',
 		url: 'https://www.owk.ink/',
 		image: (await import('./avatar/owk.webp')).default,
-	},
-	{
-		title: '应龙笔记',
-		description: '应龙笔记是一个专注于知识分享的网站',
-		url: 'https://www.silverdragon.cn/',
-		image: (await import('./avatar/silverdragon.webp')).default,
 	},
 	{
 		title: 'XME Notes Library',
