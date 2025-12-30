@@ -100,7 +100,7 @@ definePageMeta({
 
 	// 链接
 	a {
-		@apply "text-nord8 hover:text-nord10 focus:outline-none focus:ring-2 focus:ring-nord9";
+		@apply "text-nord7 font-medium hover:text-nord10 focus:outline-none focus:ring-2 focus:ring-nord9";
 	}
 }
 </style>
