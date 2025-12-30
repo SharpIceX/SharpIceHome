@@ -3,7 +3,7 @@
 		<div class="flex flex-1 overflow-hidden max-lg:flex-col">
 			<AppSidebar />
 			<main ref="mainElement" class="flex-1 w-full h-full overflow-auto">
-				<NuxtPage />
+				<NuxtPage :transition="{ name: 'app-up', mode: 'out-in' }" />
 			</main>
 		</div>
 		<AppFooter class="flex-shrink-0" />
@@ -58,3 +58,22 @@ if (import.meta.browser) {
 	onUnmounted(() => osInstance?.destroy());
 }
 </script>
+
+<style lang="less">
+.app-up-enter-active,
+.app-up-leave-active {
+	transition:
+		transform 0.3s cubic-bezier(0.55, 0, 0.1, 1),
+		opacity 0.3s;
+}
+.app-up-enter-from,
+.app-up-leave-to {
+	transform: translateY(30px);
+	opacity: 0;
+}
+.app-up-enter-to,
+.app-up-leave-from {
+	transform: translateY(0);
+	opacity: 1;
+}
+</style>

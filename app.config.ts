@@ -14,11 +14,6 @@ export default {
 		},
 
 		meta: [
-			// 描述
-			{
-				name: 'description',
-				content: '世界很大，只是我的才华很有限，但我会继续学习的。',
-			},
 			{
 				name: 'keywords',
 				content: 'SharpIce, 锐冰, 幻想生物, 个人网站',

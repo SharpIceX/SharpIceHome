@@ -1,11 +1,14 @@
 <template>
 	<div class="flex justify-center items-center h-full max-lg:px-4 relative">
 		<!-- 标语 -->
-		<div class="absolute top-2 flex justify-center items-center gap-2 text-lg">
-			<balanceIcon class="h-5 w-5" aria-hidden="true" />
-			<p>技术&开源无国界，但伦理有底线</p>
-			<balanceIcon class="h-5 w-5" aria-hidden="true" />
-		</div>
+		<Teleport to="body">
+			<div
+				class="absolute top-2 left-0 right-0 flex justify-center items-center gap-2 text-lg pointer-events-none z-50 fade-in">
+				<balanceIcon class="h-5 w-5" aria-hidden="true" />
+				<p>技术&开源无国界，但伦理有底线</p>
+				<balanceIcon class="h-5 w-5" aria-hidden="true" />
+			</div>
+		</Teleport>
 
 		<!-- 主要内容 -->
 		<div class="flex flex-col gap-y-3">
@@ -139,5 +142,9 @@ const connectList = [
 <style lang="less" scoped>
 .link-item {
 	@apply "flex flex-row items-center gap-x-2 hover:text-nord9 transition-colors duration-300";
+}
+
+.fade-in {
+	animation: fade-in 0.6s ease-in-out;
 }
 </style>

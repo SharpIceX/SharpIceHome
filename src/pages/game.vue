@@ -13,6 +13,6 @@ import GameLinkCard from '@/components/utils/game-card.vue';
 defineOptions({ name: 'GamePage' });
 definePageMeta({
 	title: '游戏推荐',
-	description: '一些好玩的游戏',
+	description: '我这里有些最好玩的游戏',
 });
 </script>

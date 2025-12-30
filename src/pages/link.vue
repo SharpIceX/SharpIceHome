@@ -13,6 +13,6 @@ import FriendLinkCard from '@/components/utils/friend-link-card.vue';
 defineOptions({ name: 'LinkPage' });
 definePageMeta({
 	title: '友谊链接',
-	description: '我的朋友们',
+	description: '朋友们',
 });
 </script>

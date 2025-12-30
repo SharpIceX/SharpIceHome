@@ -43,12 +43,18 @@ export default defineNuxtConfig({
 		],
 	},
 	experimental: {
-		headNext: isProduction,
+		headNext: true,
+		typedPages: true,
 		payloadExtraction: false,
 		asyncEntry: isProduction,
-		viewTransition: isProduction,
 		writeEarlyHints: isProduction,
 		inlineRouteRules: isProduction,
+	},
+	future: {
+		typescriptBundlerResolution: false,
+	},
+	features: {
+		inlineStyles: true,
 	},
 	devServer: {
 		port: 8600,
@@ -73,6 +79,7 @@ export default defineNuxtConfig({
 		url: 'https://sharpice.top',
 	},
 	sitemap: {
+		zeroRuntime: true,
 		discoverImages: false,
 	},
 	eslint: {
