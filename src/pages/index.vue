@@ -84,6 +84,7 @@ import { markRaw } from 'vue';
 import vueIcon from 'material-icon-theme/icons/vue.svg';
 import nuxtIcon from 'material-icon-theme/icons/nuxt.svg';
 import emailIcon from 'material-icon-theme/icons/email.svg';
+import archLinuxIcon from 'simple-icons/icons/archlinux.svg';
 import csharpIcon from 'material-icon-theme/icons/csharp.svg';
 import nodejsIcon from 'material-icon-theme/icons/nodejs.svg';
 import unocssIcon from 'material-icon-theme/icons/unocss.svg';
@@ -97,6 +98,7 @@ import gitubIcon from '@fortawesome/fontawesome-free/svgs/brands/github.svg';
 import translateIcon from '@material-design-icons/svg/outlined/translate.svg';
 import bilibiliIcon from '@fortawesome/fontawesome-free/svgs/brands/bilibili.svg';
 import favoriteBorderIcon from '@material-design-icons/svg/round/favorite_border.svg';
+import featherPointedIcon from '@fortawesome/fontawesome-free/svgs/solid/feather-pointed.svg';
 
 definePageMeta({
 	title: '首页',
@@ -105,9 +107,10 @@ definePageMeta({
 
 const likeList = [
 	{ name: '幻想生物', icon: markRaw(favoriteBorderIcon) },
+	{ name: '叽叽喳喳', icon: markRaw(featherPointedIcon) },
 	{ name: '架空世界观', icon: markRaw(bookIcon) },
 	{ name: 'JS/TS 开发者', icon: markRaw(codeIcon) },
-	{ name: 'C#.NET', icon: markRaw(codeIcon) },
+	{ name: 'Linux', icon: markRaw(archLinuxIcon) },
 ];
 
 const stackList = [

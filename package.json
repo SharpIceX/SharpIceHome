@@ -51,6 +51,7 @@
 		"nprogress": "^0.2.0",
 		"nuxt": "^4.2.2",
 		"overlayscrollbars": "^2.13.0",
+		"simple-icons": "^16.6.0",
 		"vue": "^3.5.27",
 		"vue-router": "^4.6.4"
 	},
