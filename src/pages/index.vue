@@ -1,15 +1,5 @@
 <template>
 	<div class="flex justify-center items-center h-full max-lg:px-4 relative">
-		<!-- 标语 -->
-		<Teleport to="body">
-			<div
-				class="absolute top-2 left-0 right-0 flex justify-center items-center gap-2 text-lg pointer-events-none z-50 fade-in">
-				<balanceIcon class="h-5 w-5" aria-hidden="true" />
-				<p>技术&开源无国界，但伦理有底线</p>
-				<balanceIcon class="h-5 w-5" aria-hidden="true" />
-			</div>
-		</Teleport>
-
 		<!-- 主要内容 -->
 		<div class="flex flex-col gap-y-3">
 			<!-- 个人信息 -->
@@ -102,7 +92,6 @@ import javaScriptIcon from 'material-icon-theme/icons/javascript.svg';
 import typeScriptIcon from 'material-icon-theme/icons/typescript.svg';
 import tailwindcssIcon from 'material-icon-theme/icons/tailwindcss.svg';
 import codeIcon from '@fortawesome/fontawesome-free/svgs/solid/code.svg';
-import balanceIcon from '@material-design-icons/svg/outlined/balance.svg';
 import linuxIcon from '@fortawesome/fontawesome-free/svgs/brands/linux.svg';
 import gitubIcon from '@fortawesome/fontawesome-free/svgs/brands/github.svg';
 import translateIcon from '@material-design-icons/svg/outlined/translate.svg';
