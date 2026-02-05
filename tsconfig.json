@@ -7,7 +7,6 @@
 		"target": "ESNext",
 		"module": "ESNext",
 		"types": ["node"],
-		"lib": ["ESNext", "DOM"],
 
 		/* 构建 */
 		"sourceMap": true,
@@ -42,10 +41,6 @@
 		"noFallthroughCasesInSwitch": true,
 		"strictPropertyInitialization": true,
 		"forceConsistentCasingInFileNames": true,
-		"noPropertyAccessFromIndexSignature": true,
-		"paths": {
-			"@/*": ["./src/*"],
-			"$/*": ["./node_modules/*"]
-		}
+		"noPropertyAccessFromIndexSignature": true
 	}
 }
