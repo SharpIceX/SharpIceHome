@@ -29,10 +29,11 @@ jobs:
           node-version-file: 'package.json'
           cache: 'pnpm'
 
-      - name: 安装 Chromium 浏览器
+      - name: 安装 Chromium 和 CJK 字体
         run: |
           sudo apt-get update
-          sudo apt-get install -y chromium-browser
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo apt-get install -y ./google-chrome-stable_current_amd64.deb fonts-noto-cjk
 
       - name: 安装依赖
         run: pnpm install --frozen-lockfile
