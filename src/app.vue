@@ -6,7 +6,7 @@
 				<NuxtPage :transition="{ name: 'app-up', mode: 'out-in' }" />
 			</main>
 		</div>
-		<AppFooter class="flex-shrink-0" />
+		<AppFooter />
 	</div>
 </template>
 
@@ -17,6 +17,7 @@ import { OverlayScrollbars } from 'overlayscrollbars';
 import { useNProgress } from '@vueuse/integrations/useNProgress';
 
 defineOptions({ name: 'App' });
+defineOgImageComponent('Nuxt');
 
 const mainElement = ref<HTMLElement | null>(null);
 

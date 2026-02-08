@@ -1,21 +1,19 @@
 <template>
-	<aside class="flex items-center px-12 max-lg:px-0 max-lg:h-18">
-		<nav class="w-full">
-			<ul class="gap-6 flex flex-col max-lg:flex-row max-lg:justify-center">
-				<li v-for="route in navRoutes" :key="route.name" class="hover:text-nord10 transition-colors">
-					<NuxtLink :to="route.path" exact-active-class="nav-link-active">
-						{{ route.name }}
-					</NuxtLink>
-				</li>
-			</ul>
-		</nav>
+	<aside class="sidebar-container" aria-label="导航">
+		<ul>
+			<li v-for="route in navRoutes" :key="route.name">
+				<NuxtLink :to="route.path" exact-active-class="nav-link-active">
+					{{ route.name }}
+				</NuxtLink>
+			</li>
+		</ul>
 	</aside>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 defineOptions({ name: 'AppSidebar' });
 
-const navRoutes = [
+const navRoutes: { name: string; path: string }[] = [
 	{ name: '首页', path: '/' },
 	{ name: '游戏推荐', path: '/game' },
 	{ name: '友谊连接', path: '/link' },
@@ -24,7 +22,7 @@ const navRoutes = [
 </script>
 
 <style lang="less" scoped>
-@import 'nord/src/lesscss/nord.less';
+@import (reference) '$/nord/src/lesscss/nord.less';
 
 .nav-link-active {
 	color: @nord9;
@@ -40,6 +38,27 @@ const navRoutes = [
 		background-color: @nord9;
 		transform: translateX(-50%);
 		animation: width-expand 0.35s ease-in-out forwards;
+	}
+}
+
+.sidebar-container {
+	display: flex;
+	font-size: 1.1em;
+	align-items: center;
+	padding: 1.5rem 4rem;
+
+	@media (max-width: 1024px) {
+		font-size: 1em;
+	}
+
+	ul {
+		@apply "max-lg:flex-row";
+
+		gap: 1.5rem;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
 	}
 }
 </style>

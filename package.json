@@ -45,7 +45,6 @@
 		"@material-design-icons/svg": "^0.14.15",
 		"@unocss/reset": "^66.6.0",
 		"@vueuse/integrations": "^14.2.0",
-		"LufsX/Cloudflare-Data-Center-IATA-Code-list": "github:LufsX/Cloudflare-Data-Center-IATA-Code-list",
 		"material-icon-theme": "^5.31.0",
 		"nord": "^0.2.1",
 		"nprogress": "^0.2.0",

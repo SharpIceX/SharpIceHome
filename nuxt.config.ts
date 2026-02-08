@@ -57,6 +57,7 @@ export default defineNuxtConfig({
 	},
 	devServer: {
 		port: 8600,
+		host: '127.0.0.1',
 	},
 	vite: {
 		resolve: {
@@ -68,21 +69,55 @@ export default defineNuxtConfig({
 		build: {
 			cssMinify: 'lightningcss',
 		},
+		optimizeDeps: {
+			include: [
+				'@vue/devtools-core',
+				'@vue/devtools-kit',
+				'overlayscrollbars',
+				'@vueuse/integrations/useNProgress',
+			],
+		},
 	},
 	unocss: {
 		nuxtLayers: true,
 	},
 	site: {
 		name: '锐冰',
+		url: 'https://sharpice.top',
 		currentLocale: appConfig.head.htmlAttrs.lang,
 		description: appConfig.head.meta.find(
 			(meta: { name?: string; content?: string }) => meta.name === 'description',
 		)?.content,
-		url: 'https://sharpice.top',
 	},
 	sitemap: {
+		xsl: false,
+		credits: false,
 		zeroRuntime: true,
+		minify: isProduction,
 		discoverImages: false,
+		discoverVideos: false,
+	},
+	ogImage: {
+		defaults: {
+			renderer: 'chromium',
+		},
+		compatibility: {
+			prerender: {
+				chromium: 'chrome-launcher',
+			},
+		},
+	},
+	seo: {
+		redirectToCanonicalSiteUrl: true,
+	},
+	schemaOrg: {
+		identity: 'Person',
+		minify: isProduction,
+	},
+	robots: {
+		credits: false,
+		blockAiBots: true,
+		blockNonSeoBots: true,
 	},
 	eslint: {
 		checker: false,

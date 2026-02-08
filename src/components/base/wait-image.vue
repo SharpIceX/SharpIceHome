@@ -59,7 +59,7 @@ onBeforeUnmount(() => {
 </script>
 
 <style lang="less" scoped>
-@import url('nord/src/lesscss/nord.less');
+@import (reference) '$/nord/src/lesscss/nord.less';
 
 .loader {
 	width: 50px;

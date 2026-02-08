@@ -1,20 +1,22 @@
 <template>
-	<footer class="text-center py-4">
+	<footer class="footer">
 		<p>
-			🥰 来自
-			<a
-				href="https://github.com/SharpIceX/SharpIceHome"
-				target="_blank"
-				class="ext-nord8 hover:text-nord10 text-nord7 transition-colors">
-				SharpIceX/SharpIceHome
-			</a>
+			<span>🥰 来自 </span>
+			<a href="https://github.com/SharpIceX/SharpIceHome" target="_blank">SharpIceX/SharpIceHome</a>
 		</p>
-		<DataCenter />
 	</footer>
 </template>
 
 <script lang="ts" setup>
-import DataCenter from '~/components/utils/data-center.vue';
-
 defineOptions({ name: 'AppFooter' });
 </script>
+
+<style lang="less" scoped>
+@import (reference) '$/nord/src/lesscss/nord.less';
+
+.footer {
+	text-align: center;
+	padding-block: 1rem;
+	border-top: 1px solid @nord2;
+}
+</style>

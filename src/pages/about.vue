@@ -44,7 +44,6 @@ definePageMeta({
 <style lang="less" scoped>
 .post-content {
 	@apply "px-8 py-4";
-	backdrop-filter: brightness(0.9);
 
 	// 段落
 	p {

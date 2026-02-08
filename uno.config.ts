@@ -1,4 +1,4 @@
-import { defineConfig, presetWind3, transformerDirectives } from 'unocss';
+import { defineConfig, presetWind4, transformerDirectives } from 'unocss';
 
 export default defineConfig({
 	// Arctic Ice Studio <development@arcticicestudio.com> (Nord colors)
@@ -22,6 +22,6 @@ export default defineConfig({
 			nord15: '#B48EAD',
 		},
 	},
-	presets: [presetWind3()],
+	presets: [presetWind4()],
 	transformers: [transformerDirectives()],
 });

@@ -11,9 +11,9 @@
 				<div class="pl-4">
 					<h2 class="text-sm">Name: SharpIce</h2>
 					<h3 class="text-sm">Description: 世界很大，只是我的知识有限，但我会继续学习的。</h3>
-					<ul class="flex gap-2 flex-wrap">
-						<li v-for="like in likeList" :key="like.name" class="flex items-center gap-1">
-							<Component :is="like.icon" class="h-5 w-5" />
+					<ul class="content-item">
+						<li v-for="like in likeList" :key="like.name">
+							<Component :is="like.icon" />
 							<span>{{ like.name }}</span>
 						</li>
 					</ul>
@@ -29,14 +29,14 @@
 			<!-- 技术栈 -->
 			<div class="flex flex-col gap-y-2">
 				<h2 class="text-xl">技术栈</h2>
-				<ul class="flex flex-wrap max-w-3xl gap-x-2 gap-y-2 pl-4">
-					<li class="flex items-center gap-x-1">
+				<ul class="content-item pl-4">
+					<li>
 						<javaScriptIcon />
 						<typeScriptIcon />
 						<span>JS/TS</span>
 					</li>
-					<li v-for="tech in stackList" :key="tech.name" class="flex items-center gap-x-1">
-						<Component :is="tech.icon" class="h-5 w-5" />
+					<li v-for="tech in stackList" :key="tech.name">
+						<Component :is="tech.icon" />
 						<span>{{ tech.name }}</span>
 					</li>
 				</ul>
@@ -44,43 +44,36 @@
 
 			<!-- 技术力 -->
 			<div class="flex flex-col gap-y-2">
-				<ul class="flex flex-wrap items-center justify-center gap-2 pl-4">
+				<ul class="content-item justify-center">
 					<li>
-						<p>我在做什么 / </p>
+						<p>我在做什么:</p>
 					</li>
-					<li class="flex items-center gap-1">
+					<li>
 						<codeIcon aria-hidden="true" />
-						<span>开发</span>
+						<span>基础设施开发</span>
 					</li>
-					<li class="flex items-center gap-1">
+					<li>
 						<translateIcon aria-hidden="true" />
-						<span>本地化</span>
+						<span>本地化翻译</span>
 					</li>
 				</ul>
 			</div>
 
 			<!-- 联系方式 -->
-			<div class="flex flex-row flex-wrap justify-center gap-x-4">
-				<a
-					v-for="item in connectList"
-					:key="item.name"
-					class="link-item"
-					:href="item.url"
-					target="_blank"
-					rel="noopener noreferrer">
-					<template v-if="item.icon">
+			<ul class="content-item justify-center pl-4">
+				<li v-for="item in connectList" :key="item.name">
+					<a :href="item.url" target="_blank" class="flex gap-col-1">
 						<Component :is="item.icon" aria-hidden="true" />
-					</template>
-					<span>{{ item.name }}</span>
-				</a>
-			</div>
+						<span>{{ item.name }}</span>
+					</a>
+				</li>
+			</ul>
 		</div>
 	</div>
 </template>
 
 <script lang="ts" setup>
-import { markRaw } from 'vue';
-
+import { markRaw, type Raw } from 'vue';
 import vueIcon from 'material-icon-theme/icons/vue.svg';
 import nuxtIcon from 'material-icon-theme/icons/nuxt.svg';
 import emailIcon from 'material-icon-theme/icons/email.svg';
@@ -91,11 +84,11 @@ import unocssIcon from 'material-icon-theme/icons/unocss.svg';
 import bookIcon from '@material-design-icons/svg/round/book.svg';
 import javaScriptIcon from 'material-icon-theme/icons/javascript.svg';
 import typeScriptIcon from 'material-icon-theme/icons/typescript.svg';
-import tailwindcssIcon from 'material-icon-theme/icons/tailwindcss.svg';
 import codeIcon from '@fortawesome/fontawesome-free/svgs/solid/code.svg';
 import linuxIcon from '@fortawesome/fontawesome-free/svgs/brands/linux.svg';
 import gitubIcon from '@fortawesome/fontawesome-free/svgs/brands/github.svg';
 import translateIcon from '@material-design-icons/svg/outlined/translate.svg';
+import discordIcon from '@fortawesome/fontawesome-free/svgs/brands/discord.svg';
 import bilibiliIcon from '@fortawesome/fontawesome-free/svgs/brands/bilibili.svg';
 import favoriteBorderIcon from '@material-design-icons/svg/round/favorite_border.svg';
 import featherPointedIcon from '@fortawesome/fontawesome-free/svgs/solid/feather-pointed.svg';
@@ -105,38 +98,57 @@ definePageMeta({
 	description: '循此苦旅，终抵群星',
 });
 
-const likeList = [
+interface LikeItem {
+	name: string;
+	icon: Raw<Component>;
+}
+
+const likeList: LikeItem[] = [
 	{ name: '幻想生物', icon: markRaw(favoriteBorderIcon) },
 	{ name: '叽叽喳喳', icon: markRaw(featherPointedIcon) },
 	{ name: '架空世界观', icon: markRaw(bookIcon) },
-	{ name: 'JS/TS 开发者', icon: markRaw(codeIcon) },
 	{ name: 'Linux', icon: markRaw(archLinuxIcon) },
+	{ name: 'JS/TS 开发者', icon: markRaw(codeIcon) },
 ];
 
-const stackList = [
+const stackList: LikeItem[] = [
 	{ name: 'Vue.js', icon: markRaw(vueIcon) },
 	{ name: 'Nuxt', icon: markRaw(nuxtIcon) },
-	{ name: 'TailwindCSS', icon: markRaw(tailwindcssIcon) },
 	{ name: 'UnoCSS', icon: markRaw(unocssIcon) },
 	{ name: 'Node.js', icon: markRaw(nodejsIcon) },
 	{ name: 'C#.NET', icon: markRaw(csharpIcon) },
 	{ name: 'Linux', icon: markRaw(linuxIcon) },
 ];
 
-const connectList = [
+const connectList: (LikeItem & { url: string })[] = [
 	{ name: 'GitHub', icon: markRaw(gitubIcon), url: 'https://github.com/SharpIceX' },
 	{ name: '哔哩哔哩', icon: markRaw(bilibiliIcon), url: 'https://space.bilibili.com/513364639' },
-	{ name: '知乎', icon: null, url: 'https://zhihu.com/people/SharpIce' },
+	{ name: 'Discord', icon: markRaw(discordIcon), url: 'https://discord.com/users/650534063492431891' },
 	{ name: '邮件', icon: markRaw(emailIcon), url: 'mailto:SharpIce@SharpIce.top' },
 ];
 </script>
 
 <style lang="less" scoped>
-.link-item {
-	@apply "flex flex-row items-center gap-x-2 hover:text-nord9 transition-colors duration-300";
-}
+ul.content-item {
+	display: flex;
+	flex-wrap: wrap;
+	row-gap: 0.2rem;
+	column-gap: 0.8rem;
 
-.fade-in {
-	animation: fade-in 0.6s ease-in-out;
+	@media (max-width: 1024px) {
+		justify-content: center;
+	}
+
+	li,
+	a {
+		display: flex;
+		column-gap: 0.3rem;
+		align-items: center;
+
+		svg {
+			width: 1.2rem;
+			height: 1.2rem;
+		}
+	}
 }
 </style>
