@@ -6,7 +6,9 @@
 		"allowJs": true,
 		"target": "ESNext",
 		"module": "ESNext",
-		"types": ["node"],
+
+		/* 只做检查 */
+		"noEmit": true,
 
 		/* 构建 */
 		"sourceMap": true,

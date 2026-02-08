@@ -69,6 +69,7 @@
 		"globals": "^17.3.0",
 		"isomorphic-git": "^1.36.3",
 		"less": "^4.5.1",
+		"lightningcss": "^1.31.1",
 		"nuxt-svgo": "^4.2.6",
 		"prettier": "^3.8.1",
 		"rimraf": "^6.1.2",

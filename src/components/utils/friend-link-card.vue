@@ -25,8 +25,8 @@
 
 <script lang="ts" setup>
 import Card from '../base/card.vue';
-import LazyImage from '@/components/base/wait-image.vue';
-import type { FriendLinkType } from '@/data/FriendLinkData/main';
+import LazyImage from '~/components/base/wait-image.vue';
+import type { FriendLinkType } from '~/data/FriendLinkData/main';
 
 defineProps<FriendLinkType>();
 </script>

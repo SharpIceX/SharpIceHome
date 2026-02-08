@@ -7,7 +7,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue';
-import { waitImage } from '@/utils/load';
+import { waitImage } from '~/utils/load';
 
 const properties = defineProps<{
 	src: string;

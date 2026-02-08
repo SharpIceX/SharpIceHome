@@ -16,12 +16,11 @@ export default defineNuxtConfig({
 	srcDir: path.resolve(import.meta.dirname, './src'),
 	buildId: await git.resolveRef({ fs, dir: import.meta.dirname, ref: 'HEAD' }),
 	modules: ['nuxt-svgo', '@unocss/nuxt', '@nuxt/eslint', '@nuxtjs/seo'],
-	css: ['@/styles/main.less'],
+	css: ['~/styles/main.less'],
 	devtools: {
 		enabled: !isProduction,
 	},
 	alias: {
-		'@': path.resolve(import.meta.dirname, './src'),
 		$: path.resolve(import.meta.dirname, './node_modules'),
 	},
 	build: {
@@ -51,7 +50,7 @@ export default defineNuxtConfig({
 		inlineRouteRules: isProduction,
 	},
 	future: {
-		typescriptBundlerResolution: false,
+		typescriptBundlerResolution: true,
 	},
 	features: {
 		inlineStyles: true,
@@ -65,6 +64,9 @@ export default defineNuxtConfig({
 		},
 		esbuild: {
 			drop: isProduction ? ['console', 'debugger'] : [],
+		},
+		build: {
+			cssMinify: 'lightningcss',
 		},
 	},
 	unocss: {

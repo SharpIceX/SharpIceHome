@@ -43,9 +43,9 @@
 
 <script lang="ts" setup>
 import Card from '../base/card.vue';
-import epicGameIcon from '@/icon/Epic_Games.svg';
-import LazyImage from '@/components/base/wait-image.vue';
-import type { GameDataType } from '@/data/GameData/main';
+import epicGameIcon from '~/icon/Epic_Games.svg';
+import LazyImage from '~/components/base/wait-image.vue';
+import type { GameDataType } from '~/data/GameData/main';
 import languageIcon from '@material-design-icons/svg/round/language.svg';
 import steamIcon from '@fortawesome/fontawesome-free/svgs/brands/steam.svg';
 

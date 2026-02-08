@@ -8,7 +8,7 @@
 
 <script lang="ts" setup>
 import { GameData } from '../data/GameData/main';
-import GameLinkCard from '@/components/utils/game-card.vue';
+import GameLinkCard from '~/components/utils/game-card.vue';
 
 defineOptions({ name: 'GamePage' });
 definePageMeta({

@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts" setup>
-import DataCenter from '@/components/utils/data-center.vue';
+import DataCenter from '~/components/utils/data-center.vue';
 
 defineOptions({ name: 'AppFooter' });
 </script>

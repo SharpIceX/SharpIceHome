@@ -8,7 +8,7 @@
 
 <script lang="ts" setup>
 import { FriendLinkData } from '../data/FriendLinkData/main';
-import FriendLinkCard from '@/components/utils/friend-link-card.vue';
+import FriendLinkCard from '~/components/utils/friend-link-card.vue';
 
 defineOptions({ name: 'LinkPage' });
 definePageMeta({
