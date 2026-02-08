@@ -32,8 +32,9 @@ jobs:
       - name: 安装 Chromium 和 CJK 字体
         run: |
           sudo apt-get update
-          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-          sudo apt-get install -y ./google-chrome-stable_current_amd64.deb fonts-noto-cjk
+          wget -P /tmp https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo apt-get install -y /tmp/google-chrome-stable_current_amd64.deb fonts-noto-cjk
+          rm /tmp/google-chrome-stable_current_amd64.deb
 
       - name: 安装依赖
         run: pnpm install --frozen-lockfile
