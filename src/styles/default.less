@@ -1,10 +1,55 @@
-@import (reference) '$/nord/src/lesscss/nord.less';
+@import 'modern-normalize';
+@import (reference) '~/styles/color.less';
+
+body {
+	overflow: hidden;
+	color: @fantasy-text;
+	scroll-behavior: smooth;
+	background-color: @fantasy-bg-primary;
+	font-family: 'LXGW Wenkai', ui-serif, serif;
+
+	text-rendering: optimizeLegibility;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+
+	overscroll-behavior-y: none;
+	-webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+	color: @fantasy-selection-text;
+	background-color: @fantasy-selection-bg;
+}
 
 a {
-	color: @nord8;
+	text-decoration: none;
+	color: @fantasy-accent;
+	transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+
+	&:visited {
+		color: inherit;
+	}
 
 	&:hover {
-		color: @nord10;
-		transition: color 0.3s;
+		color: @fantasy-accent-hover;
+		text-shadow: @fantasy-glow-text;
 	}
+
+	&:active {
+		text-shadow: none;
+		color: @fantasy-accent-active;
+	}
+
+	&[href^='mailto:'] {
+		color: inherit;
+	}
+}
+
+svg {
+	width: 1rem;
+	height: 1rem;
+	flex-shrink: 0;
+	fill: currentColor;
+	display: inline-block;
+	vertical-align: middle;
 }

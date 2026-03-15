@@ -1,80 +1,73 @@
 <template>
-	<div class="h-screen w-screen flex flex-col">
-		<div class="flex flex-1 overflow-hidden max-lg:flex-col">
-			<AppSidebar />
-			<main ref="mainElement" class="flex-1 w-full h-full overflow-auto">
-				<NuxtPage :transition="{ name: 'app-up', mode: 'out-in' }" />
-			</main>
-		</div>
-		<AppFooter />
+	<AppCursor />
+	<div class="app-container">
+		<AppSidebar />
+		<main>
+			<NuxtPage :transition="{ name: 'page-fade', mode: 'out-in' }" />
+		</main>
 	</div>
+	<AppFooter />
 </template>
 
 <script lang="ts" setup>
+import AppCursor from './app/cursor.vue';
 import AppFooter from './app/footer.vue';
 import AppSidebar from './app/sidebar.vue';
-import { OverlayScrollbars } from 'overlayscrollbars';
-import { useNProgress } from '@vueuse/integrations/useNProgress';
 
 defineOptions({ name: 'App' });
-defineOgImageComponent('Nuxt');
+defineOgImage({
+	component: 'fantasy',
+});
 
-const mainElement = ref<HTMLElement | null>(null);
-
-if (import.meta.browser) {
-	// 滚动条
-	let osInstance: OverlayScrollbars | null;
-	const idle =
-		globalThis.requestIdleCallback || ((function_: FrameRequestCallback) => globalThis.setTimeout(function_, 1));
-	idle(() => {
-		if (mainElement.value) {
-			osInstance = OverlayScrollbars(
-				{
-					target: mainElement.value,
-					elements: {
-						viewport: mainElement.value,
-					},
-				},
-				{
-					scrollbars: {
-						autoHideDelay: 400,
-						autoHide: 'scroll',
-						autoHideSuspend: true,
-						theme: 'os-theme-nord',
-					},
-				},
-			);
-		}
-	});
-
-	// 路由加载动画
-	const router = useRouter();
-	const { start, done } = useNProgress();
-	router.beforeEach((_to, _from, next) => {
-		start();
-		next();
-	});
-	router.afterEach((_to, _from) => done());
-
-	onUnmounted(() => osInstance?.destroy());
-}
+useHead({
+	link: [
+		{
+			rel: 'icon',
+			type: 'image/png',
+			sizes: '1024x1024',
+			href: '/favicon.png',
+		},
+	],
+});
 </script>
 
 <style lang="less">
-.app-up-enter-active,
-.app-up-leave-active {
-	transition:
-		transform 0.3s cubic-bezier(0.55, 0, 0.1, 1),
-		opacity 0.3s;
+#sharpice_app {
+	display: flex;
+	height: 100dvh;
+	isolation: isolate;
+	position: relative;
+	flex-direction: column;
 }
-.app-up-enter-from,
-.app-up-leave-to {
-	transform: translateY(30px);
+
+// # 页面切换动效
+.page-fade-enter-active,
+.page-fade-leave-active {
+	transition: opacity 0.3s ease;
+}
+.page-fade-enter-from,
+.page-fade-leave-to {
 	opacity: 0;
 }
-.app-up-enter-to,
-.app-up-leave-from {
-	transform: translateY(0);
-	opacity: 1;
+</style>
+
+<style lang="less" scoped>
+.app-container {
+	flex: 1;
+	min-height: 0;
+	display: flex;
+
+	// # 小屏幕
+	@media (max-width: 1024px) {
+		flex-direction: column;
+	}
+}
+
+main {
+	flex: -1;
+	opacity: 0;
+	width: 100%;
+	overflow: auto;
+	animation: slide-up-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) 1.5s forwards;
 }
 </style>

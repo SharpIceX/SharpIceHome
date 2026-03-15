@@ -16,34 +16,44 @@ jobs:
     steps:
       - name: 签出代码
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
 
       - name: 安装 pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 'latest'
+          version: latest
           run_install: false
 
       - name: 安装 Node.js 环境
         uses: actions/setup-node@v4
         with:
-          node-version-file: 'package.json'
-          cache: 'pnpm'
+          cache: pnpm
+          node-version-file: package.json
 
-      - name: 安装 Chromium 和 CJK 字体
+      - name: 安装 Chromium
+        uses: browser-actions/setup-chrome@v2
+        with:
+          chrome-version: 145
+
+      - name: 安装字体
         run: |
-          sudo apt-get update
-          wget -P /tmp https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-          sudo apt-get install -y /tmp/google-chrome-stable_current_amd64.deb fonts-noto-cjk
-          rm /tmp/google-chrome-stable_current_amd64.deb
+          sudo apt-get update && sudo apt-get install -y fontconfig fonts-noto-cjk
+
+          git clone --depth 1 --branch v1.521 https://github.com/lxgw/LxgwWenKai.git /tmp/lxgw-fonts
+          mkdir -p $HOME/.local/share/fonts/lxgw
+          ln -sf /tmp/lxgw-fonts/fonts/TTF/*.ttf ~/.local/share/fonts/lxgw/
+
+          fc-cache -f -v
+
+          # 调试
+          fc-list : family | grep -i "LXGW"
 
       - name: 安装依赖
         run: pnpm install --frozen-lockfile
 
       - name: 构建
         run: NODE_ENV=production pnpm run generate
-
-      - name: 删除不打算要的文件
-        run: rm -rfv ./dist/nitro.json
 
       - name: 部署到 Cloudflare Pages
         uses: cloudflare/wrangler-action@v3

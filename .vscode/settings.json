@@ -1,8 +1,5 @@
 {
-	"unocss.autocomplete.matchType": "fuzzy",
 	"typescript.tsdk": "node_modules/typescript/lib",
 	"typescript.enablePromptUseWorkspaceTsdk": true,
-	"eslint.validate": ["typescript", "vue"],
-	"css.customData": [".vscode/unocss.json"],
-	"unocss.languageIds": ["typescript", "less", "vue"]
+	"eslint.validate": ["typescript", "vue", "github-actions-workflow"]
 }

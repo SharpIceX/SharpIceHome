@@ -1,25 +1,29 @@
-/* eslint-disable unicorn/no-await-expression-member */
-
-interface FriendLinkType {
+interface friendsListType {
 	url: string;
 	title: string;
 	noRounded?: boolean;
 	description?: string;
-	image?: string;
+	avatar?: string;
 }
 
-const FriendLinkData: FriendLinkType[] = [
+const avatars = import.meta.glob('./avatar/*', { eager: true, import: 'default' });
+const getAvatar = (name: string) => {
+	const path = `./avatar/${name}`;
+	return avatars[path] as string;
+};
+
+const friendsList: friendsListType[] = [
 	{
 		title: '应龙笔记',
 		description: '应龙笔记是一个专注于知识分享的网站',
 		url: 'https://www.silverdragon.cn/',
-		image: (await import('./avatar/silverdragon.webp')).default,
+		avatar: getAvatar('silverdragon.webp'),
 	},
 	{
 		title: '白山白墨',
 		noRounded: true,
 		url: 'https://iy.ink/',
-		image: (await import('./avatar/iy.webp')).default,
+		avatar: getAvatar('iy.webp'),
 	},
 	{
 		title: '泛泛',
@@ -33,65 +37,65 @@ const FriendLinkData: FriendLinkType[] = [
 	{
 		title: '初雪·冰',
 		url: 'https://wolf.snowlyicewolf.club/',
-		image: (await import('./avatar/snowlyicewolf.webp')).default,
+		avatar: getAvatar('snowlyicewolf.webp'),
 	},
 	{
 		title: '中二狐狸',
 		description: '一只狐狸敲出的一个奇迹',
 		url: 'https://imfurry.com/',
-		image: (await import('./avatar/imfurry.webp')).default,
+		avatar: getAvatar('imfurry.webp'),
 	},
 	{
 		title: '迷失的小K',
 		url: 'https://blog.kclub.tech/',
-		image: (await import('./avatar/kclub.webp')).default,
+		avatar: getAvatar('kclub.webp'),
 	},
 	{
 		title: '西西',
 		url: 'https://xxand.cc/',
-		image: (await import('./avatar/xxand.webp')).default,
+		avatar: getAvatar('xxand.webp'),
 	},
 	{
 		title: '0o酱',
 		noRounded: true,
 		url: 'https://blog.im0o.top/',
-		image: (await import('./avatar/im0o.webp')).default,
+		avatar: getAvatar('im0o.webp'),
 	},
 	{
 		title: 'F_Qilin',
 		url: 'https://blog.fqilin.top/',
-		image: (await import('./avatar/fqilin.webp')).default,
+		avatar: getAvatar('fqilin.webp'),
 	},
 	{
 		title: '嗨皮',
 		url: 'https://www.owk.ink/',
-		image: (await import('./avatar/owk.webp')).default,
+		avatar: getAvatar('owk.webp'),
 	},
 	{
 		title: 'XME Notes Library',
 		url: 'https://blog.xzadudu179.top/',
-		image: (await import('./avatar/xzadudu179.webp')).default,
+		avatar: getAvatar('xzadudu179.webp'),
 	},
 	{
 		title: '洺渊',
 		url: 'https://blog.fmyron.com/',
-		image: (await import('./avatar/fmyron.webp')).default,
+		avatar: getAvatar('fmyron.webp'),
 	},
 	{
 		title: '黑历',
 		description: '黑历の鸽子窝',
 		url: 'https://heili.tech/',
-		image: (await import('./avatar/heili.webp')).default,
+		avatar: getAvatar('heili.webp'),
 	},
 	{
 		title: '胡斯凯',
 		url: 'https://hooskai.top/',
-		image: (await import('./avatar/hooskai.webp')).default,
+		avatar: getAvatar('hooskai.webp'),
 	},
 	{
 		title: '渣渣120',
 		url: 'https://zhazha120.cn/',
-		image: (await import('./avatar/zhazha120.webp')).default,
+		avatar: getAvatar('zhazha120.webp'),
 	},
 	{
 		title: '炎天',
@@ -106,20 +110,20 @@ const FriendLinkData: FriendLinkType[] = [
 		title: '夏枫',
 		description: '一只会敲代码的笨笨猫咪',
 		url: 'https://blog.mcxiafeng.top/',
-		image: (await import('./avatar/xiafeng.webp')).default,
+		avatar: getAvatar('xiafeng.webp'),
 	},
 	{
 		title: '李子小大',
 		description: '不正经做MC动画的，视频实验技术向',
 		url: 'https://lizi-owo.xyz/',
-		image: (await import('./avatar/lizi-owo.webp')).default,
+		avatar: getAvatar('lizi-owo.webp'),
 	},
 	{
 		title: '明宇',
 		url: 'https://blog.xming.cloud/',
-		image: (await import('./avatar/xming.webp')).default,
+		avatar: getAvatar('xming.webp'),
 	},
 ];
 
-export { FriendLinkData };
-export type { FriendLinkType };
+export { friendsList };
+export type { friendsListType };

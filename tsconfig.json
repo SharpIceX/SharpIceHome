@@ -1,48 +1,32 @@
 {
 	"extends": "./.nuxt/tsconfig.json",
 	"compilerOptions": {
-		/* 基础配置 */
-		"pretty": true,
-		"allowJs": true,
-		"target": "ESNext",
-		"module": "ESNext",
-
-		/* 只做检查 */
-		"noEmit": true,
-
 		/* 构建 */
 		"sourceMap": true,
+		"declaration": false,
 		"noEmitOnError": true,
 		"inlineSources": true,
-		"isolatedModules": true,
-		"esModuleInterop": true,
-		"resolveJsonModule": true,
-		"moduleDetection": "force",
-		"verbatimModuleSyntax": true,
-		"moduleResolution": "Bundler",
-		"useDefineForClassFields": true,
+		"declarationMap": false,
 
 		/* 检查 */
-		"strict": true,
 		"checkJs": true,
 		"alwaysStrict": true,
-		"skipLibCheck": true,
 		"noImplicitAny": true,
-		"noImplicitThis": true,
 		"noUnusedLocals": true,
 		"strictNullChecks": true,
 		"noImplicitReturns": true,
 		"noUnusedParameters": true,
-		"noImplicitOverride": true,
+		"allowUnusedLabels": false,
 		"strictFunctionTypes": true,
 		"strictBindCallApply": true,
 		"noImplicitUseStrict": false,
-		"noUncheckedIndexedAccess": true,
+		"allowUnreachableCode": false,
 		"exactOptionalPropertyTypes": true,
 		"useUnknownInCatchVariables": true,
 		"noFallthroughCasesInSwitch": true,
 		"strictPropertyInitialization": true,
 		"forceConsistentCasingInFileNames": true,
 		"noPropertyAccessFromIndexSignature": true
-	}
+	},
+	"files": ["./eslint.config.ts"]
 }

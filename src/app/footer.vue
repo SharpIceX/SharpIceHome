@@ -1,8 +1,8 @@
 <template>
-	<footer class="footer">
+	<footer class="footer-container" role="contentinfo">
 		<p>
-			<span>🥰 来自 </span>
-			<a href="https://github.com/SharpIceX/SharpIceHome" target="_blank">SharpIceX/SharpIceHome</a>
+			<span>🥰 来自·</span>
+			<a href="https://github.com/SharpIceX/SharpIceHome" target="_blank"> SharpIceX/SharpIceHome </a>
 		</p>
 	</footer>
 </template>
@@ -12,11 +12,27 @@ defineOptions({ name: 'AppFooter' });
 </script>
 
 <style lang="less" scoped>
-@import (reference) '$/nord/src/lesscss/nord.less';
+@import (reference) '~/styles/color.less';
 
-.footer {
+.footer-container {
+	flex-shrink: 0;
+	user-select: none;
 	text-align: center;
-	padding-block: 1rem;
-	border-top: 1px solid @nord2;
+	padding-block: 0.3rem;
+	border-top: 1px solid @fantasy-line-dim;
+
+	a {
+		font-weight: 600;
+		color: @fantasy-accent;
+
+		&:hover {
+			color: @fantasy-accent-hover;
+			text-shadow: @fantasy-glow-text;
+		}
+
+		&:active {
+			color: @fantasy-accent-active;
+		}
+	}
 }
 </style>

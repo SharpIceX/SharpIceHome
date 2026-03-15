@@ -1,24 +1,2 @@
-@import '$/@unocss/reset/tailwind.css'; /* 样式重置 */
-
 @import './default.less';
-@import './nprogress.less';
-@import './animations.less';
-@import './background/main.less';
-@import './overlayscrollbars.less';
-
-html {
-	@apply "text-nord4";
-
-	font-family: sans-serif;
-
-	::selection {
-		@apply "bg-nord9 bg-opacity-50 text-nord10";
-		text-shadow: 0 0 1.5px rgba(0, 0, 0, 0.25);
-	}
-}
-
-svg {
-	width: 1.5em;
-	height: 1.5em;
-	fill: currentColor;
-}
+@import './animation.less';

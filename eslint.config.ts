@@ -1,76 +1,62 @@
-import globals from 'globals';
-import eslint from '@eslint/js';
-import jsdoc from 'eslint-plugin-jsdoc';
-import tseslint from 'typescript-eslint';
-import pluginVue from 'eslint-plugin-vue';
-import vueParser from 'vue-eslint-parser';
-import { defineConfig } from 'eslint/config';
-import eslintPluginUnicorn from 'eslint-plugin-unicorn';
-import eslintConfigPrettier from 'eslint-config-prettier/flat';
-import type { ConfigWithExtends } from '@eslint/config-helpers';
+/**
+ * SPDX-FileCopyrightText: 2026 锐冰(SharpIce)
+ * SPDX-License-Identifier: 0BSD
+ */
 
-const TypeScriptConfig: ConfigWithExtends = {
-	extends: [tseslint.configs.strict, tseslint.configs.stylistic, jsdoc.configs['flat/recommended-typescript']],
-	languageOptions: {
-		parser: tseslint.parser,
-		parserOptions: {
-			sourceType: 'module',
-			ecmaVersion: 'latest',
-			tsconfigRootDir: import.meta.dirname,
-			projectService: {
-				defaultProject: './tsconfig.eslint.json',
-			},
-		},
-	},
-};
+import antfu from '@antfu/eslint-config';
+import websiteNuxtConfig from './.nuxt/eslint.config.mjs';
 
-const config = defineConfig(
-	eslint.configs.recommended,
-	eslintPluginUnicorn.configs.recommended,
-	tseslint.configs.strict,
-	tseslint.configs.stylistic,
-	...pluginVue.configs['flat/recommended'],
-	eslintConfigPrettier,
-
+const config = antfu(
 	{
-		...TypeScriptConfig,
-		files: ['**/*.ts'],
-		languageOptions: {
+		vue: true,
+		markdown: false,
+		stylistic: false,
+		lessOpinionated: true,
+		typescript: {
+			tsconfigPath: 'tsconfig.json',
 			parserOptions: {
-				extraFileExtensions: ['.vue'],
+				projectService: true,
+				tsconfigRootDir: import.meta.dirname,
 			},
 		},
 	},
 	{
-		...TypeScriptConfig,
-		files: ['**/*.vue'],
-		languageOptions: {
-			parser: vueParser,
-			parserOptions: {
-				parser: tseslint.parser,
-				extraFileExtensions: ['.vue'],
-			},
-		},
-	},
-	...(await (async () => {
-		const nuxtConfigModule = await import('./.nuxt/eslint.config.mjs');
-		return nuxtConfigModule.default();
-	})()),
-	{
-		languageOptions: {
-			globals: {
-				...globals['shared-node-browser'],
-			},
-		},
 		rules: {
 			eqeqeq: 'error',
+
+			// 安全性
+			'pnpm/yaml-enforce-settings': 'off',
+
+			// 允许手动排序
+			'yaml/sort-keys': 'off',
+			'jsonc/sort-keys': 'off',
+			'perfectionist/sort-imports': 'off',
+			'perfectionist/sort-named-imports': 'off',
+			'perfectionist/sort-named-exports': 'off',
+
+			// 代码样式
+			'no-cond-assign': 'off',
+			'vue/block-order': 'off',
+			'vue/dot-notation': 'off',
 			'vue/html-self-closing': 'off',
-			'unicorn/no-null': 'off',
+			'ts/no-use-before-define': 'off',
+			'ts/no-unsafe-assignment': 'off',
+			'ts/promise-function-async': 'off',
+			'ts/no-unsafe-member-access': 'off',
+			'ts/consistent-type-imports': 'off',
+			'unicorn/number-literal-case': 'off',
+			'ts/strict-boolean-expressions': 'off',
+			'ts/no-import-type-side-effects': 'off',
+			'vue/html-closing-bracket-newline': 'off',
+			'import/consistent-type-specifier-style': 'off',
+			'vue/singleline-html-element-content-newline': 'off',
+			'vue/html-indent': ['error', 'tab'],
 		},
 	},
-	{
-		ignores: ['**/*.d.ts', '**/dits/**', '**/.nuxt/**', '**/node_modules/**'],
-	},
+).append(
+	websiteNuxtConfig({
+		files: ['apps/website/**/*.{ts,vue}'],
+	}),
 );
 
 export default config;
