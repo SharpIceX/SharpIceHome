@@ -23,7 +23,6 @@ export default defineNuxtConfig({
 	buildId: await git.resolveRef({ fs, dir: import.meta.dirname, ref: 'HEAD' }),
 	css: ['~/styles/main.less'],
 	modules: ['nuxt-svgo', '@nuxt/eslint', '@nuxtjs/seo', '@nuxt/a11y'],
-
 	devtools: {
 		enabled: !isProduction,
 	},
@@ -138,15 +137,12 @@ export default defineNuxtConfig({
 	},
 	app: {
 		rootId: `sharpice_app`,
-
 		head: {
 			titleTemplate: '%s | 锐冰 SharpIce',
 			viewport: 'width=device-width, initial-scale=1.0, viewport-fit=cover',
-
 			htmlAttrs: {
 				dir: 'ltr',
 			},
-
 			meta: [
 				{
 					name: 'keywords',
@@ -196,6 +192,12 @@ export default defineNuxtConfig({
 					type: 'image/x-icon',
 					sizes: '256x256',
 					href: '/favicon.ico',
+				},
+				{
+					rel: 'icon',
+					type: 'image/png',
+					sizes: '1024x1024',
+					href: '/favicon.png',
 				},
 				{
 					rel: 'apple-touch-icon',

@@ -127,6 +127,7 @@ const connectList: ComponentProps<typeof List>['list'] = [
 
 		a {
 			display: inline-block;
+			color: @fantasy-accent-soft;
 		}
 	}
 

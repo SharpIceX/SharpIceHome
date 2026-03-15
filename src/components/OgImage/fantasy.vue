@@ -2,7 +2,7 @@
 	<div class="og-container">
 		<div class="inner-border">
 			<div class="header">
-				<img src="/favicon.png" class="logo" />
+				<img :src="faviconIcon" class="logo" />
 				<p class="text">SharpIce Home</p>
 			</div>
 
@@ -17,6 +17,8 @@
 </template>
 
 <script setup lang="ts">
+import faviconIcon from '~/../public/favicon.png?url&inline';
+
 const { title, description } = defineProps<{
 	title?: string;
 	description?: string;
