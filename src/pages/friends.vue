@@ -4,7 +4,7 @@
 		<ul class="friend-list">
 			<li v-for="item in friendsList" :key="item.url" class="friend-card-container">
 				<a
-					:href="item.url"
+					:href="getRefUrl(item.url)"
 					target="_blank"
 					class="friend-card"
 					@dragstart="handleDragStart($event, item.title)">
@@ -47,6 +47,13 @@ const handleDragStart = (e: DragEvent, title: string) => {
 		if (textNode) textNode.textContent = title;
 		e.dataTransfer.setDragImage(dragPreview.value, 24, dragPreview.value.offsetHeight / 2);
 	}
+};
+
+/** 获取带跟踪链接的友谊连接 */
+const getRefUrl = (rawUrl: string): string => {
+	const url = new URL(rawUrl);
+	url.searchParams.set('ref', 'sharpice.top');
+	return url.href;
 };
 </script>
 
