@@ -24,6 +24,10 @@
 		"runtime": {
 			"name": "node",
 			"onFail": "error"
+		},
+		"packageManager": {
+			"name": "pnpm",
+			"onFail": "error"
 		}
 	},
 	"scripts": {

@@ -2,7 +2,7 @@
 	<aside class="sidebar-container" aria-label="导航">
 		<ul class="nav">
 			<li v-for="route in navRoutes" :key="route.name">
-				<NuxtLink :to="route.path" exact-active-class="nav-link-active">
+				<NuxtLink :to="route.path" class="link" exact-active-class="nav-link-active">
 					{{ route.name }}
 				</NuxtLink>
 			</li>
@@ -41,6 +41,10 @@ const navRoutes: { name: string; path: string }[] = [
 
 		li {
 			margin: 0 auto;
+
+			.link {
+				color: @fantasy-text;
+			}
 		}
 	}
 
