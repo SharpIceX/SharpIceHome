@@ -1,5 +1,4 @@
 {
-	"extends": "./.nuxt/tsconfig.json",
 	"compilerOptions": {
 		/* 构建 */
 		"sourceMap": true,
@@ -28,5 +27,19 @@
 		"forceConsistentCasingInFileNames": true,
 		"noPropertyAccessFromIndexSignature": true
 	},
-	"files": ["./eslint.config.ts"]
+	"files": ["./eslint.config.ts"],
+	"references": [
+		{
+			"path": "./.nuxt/tsconfig.app.json"
+		},
+		{
+			"path": "./.nuxt/tsconfig.server.json"
+		},
+		{
+			"path": "./.nuxt/tsconfig.shared.json"
+		},
+		{
+			"path": "./.nuxt/tsconfig.node.json"
+		}
+	]
 }
