@@ -11,8 +11,6 @@
 				<span class="label">关于我</span>
 				<span class="content">
 					我是应用层基础设施开发者、开源志愿者、架空世界观创作者，我喜欢可爱多艺术作品。目前主要为开源项目贡献简体中文本地化，以及维护
-					<a href="https://github.com/SharpIceX/nuxt-nexus" target="_blank">Nuxt Nexus</a>
-					、
 					<a href="https://github.com/SharpIceX/ThaumaturgySpectacle" target="_blank">ThaumaturgySpectacle</a>
 					等项目。
 				</span>
