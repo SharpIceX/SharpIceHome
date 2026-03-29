@@ -1,32 +1,20 @@
 {
-	"exclude": ["./.nuxt/tsconfig.json"],
-	"compilerOptions": {
-		/* 构建 */
-		"sourceMap": true,
-		"declaration": false,
-		"noEmitOnError": true,
-		"inlineSources": true,
-		"declarationMap": false,
-
-		/* 检查 */
-		"checkJs": true,
-		"alwaysStrict": true,
-		"noImplicitAny": true,
-		"noUnusedLocals": true,
-		"strictNullChecks": true,
-		"noImplicitReturns": true,
-		"noUnusedParameters": true,
-		"allowUnusedLabels": false,
-		"strictFunctionTypes": true,
-		"strictBindCallApply": true,
-		"noImplicitUseStrict": false,
-		"allowUnreachableCode": false,
-		"exactOptionalPropertyTypes": true,
-		"useUnknownInCatchVariables": true,
-		"noFallthroughCasesInSwitch": true,
-		"strictPropertyInitialization": true,
-		"forceConsistentCasingInFileNames": true,
-		"noPropertyAccessFromIndexSignature": true
-	},
-	"files": ["./eslint.config.ts"]
+	"files": [],
+	"references": [
+		{
+			"path": "./.nuxt/tsconfig.json"
+		},
+		{
+			"path": "./.nuxt/tsconfig.app.json"
+		},
+		{
+			"path": "./.nuxt/tsconfig.node.json"
+		},
+		{
+			"path": "./.nuxt/tsconfig.server.json"
+		},
+		{
+			"path": "./.nuxt/tsconfig.shared.json"
+		}
+	]
 }

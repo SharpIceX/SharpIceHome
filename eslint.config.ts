@@ -15,7 +15,9 @@ const config = antfu(
 		typescript: {
 			tsconfigPath: 'tsconfig.json',
 			parserOptions: {
-				projectService: true,
+				projectService: {
+					allowDefaultProject: ['eslint.config.ts'],
+				},
 				tsconfigRootDir: import.meta.dirname,
 			},
 		},
@@ -53,10 +55,6 @@ const config = antfu(
 			'vue/html-indent': ['error', 'tab'],
 		},
 	},
-).append(
-	websiteNuxtConfig({
-		files: ['apps/website/**/*.{ts,vue}'],
-	}),
-);
+).append(websiteNuxtConfig());
 
 export default config;

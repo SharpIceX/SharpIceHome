@@ -44,6 +44,36 @@ export default defineNuxtConfig({
 			},
 		],
 	},
+	typescript: {
+		tsConfig: {
+			/* 构建 */
+			sourceMap: true,
+			declaration: false,
+			noEmitOnError: true,
+			inlineSources: true,
+			declarationMap: false,
+
+			/* 检查 */
+			checkJs: true,
+			alwaysStrict: true,
+			noImplicitAny: true,
+			noUnusedLocals: true,
+			strictNullChecks: true,
+			noImplicitReturns: true,
+			noUnusedParameters: true,
+			allowUnusedLabels: false,
+			strictFunctionTypes: true,
+			strictBindCallApply: true,
+			noImplicitUseStrict: false,
+			allowUnreachableCode: false,
+			exactOptionalPropertyTypes: true,
+			useUnknownInCatchVariables: true,
+			noFallthroughCasesInSwitch: true,
+			strictPropertyInitialization: true,
+			forceConsistentCasingInFileNames: true,
+			noPropertyAccessFromIndexSignature: true,
+		},
+	},
 	experimental: {
 		headNext: true,
 		typedPages: true,
@@ -92,9 +122,17 @@ export default defineNuxtConfig({
 	ogImage: {
 		zeroRuntime: true,
 		defaults: {
+			extension: 'png',
+			component: 'fantasy',
 			renderer: 'chromium',
 		},
 		compatibility: {
+			dev: {
+				chromium: 'chrome-launcher',
+			},
+			runtime: {
+				chromium: 'chrome-launcher',
+			},
 			prerender: {
 				chromium: 'chrome-launcher',
 			},
