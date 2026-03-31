@@ -1,8 +1,9 @@
 <template>
+	<!-- TODO: 需要合入 index.vue，并且删除 `.nuxtignore`，因为新版本 Nuxt 会不热重载被忽略的内容 -->
 	<ul class="list">
 		<li v-for="item in list" :key="item.name">
 			<a :href="item.url" target="_blank">
-				<span class="icon">
+				<span aria-hidden="true" class="icon">
 					<component :is="item.icon" />
 				</span>
 				<span>{{ item.name }}</span>
@@ -44,6 +45,11 @@ const { list } = defineProps<{
 		a {
 			display: flex;
 			column-gap: 0.5rem;
+
+			.icon {
+				display: flex;
+				align-items: center;
+			}
 		}
 	}
 }
