@@ -8,19 +8,14 @@
 					target="_blank"
 					class="friend-card"
 					@dragstart="handleDragStart($event, item.title)">
-					<div v-if="item.avatar" class="avatar-container">
+					<div v-if="item.avatar" aria-hidden="true" class="avatar-container">
 						<img
 							:src="item.avatar"
-							:alt="item.title"
 							draggable="false"
 							class="avatar-img"
-							aria-hidden="true"
 							:class="{ 'is-rounded': !item.noRounded }" />
 					</div>
-					<div class="info-content">
-						<h3 class="name">{{ item.title }}</h3>
-						<p v-if="item.description" class="description">{{ item.description }}</p>
-					</div>
+					<p class="name">{{ item.title }}</p>
 				</a>
 			</li>
 		</ul>
@@ -68,7 +63,13 @@ const getRefUrl = (rawUrl: string): string => {
 
 	.title {
 		display: flex;
-		padding-left: 4rem;
+		padding-left: 5rem;
+
+		// # 小屏幕
+		@media (max-width: 1024px) {
+			padding-left: unset;
+			justify-content: center;
+		}
 	}
 
 	.friend-list {
@@ -84,11 +85,11 @@ const getRefUrl = (rawUrl: string): string => {
 }
 
 .friend-card-container {
-	width: 280px;
+	width: 240px;
 
 	.friend-card {
 		display: flex;
-		height: 248px;
+		height: 240px;
 		padding: 1.8rem;
 		position: relative;
 		align-items: center;
@@ -97,6 +98,7 @@ const getRefUrl = (rawUrl: string): string => {
 		border: 1px solid @fantasy-line-dim;
 		border-radius: 18px 18px 18px 18px / 16px 16px 16px 16px;
 		background-color: oklch(from @fantasy-bg-secondary l c h / 0.6);
+
 		transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
 		&:hover {
@@ -104,10 +106,6 @@ const getRefUrl = (rawUrl: string): string => {
 			border-color: @fantasy-line-bright;
 			box-shadow: 0 10px 30px oklch(0 0 0 / 0.3);
 			background-color: oklch(from @fantasy-bg-tertiary l c h / 0.8);
-
-			.avatar-img {
-				transform: scale(1.08) rotate(3deg);
-			}
 		}
 	}
 
@@ -127,24 +125,16 @@ const getRefUrl = (rawUrl: string): string => {
 		}
 	}
 
-	.info-content {
-		text-align: center;
+	.name {
+		font-weight: 600;
+		font-size: 1.15rem;
+		color: @fantasy-text;
+		margin-bottom: 0.6rem;
+		letter-spacing: 0.5px;
 
-		.name {
-			font-weight: 600;
-			font-size: 1.15rem;
-			color: @fantasy-text;
-			margin-bottom: 0.6rem;
-			letter-spacing: 0.5px;
-		}
-
-		.description {
-			line-clamp: 2;
-			line-height: 1.5;
-			font-size: 0.88rem;
-			display: -webkit-box;
-			color: @fantasy-text-muted;
-			-webkit-box-orient: vertical;
+		&:first-child {
+			margin: unset;
+			font-size: 2rem;
 		}
 	}
 }

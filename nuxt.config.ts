@@ -22,7 +22,7 @@ export default defineNuxtConfig({
 	srcDir: path.resolve(import.meta.dirname, './src'),
 	buildId: await git.resolveRef({ fs, dir: import.meta.dirname, ref: 'HEAD' }),
 	css: ['~/styles/main.less'],
-	modules: ['nuxt-svgo', '@nuxt/eslint', '@nuxtjs/seo', '@nuxt/a11y'],
+	modules: ['nuxt-svgo', '@nuxt/eslint', '@nuxtjs/seo', '@nuxt/a11y', 'nuxt-nexus', '@nuxtjs/mdc'],
 	devtools: {
 		enabled: !isProduction,
 	},
