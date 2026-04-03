@@ -44,6 +44,12 @@ export { splitFrontMatter };
 
 export default defineNuxtConfig({
 	modules: ['nuxt-nexus', '@nuxtjs/mdc'],
+	mdc: {
+		remarkPlugins: {
+			'remark-cjk-friendly': {},
+			'remark-cjk-friendly-gfm-strikethrough': {},
+		},
+	},
 	nitro: {
 		// TODO ! 要过滤掉`.mdc`文件
 		publicAssets: [

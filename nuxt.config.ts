@@ -106,7 +106,15 @@ export default defineNuxtConfig({
 			cssMinify: 'lightningcss',
 		},
 		optimizeDeps: {
-			include: ['@vue/devtools-core', '@vue/devtools-kit', 'gsap', 'axe-core'],
+			include: [
+				'@vue/devtools-core',
+				'@vue/devtools-kit',
+				'gsap',
+				'axe-core',
+				'remark-emoji',
+				'remark-cjk-friendly',
+				'remark-cjk-friendly-gfm-strikethrough',
+			],
 		},
 	},
 	site: {
