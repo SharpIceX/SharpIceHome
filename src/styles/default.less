@@ -6,7 +6,25 @@ body {
 	color: @fantasy-text;
 	scroll-behavior: smooth;
 	background-color: @fantasy-bg-primary;
-	font-family: 'LXGW Wenkai', ui-serif, serif;
+	font-family:
+		// 默认
+		'LXGW Wenkai',
+		'LXGW Wenkai Screen',
+		// 兜底
+		'Noto Sans SC',
+		'Noto Sans CJK SC',
+		'Source Han Sans SC',
+		'Source Han Sans CN',
+		// 系统
+		-apple-system,
+		BlinkMacSystemFont,
+		'Segoe UI',
+		'PingFang SC',
+		// 通用
+		sans-serif,
+		'Apple Color Emoji',
+		'Segoe UI Emoji',
+		'Segoe UI Symbol';
 
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased;
