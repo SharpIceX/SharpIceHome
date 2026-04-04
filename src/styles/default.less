@@ -5,11 +5,15 @@ body {
 	overflow: hidden;
 	color: @fantasy-text;
 	scroll-behavior: smooth;
+	overscroll-behavior-y: none;
+	font-synthesis: weight style;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
 	background-color: @fantasy-bg-primary;
+	-webkit-tap-highlight-color: transparent;
 	font-family:
 		// 默认
-		'LXGW Wenkai',
-		'LXGW Wenkai Screen',
+		'LXGW Bright',
 		// 兜底
 		'Noto Sans SC',
 		'Noto Sans CJK SC',
@@ -25,12 +29,6 @@ body {
 		'Apple Color Emoji',
 		'Segoe UI Emoji',
 		'Segoe UI Symbol';
-
-	-moz-osx-font-smoothing: grayscale;
-	-webkit-font-smoothing: antialiased;
-
-	overscroll-behavior-y: none;
-	-webkit-tap-highlight-color: transparent;
 }
 
 ::selection {

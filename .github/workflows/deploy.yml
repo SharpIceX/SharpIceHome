@@ -34,23 +34,22 @@ jobs:
       - name: 安装 Chromium
         uses: browser-actions/setup-chrome@v2
         with:
-          chrome-version: 145
+          chrome-version: 146
+
+      - name: 安装依赖
+        run: pnpm install --frozen-lockfile
 
       - name: 安装字体
         run: |
           sudo apt-get update && sudo apt-get install -y fontconfig fonts-noto-cjk
 
-          git clone --depth 1 --branch v1.521 https://github.com/lxgw/LxgwWenKai.git /tmp/lxgw-fonts
           mkdir -p $HOME/.local/share/fonts/lxgw
-          ln -sf /tmp/lxgw-fonts/fonts/TTF/*.ttf ~/.local/share/fonts/lxgw/
+          ln -sf $(pwd)/node_modules/@lxgw/LxgwBright/LXGWBright/*.ttf ~/.local/share/fonts/lxgw/
 
           fc-cache -f -v
 
           # 调试
           fc-list : family | grep -i "LXGW"
-
-      - name: 安装依赖
-        run: pnpm install --frozen-lockfile
 
       - name: 构建
         run: pnpm run generate

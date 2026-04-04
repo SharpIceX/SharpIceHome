@@ -1,15 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import fontList from 'font-list';
 import git from 'isomorphic-git';
 import process from 'node:process';
-import { defineNuxtConfig } from 'nuxt/config';
 
-const fonts = await fontList.getFonts();
-const hasFont = fonts.some((f) => f.includes('LXGW WenKai') || f.includes('霞鹜文楷'));
-if (!hasFont) {
-	throw new Error('系统未安装“LXGW WenKai(霞鹜文楷)”字体！');
-}
+// TODO ！ 让 ogImage 字体和 nuxt/fnts 联动
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -22,7 +16,60 @@ export default defineNuxtConfig({
 	srcDir: path.resolve(import.meta.dirname, './src'),
 	buildId: await git.resolveRef({ fs, dir: import.meta.dirname, ref: 'HEAD' }),
 	css: ['~/styles/main.less'],
-	modules: ['nuxt-svgo', '@nuxt/eslint', '@nuxtjs/seo', '@nuxt/a11y'],
+	modules: ['nuxt-svgo', '@nuxt/eslint', '@nuxtjs/seo', '@nuxt/a11y', '@nuxt/fonts'],
+	fonts: {
+		provider: 'local',
+		providers: {
+			npm: false,
+			adobe: false,
+			bunny: false,
+			google: false,
+			fontshare: false,
+			fontsource: false,
+			googleicons: false,
+		},
+		defaults: {
+			formats: ['woff2'],
+			weights: [300, 400, 500],
+			styles: ['normal', 'italic'],
+		},
+		families: [
+			{
+				name: 'LXGW Bright',
+				global: true,
+				provider: 'local',
+				src: [
+					// 正常
+					path.resolve(
+						import.meta.dirname,
+						'./node_modules/@lxgw/LxgwBright/LXGWBright/LXGWBright-Light.woff2',
+					),
+					path.resolve(
+						import.meta.dirname,
+						'./node_modules/@lxgw/LxgwBright/LXGWBright/LXGWBright-Regular.woff2',
+					),
+					path.resolve(
+						import.meta.dirname,
+						'./node_modules/@lxgw/LxgwBright/LXGWBright/LXGWBright-Medium.woff2',
+					),
+
+					// 斜体
+					path.resolve(
+						import.meta.dirname,
+						'./node_modules/@lxgw/LxgwBright/LXGWBright/LXGWBright-Italic.woff2',
+					),
+					path.resolve(
+						import.meta.dirname,
+						'./node_modules/@lxgw/LxgwBright/LXGWBright/LXGWBright-LightItalic.woff2',
+					),
+					path.resolve(
+						import.meta.dirname,
+						'./node_modules/@lxgw/LxgwBright/LXGWBright/LXGWBright-MediumItalic.woff2',
+					),
+				],
+			},
+		],
+	},
 	devtools: {
 		enabled: !isProduction,
 	},
@@ -75,6 +122,7 @@ export default defineNuxtConfig({
 				forceConsistentCasingInFileNames: true,
 				noPropertyAccessFromIndexSignature: true,
 			},
+			include: [path.resolve(import.meta.dirname, './eslint.config.ts')],
 		},
 	},
 	experimental: {
@@ -106,15 +154,7 @@ export default defineNuxtConfig({
 			cssMinify: 'lightningcss',
 		},
 		optimizeDeps: {
-			include: [
-				'@vue/devtools-core',
-				'@vue/devtools-kit',
-				'gsap',
-				'axe-core',
-				'remark-emoji',
-				'remark-cjk-friendly',
-				'remark-cjk-friendly-gfm-strikethrough',
-			],
+			include: ['@vue/devtools-core', '@vue/devtools-kit', 'gsap'],
 		},
 	},
 	site: {

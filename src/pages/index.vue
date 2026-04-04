@@ -17,13 +17,13 @@
 					等项目。
 				</span>
 			</p>
-			<List :list="connectList" />
+			<HorizontaLlist :list="connectList" />
 		</div>
 	</div>
 </template>
 
 <script lang="ts" setup>
-import List from './_components/list.vue';
+import type { HorizontaLlist } from '#components';
 import gitubIcon from '@fortawesome/fontawesome-free/svgs/brands/github.svg';
 import discordIcon from '@fortawesome/fontawesome-free/svgs/brands/discord.svg';
 import envelopeIcon from '@fortawesome/fontawesome-free/svgs/solid/envelope.svg';
@@ -34,7 +34,7 @@ useSeoMeta({
 	title: '首页',
 });
 
-const connectList: ComponentProps<typeof List>['list'] = [
+const connectList: ComponentProps<typeof HorizontaLlist>['list'] = [
 	{ name: 'GitHub', icon: markRaw(gitubIcon), url: 'https://github.com/SharpIceX' },
 	{ name: 'BiliBili', icon: markRaw(bilibiliIcon), url: 'https://space.bilibili.com/513364639' },
 	{ name: 'Discord', icon: markRaw(discordIcon), url: 'https://discord.com/users/650534063492431891' },

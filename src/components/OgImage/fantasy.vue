@@ -47,12 +47,28 @@ const { title, description } = defineProps<{
 	position: relative;
 	flex-direction: column;
 	justify-content: center;
-	border: 2px solid @fantasy-line-dim;
-	font-family: 'LXGW Wenkai', ui-serif, serif;
-
 	text-rendering: optimizeLegibility;
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased;
+	border: 2px solid @fantasy-line-dim;
+	font-family:
+		// 默认
+		'LXGW Bright',
+		// 兜底
+		'Noto Sans SC',
+		'Noto Sans CJK SC',
+		'Source Han Sans SC',
+		'Source Han Sans CN',
+		// 系统
+		-apple-system,
+		BlinkMacSystemFont,
+		'Segoe UI',
+		'PingFang SC',
+		// 通用
+		sans-serif,
+		'Apple Color Emoji',
+		'Segoe UI Emoji',
+		'Segoe UI Symbol';
 
 	.header {
 		gap: 12px;

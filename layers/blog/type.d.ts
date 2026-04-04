@@ -4,8 +4,10 @@ declare module 'vue-router' {
 	interface RouteMeta {
 		title: string;
 		tags?: string[];
-		created_at?: string;
-		updated_at?: string;
 		description?: string;
+		time?: {
+			createdAt: string;
+			updatedAt: string;
+		};
 	}
 }

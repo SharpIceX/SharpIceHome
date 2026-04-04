@@ -1,46 +1,100 @@
-import YAML from 'yaml';
 import path from 'node:path';
+import git from 'isomorphic-git';
+import fs from 'node:fs/promises';
+import { logger } from 'nuxt/kit';
 import { fileURLToPath } from 'node:url';
+import { type RouteMeta } from 'vue-router';
 import { joinURL, withTrailingSlash } from 'ufo';
+import { parseMarkdown } from '@nuxtjs/mdc/runtime';
 
 /**
- * 匹配字符串开头可选的空白字符（空格/制表符）紧跟一个换行符
- * # 主要用于移除 Front Matter 分隔符 (---) 后的第一个换行
+ * 格式化时间戳为：yyyy年M月d日 H时m分s秒
  */
-const POST_FRONT_MATTER_NEWLINE = /^[ \t]*\r?\n/;
+function formatTimestamp(dateInput: number | Date): string {
+	const date = typeof dateInput === 'number' ? new Date(dateInput * 1000) : dateInput;
 
-/**
- * 分离 Markdown 中的 Front Matter 和 正文
- * @param content Markdown 内容
- */
-function splitFrontMatter(content: string): { yamlContent?: string; bodyContent: string } {
-	/// 确保开头符合 Front Matter
-	if (!(content.startsWith('---\n') || content.startsWith('---\r\n'))) {
-		return { bodyContent: content };
-	}
+	const opts: Intl.DateTimeFormatOptions = {
+		year: 'numeric',
+		month: 'numeric',
+		day: 'numeric',
+		hour: 'numeric',
+		minute: 'numeric',
+		second: 'numeric',
+		hour12: false,
+	};
 
-	// 查找闭合
-	const endDelimiter = '\n---';
-	const startIndex = content.indexOf('\n', 3);
-	if (startIndex === -1) return { bodyContent: content };
+	const parts = new Intl.DateTimeFormat('zh-CN', opts).formatToParts(date);
+	const m: Record<string, string> = {};
+	parts.forEach((p) => (m[p.type] = p.value));
 
-	const endIndex = content.indexOf(endDelimiter, startIndex);
-
-	if (endIndex === -1) {
-		return { bodyContent: content };
-	}
-
-	// yaml 内容
-	const yamlContent = content.slice(startIndex, endIndex).trim();
-
-	// 正文内容
-	const remainingContent = content.slice(endIndex + endDelimiter.length);
-	const bodyContent = remainingContent.replace(POST_FRONT_MATTER_NEWLINE, '');
-
-	return { yamlContent, bodyContent };
+	return `${m.year}-${m.month}-${m.day} ${m.hour}:${m.minute}`;
 }
 
-export { splitFrontMatter };
+const gitCache = {};
+const gitRootDir = path.resolve(import.meta.dirname, '../../');
+/**
+ * 获取文件创建和最后更新时间
+ * @param filePath 文件路径
+ * @returns 创建和更新后时间
+ */
+async function getTimestamps(filePath: string): Promise<RouteMeta['time']> {
+	const now = formatTimestamp(new Date());
+	const result = {
+		createdAt: now,
+		updatedAt: now,
+	};
+
+	const fileRelativePath = path.relative(gitRootDir, filePath);
+
+	try {
+		const status = await git.status({
+			fs,
+			dir: gitRootDir,
+			cache: gitCache,
+			filepath: fileRelativePath,
+		});
+
+		// absent: 未跟踪
+		// added: 已暂存但未提交
+		if (status === 'absent' || status === 'added') {
+			return result;
+		}
+
+		const commits = await git.log({
+			fs,
+			follow: true,
+			dir: gitRootDir,
+			cache: gitCache,
+			filepath: fileRelativePath,
+		});
+
+		if (commits && commits.length > 0) {
+			// 获取创建时间（最后一次提交记录）
+			const firstCommit = commits.at(-1);
+			if (firstCommit?.commit.author.timestamp) {
+				result.createdAt = formatTimestamp(firstCommit.commit.author.timestamp);
+			}
+
+			// 如果文件没有本地修改，则更新时间取自最新的 commit
+			if (status === 'unmodified') {
+				const latestCommit = commits[0];
+				if (latestCommit?.commit.author.timestamp) {
+					result.updatedAt = formatTimestamp(latestCommit.commit.author.timestamp);
+				}
+			}
+		}
+	} catch (error: unknown) {
+		const message = error instanceof Error ? error.message : String(error);
+
+		if (message.includes('Could not find file')) {
+			logger.warn(`文件“${fileRelativePath}”暂无 Git 提交记录`);
+		} else {
+			logger.error(`从 Git 读取文件“${fileRelativePath}”时间戳失败 :\n ${message}`);
+		}
+	}
+
+	return result;
+}
 
 export default defineNuxtConfig({
 	modules: ['nuxt-nexus', '@nuxtjs/mdc'],
@@ -49,7 +103,23 @@ export default defineNuxtConfig({
 			'remark-cjk-friendly': {},
 			'remark-cjk-friendly-gfm-strikethrough': {},
 		},
+		highlight: {
+			theme: 'nord',
+			wrapperStyle: true,
+		},
+		components: {
+			map: {
+				pre: 'BlogContentPre',
+			},
+		},
 	},
+	components: [
+		{
+			global: true,
+			prefix: 'Blog',
+			path: './components',
+		},
+	],
 	nitro: {
 		// TODO ! 要过滤掉`.mdc`文件
 		publicAssets: [
@@ -59,6 +129,20 @@ export default defineNuxtConfig({
 				dir: path.resolve(import.meta.dirname, './pages'),
 			},
 		],
+	},
+	vite: {
+		optimizeDeps: {
+			include: [
+				// # Start @nuxtjs/mdc
+				'yaml',
+				'@nuxtjs/mdc > remark-mdc > yaml',
+				// # End @nuxtjs/mdc
+
+				'remark-emoji',
+				'remark-cjk-friendly',
+				'remark-cjk-friendly-gfm-strikethrough',
+			],
+		},
 	},
 	hooks: {
 		'pages:extend': (pages) => {
@@ -76,19 +160,21 @@ export default defineNuxtConfig({
 		loader: [
 			{
 				extensions: 'mdc',
-				resolvePagesRoutes: (code, _id) => {
-					const frontMatter = splitFrontMatter(code);
+				resolvePagesRoutes: async (code, id) => {
+					const filePath = id.split('?')[0] || id;
+					const render = await parseMarkdown(code);
 
-					if (frontMatter.yamlContent) return YAML.parse(frontMatter.yamlContent) as Record<string, unknown>;
-
-					return {};
+					return {
+						...render.data,
+						time: await getTimestamps(filePath),
+					};
 				},
 				transformPage: (_code, id) => {
 					const importPath = JSON.stringify(`${id}?raw`);
 
 					return `
 <template>
-	<Blog :blogContent="blogContent" />
+	<BlogMain :blogContent="blogContent" />
 </template>
 
 <script setup>

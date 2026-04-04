@@ -1,5 +1,4 @@
 <template>
-	<!-- TODO: 需要合入 index.vue，并且删除 `.nuxtignore`，因为新版本 Nuxt 会不热重载被忽略的内容 -->
 	<ul class="list">
 		<li v-for="item in list" :key="item.name">
 			<a :href="item.url" target="_blank">
@@ -15,14 +14,14 @@
 <script lang="ts" setup>
 import type { Raw } from 'vue';
 
-interface ListItem {
-	url: string;
-	name: string;
-	icon: Raw<Component>;
-}
+defineOptions({ name: 'HorizontaLlist' });
 
 const { list } = defineProps<{
-	list: ListItem[];
+	list: {
+		url: string;
+		name: string;
+		icon: Raw<Component>;
+	}[];
 }>();
 </script>
 
