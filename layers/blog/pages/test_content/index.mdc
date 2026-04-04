@@ -21,6 +21,14 @@ tags:
 
 ### **_斜体加粗标题_**
 
+## 分隔线
+
+分隔线开始
+
+---
+
+分隔线结束
+
 ## 文本测试
 
 这是一段普通的文本。
@@ -200,11 +208,3 @@ class HelloWorld implements Greeter {
 const greeter = new HelloWorld();
 greeter.sayHello();
 ```
-
-## 分隔线
-
-分隔线开始
-
----
-
-分隔线结束

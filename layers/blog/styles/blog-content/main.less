@@ -1,0 +1,29 @@
+.blog-content {
+	hyphens: auto;
+	line-break: strict;
+	word-break: normal;
+	text-align: justify;
+	overflow-wrap: anywhere;
+	text-autospace: ideograph-alpha;
+
+	// 标题
+	@import './tags/title.less';
+
+	// 普通文本
+	@import './tags/text.less';
+
+	// 表格
+	@import './tags/tables.less';
+
+	// 列表
+	@import './tags/list.less';
+
+	// 引用块
+	@import './tags/blockquote.less';
+
+	// 代码
+	@import './tags/code.less';
+
+	// 分隔线
+	@import './tags/hr.less';
+}

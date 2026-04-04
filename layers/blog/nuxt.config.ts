@@ -97,6 +97,7 @@ async function getTimestamps(filePath: string): Promise<RouteMeta['time']> {
 }
 
 export default defineNuxtConfig({
+	css: [path.resolve(import.meta.dirname, './styles/main.less')],
 	modules: ['nuxt-nexus', '@nuxtjs/mdc'],
 	mdc: {
 		remarkPlugins: {

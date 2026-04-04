@@ -14,7 +14,9 @@
 			{{ copied ? '已复制' : '复制' }}
 		</button>
 
-		<pre :class="$props.class"><slot /></pre>
+		<pre :class="$props.class" tabindex="0" :aria-label="`${language} 代码块`">
+            <slot />
+        </pre>
 	</div>
 </template>
 
@@ -162,84 +164,6 @@ onScopeDispose(() => {
 
 	&:hover .copy-btn {
 		opacity: 0.9;
-	}
-}
-
-:deep(pre.shiki) {
-	margin: unset;
-	overflow-x: auto;
-	position: relative;
-	counter-reset: step;
-	padding-block: 0 0.5rem;
-	border-radius: 0px 0px 16px 16px/ 0px 0px 14px 14px;
-	font-family:
-		// 首选
-		'JetBrains Mono Variable',
-		'JetBrains Mono',
-		// 回退
-		'Fira Code',
-		'Cascadia Code',
-		'Menlo',
-		'Monaco',
-		'SF Mono',
-		'Consolas',
-		'Lucida Console',
-		'Courier New',
-		'Ubuntu Mono',
-		'Liberation Mono',
-		ui-monospace,
-		SFMono-Regular,
-		'Roboto Mono',
-		monospace;
-
-	&::after {
-		top: 0;
-		bottom: 0;
-		width: 1px;
-		content: '';
-		left: 3.3em;
-		position: absolute;
-		pointer-events: none;
-		background-color: oklch(from @fantasy-accent l c h / 0.2);
-	}
-
-	code {
-		display: block;
-
-		.line {
-			line-height: 1.5;
-			position: relative;
-			padding: 0 1em 0 3.8em;
-
-			&::before {
-				left: 0;
-				opacity: 0.6;
-				width: 3.2em;
-				position: absolute;
-				text-align: center;
-				content: counter(step);
-				counter-increment: step;
-				color: @fantasy-accent;
-			}
-		}
-	}
-
-	// # 小屏幕
-	@media (max-width: 1024px) {
-		border-radius: 0px 0px 12px 12px / 0px 0px 10px 10px;
-
-		&::after {
-			display: none;
-		}
-
-		code {
-			.line {
-				padding-left: 1em;
-				&::before {
-					display: none;
-				}
-			}
-		}
 	}
 }
 </style>

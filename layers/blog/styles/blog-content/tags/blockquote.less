@@ -1,0 +1,16 @@
+@import (reference) '~/styles/color.less';
+
+blockquote {
+	clear: both;
+	margin: 1rem 0;
+	font-style: italic;
+	border-radius: 4px;
+	padding: 0.75rem 1.25rem;
+	border-left: 4px solid @fantasy-accent;
+	background-color: oklch(from @fantasy-accent l c h / 0.1);
+
+	p {
+		margin: 0;
+		color: inherit;
+	}
+}

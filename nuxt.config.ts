@@ -93,6 +93,7 @@ export default defineNuxtConfig({
 		],
 	},
 	typescript: {
+		includeWorkspace: true,
 		tsConfig: {
 			compilerOptions: {
 				/* 构建 */
@@ -122,7 +123,6 @@ export default defineNuxtConfig({
 				forceConsistentCasingInFileNames: true,
 				noPropertyAccessFromIndexSignature: true,
 			},
-			include: [path.resolve(import.meta.dirname, './eslint.config.ts')],
 		},
 	},
 	experimental: {
