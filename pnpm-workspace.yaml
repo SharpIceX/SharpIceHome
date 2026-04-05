@@ -1,8 +1,13 @@
-onlyBuiltDependencies:
+shellEmulator: true
+shamefullyHoist: true
+disallowWorkspaceCycles: true
+
+ignoredBuiltDependencies:
   - '@parcel/watcher'
   - esbuild
+  - unrs-resolver
+
+onlyBuiltDependencies:
   - less
   - sharp
-  - unrs-resolver
-  - vue-demi
   - workerd

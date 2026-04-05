@@ -1,0 +1,50 @@
+@import (reference) '~/styles/color.less';
+
+// 普通文本
+p,
+span {
+	line-height: 1.65;
+	margin-bottom: 1rem;
+}
+
+// 超链接
+a {
+	text-decoration: none;
+	color: oklch(from @fantasy-cyan l calc(c * 0.8) h);
+	transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+
+	&:visited {
+		color: oklch(from @fantasy-cyan l calc(c * 0.8) h);
+	}
+
+	&:hover {
+		color: oklch(from @fantasy-cyan calc(l + 0.05) c h);
+		text-shadow: 0 0 8px oklch(from @fantasy-cyan l c h / 0.4);
+	}
+
+	&:active {
+		text-shadow: none;
+		color: @fantasy-accent-active;
+	}
+
+	&[href^='mailto:'] {
+		color: oklch(from @fantasy-cyan l calc(c * 0.8) h);
+	}
+}
+
+// 删除线
+del {
+	position: relative;
+	text-decoration: none;
+
+	&::after {
+		content: '';
+		left: 0;
+		right: 0;
+		top: 50%;
+		height: 1px;
+		position: absolute;
+		background: currentColor;
+		transform: translateY(-50%);
+	}
+}

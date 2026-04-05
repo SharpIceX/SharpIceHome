@@ -51,7 +51,6 @@ const handleError = async () => {
 	}
 
 	.message {
-		margin-top: -1rem;
 		font-size: 1.2rem;
 		color: @fantasy-text-muted;
 	}

@@ -1,0 +1,64 @@
+@import (reference) '~/styles/color.less';
+
+table {
+	display: table;
+	overflow: hidden;
+	border-spacing: 0;
+	border-radius: 8px;
+	margin: 1.5rem auto;
+	border-collapse: separate;
+	border: 1px solid @fantasy-line-bright;
+	background-color: oklch(from @fantasy-bg-secondary calc(l - 0.01) c h);
+
+	thead {
+		background-color: oklch(from @fantasy-accent 0.35 0.05 h);
+
+		th {
+			font-weight: 700;
+			padding: 12px 16px;
+			white-space: nowrap;
+			color: @fantasy-accent;
+			border-right: 1px solid oklch(from @fantasy-line-dim l c h / 0.5);
+			border-bottom: 1.5px solid oklch(from @fantasy-accent l c h / 0.6);
+
+			&:last-child {
+				border-right: none;
+			}
+		}
+	}
+
+	tbody tr {
+		&:nth-child(even) {
+			background-color: @fantasy-bg-secondary;
+		}
+
+		&:hover {
+			background-color: oklch(from @fantasy-cyan 0.3 0.03 h / 0.2);
+		}
+
+		td {
+			padding: 10px 16px;
+			color: @fantasy-text;
+			border-right: 1px solid oklch(from @fantasy-line-dim l c h / 0.6);
+			border-bottom: 1px solid oklch(from @fantasy-line-dim l c h / 0.6);
+
+			&:last-child {
+				border-right: none;
+			}
+		}
+
+		&:last-child td {
+			border-bottom: none;
+		}
+	}
+
+	// 对齐属性
+	td[align='center'],
+	th[align='center'] {
+		text-align: center;
+	}
+	td[align='right'],
+	th[align='right'] {
+		text-align: right;
+	}
+}
