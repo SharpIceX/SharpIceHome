@@ -1,0 +1,25 @@
+@import (reference) '~/styles/color.less';
+
+.g-separator {
+	height: 1px;
+	width: 100%;
+	border: none;
+	margin: 2.5rem 0;
+	background-size: 8px 1px;
+	background-image: linear-gradient(
+		to right,
+		@fantasy-line-dim 0%,
+		@fantasy-line-dim 30%,
+		transparent 30%,
+		transparent 100%
+	);
+
+	&::before {
+		content: '';
+		width: 12px;
+		height: 2px;
+		display: block;
+		margin-bottom: 4px;
+		background: @fantasy-accent;
+	}
+}

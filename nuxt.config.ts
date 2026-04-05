@@ -162,7 +162,6 @@ export default defineNuxtConfig({
 		name: '锐冰',
 		currentLocale: 'zh-Hans',
 		url: 'https://sharpice.top',
-		description: '循此苦旅，终抵群星',
 	},
 	sitemap: {
 		xsl: false,
@@ -235,6 +234,7 @@ export default defineNuxtConfig({
 				dir: 'ltr',
 			},
 			meta: [
+				// 关键词
 				{
 					name: 'keywords',
 					content: 'SharpIce, 锐冰, 幻想生物, 个人网站',

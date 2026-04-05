@@ -2,15 +2,15 @@
 	<article class="blog-container">
 		<BlogHeader />
 
-		<hr class="header-separator-line" />
+		<hr class="g-separator" />
 
-		<BlogContent :blog-content="prop.blogContent" />
+		<BlogContent :blog-content="props.blogContent" />
 	</article>
 </template>
 
 <script lang="ts" setup>
 defineOptions({ name: 'BlogMain' });
-const prop = defineProps<{ blogContent: string }>();
+const props = defineProps<{ blogContent: string }>();
 </script>
 
 <style lang="less" scoped>
@@ -30,30 +30,6 @@ const prop = defineProps<{ blogContent: string }>();
 		width: 100%;
 		padding: 1.5rem;
 		border-radius: unset;
-	}
-
-	.header-separator-line {
-		height: 1px;
-		width: 100%;
-		border: none;
-		margin: 2.5rem 0;
-		background-size: 8px 1px;
-		background-image: linear-gradient(
-			to right,
-			@fantasy-line-dim 0%,
-			@fantasy-line-dim 30%,
-			transparent 30%,
-			transparent 100%
-		);
-
-		&::before {
-			content: '';
-			width: 12px;
-			height: 2px;
-			display: block;
-			margin-bottom: 4px;
-			background: @fantasy-accent;
-		}
 	}
 }
 </style>

@@ -16,7 +16,6 @@ defineOptions({ name: 'AppSidebar' });
 const navRoutes: { name: string; path: string }[] = [
 	{ name: '首页', path: '/' },
 	{ name: '博客', path: '/blog' },
-	{ name: '关于我', path: '/blog/about' },
 	{ name: '朋友们', path: '/friends' },
 ];
 </script>

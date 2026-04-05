@@ -18,7 +18,7 @@
 			<tagsIcon aria-label="标签：" />
 			<ul>
 				<li v-for="item in $route.meta['tags']" :key="item">
-					<NuxtLink :to="`/特殊页面/tags/${item}`">{{ item }}</NuxtLink>
+					<NuxtLink :to="`/tags/${item}`">{{ item }}</NuxtLink>
 				</li>
 			</ul>
 		</div>

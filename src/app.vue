@@ -15,8 +15,12 @@ import AppFooter from './app/footer.vue';
 import AppSidebar from './app/sidebar.vue';
 
 defineOptions({ name: 'App' });
+
+const route = useRoute();
+
 defineOgImage({
 	component: 'fantasy',
+	props: route.meta,
 });
 
 useHead({
@@ -29,12 +33,17 @@ useHead({
 		},
 	],
 });
+
+useSeoMeta({
+	description: () => route.meta.description || '循此苦旅，终抵群星',
+	ogDescription: () => route.meta.description || '循此苦旅，终抵群星',
+});
 </script>
 
 <style lang="less">
 #sharpice_app {
 	display: flex;
-	height: 100dvh;
+	min-height: 100dvh;
 	isolation: isolate;
 	position: relative;
 	flex-direction: column;
@@ -67,7 +76,6 @@ main {
 	flex: -1;
 	opacity: 0;
 	width: 100%;
-	overflow: auto;
 	animation: slide-up-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) 1.5s forwards;
 }
 </style>

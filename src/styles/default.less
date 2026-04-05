@@ -2,10 +2,8 @@
 @import (reference) '~/styles/color.less';
 
 body {
-	overflow: hidden;
 	color: @fantasy-text;
 	scroll-behavior: smooth;
-	overscroll-behavior-y: none;
 	font-synthesis: weight style;
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased;
@@ -42,7 +40,7 @@ a {
 	transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 
 	&:visited {
-		color: inherit;
+		color: @fantasy-accent;
 	}
 
 	&:hover {
@@ -56,7 +54,7 @@ a {
 	}
 
 	&[href^='mailto:'] {
-		color: inherit;
+		color: @fantasy-accent;
 	}
 }
 

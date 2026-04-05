@@ -85,16 +85,15 @@ const connectList: ComponentProps<typeof HorizontaLlist>['list'] = [
 		position: relative;
 		&::after {
 			right: 0;
+			width: 80%;
 			content: '';
 			height: 3px;
-			max-width: 80%;
 			transform: none;
 			bottom: -0.5rem;
 			position: absolute;
 			border-radius: 2px;
 			background-color: @fantasy-accent-soft;
 			box-shadow: 0 0 8px @fantasy-glow-color;
-			animation: width-expand 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
 		}
 	}
 
