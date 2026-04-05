@@ -5,7 +5,8 @@ declare module 'vue-router' {
 		title: string;
 		tags?: string[];
 		description?: string;
-		time?: {
+		type?: 'blog' | string;
+		time: {
 			createdAt: string;
 			updatedAt: string;
 		};

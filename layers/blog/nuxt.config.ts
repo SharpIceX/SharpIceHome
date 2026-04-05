@@ -146,13 +146,12 @@ export default defineNuxtConfig({
 		},
 	},
 	hooks: {
-		'pages:extend': (pages) => {
+		'pages:resolved': (pages) => {
 			const layerDir = fileURLToPath(new URL('.', import.meta.url));
 			pages.forEach((page) => {
 				if (page.file?.startsWith(layerDir)) {
 					const joined = withTrailingSlash(joinURL('/blog', page.path));
-					page.alias = joined;
-					page.path = decodeURI(joined);
+					page.path = joined;
 				}
 			});
 		},
@@ -167,7 +166,9 @@ export default defineNuxtConfig({
 
 					return {
 						...render.data,
+						type: 'blog',
 						time: await getTimestamps(filePath),
+						tags: [].concat(render.data.tags || []),
 					};
 				},
 				transformPage: (_code, id) => {

@@ -3,6 +3,7 @@ import path from 'node:path';
 import git from 'isomorphic-git';
 import process from 'node:process';
 
+// TODO ！ 解决路由 CJK 编码问题
 // TODO ！ 让 ogImage 字体和 nuxt/fnts 联动
 
 const isProduction = process.env.NODE_ENV === 'production';
@@ -296,6 +297,19 @@ export default defineNuxtConfig({
 					href: '/favicon.ico',
 				},
 			],
+		},
+	},
+	hooks: {
+		// TODO !!! 修复 CJK 路径编码问题，可能在未来的 Nuxt 和 Vue 基础设施中彻底解决
+		'pages:extend': (pages) => {
+			pages.forEach((page) => {
+				const decoded = decodeURI(page.path);
+				if (decoded !== page.path) {
+					if (typeof page.alias === 'string') page.alias = [page.alias];
+					page.alias ||= [];
+					page.alias.push(decoded);
+				}
+			});
 		},
 	},
 });
