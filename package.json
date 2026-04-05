@@ -43,7 +43,6 @@
 		"@fortawesome/fontawesome-free": "^7.2.0",
 		"@lxgw/LxgwBright": "github:lxgw/LxgwBright#v5.528",
 		"gsap": "^3.14.2",
-		"material-icon-theme": "^5.33.1",
 		"modern-normalize": "^3.0.1",
 		"nuxt": "^4.4.2"
 	},

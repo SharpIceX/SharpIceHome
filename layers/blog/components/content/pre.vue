@@ -14,9 +14,7 @@
 			{{ copied ? '已复制' : '复制' }}
 		</button>
 
-		<pre :class="$props.class" tabindex="0" :aria-label="`${language} 代码块`">
-            <slot />
-        </pre>
+		<pre :class="$props.class" tabindex="0" :aria-label="`${language} 代码块`"><slot /></pre>
 	</div>
 </template>
 

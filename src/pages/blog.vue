@@ -12,9 +12,9 @@
 				</p>
 
 				<div class="post-time">
-					<p>创建：{{ blog.meta.time.createdAt }}</p>
+					<p>创建时间：{{ blog.meta.time.createdAt }}</p>
 					<p v-if="blog.meta.time.createdAt !== blog.meta.time.updatedAt">
-						更新：{{ blog.meta.time.updatedAt }}
+						更新时间：{{ blog.meta.time.updatedAt }}
 					</p>
 				</div>
 
