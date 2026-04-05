@@ -1,14 +1,14 @@
 import path from 'node:path';
+import { joinURL } from 'ufo';
 import git from 'isomorphic-git';
 import fs from 'node:fs/promises';
 import { logger } from 'nuxt/kit';
 import { fileURLToPath } from 'node:url';
 import { type RouteMeta } from 'vue-router';
-import { joinURL, withTrailingSlash } from 'ufo';
 import { parseMarkdown } from '@nuxtjs/mdc/runtime';
 
 /**
- * 格式化时间戳为：yyyy年M月d日 H时m分s秒
+ * 格式化时间戳为：YYYY-MM-D HH:mm
  */
 function formatTimestamp(dateInput: number | Date): string {
 	const date = typeof dateInput === 'number' ? new Date(dateInput * 1000) : dateInput;
@@ -150,8 +150,9 @@ export default defineNuxtConfig({
 			const layerDir = fileURLToPath(new URL('.', import.meta.url));
 			pages.forEach((page) => {
 				if (page.file?.startsWith(layerDir)) {
-					const joined = withTrailingSlash(joinURL('/blog', page.path));
+					const joined = joinURL('/blog', page.path);
 					page.path = joined;
+					page.mode = 'server';
 				}
 			});
 		},
@@ -176,7 +177,7 @@ export default defineNuxtConfig({
 
 					return `
 <template>
-	<BlogMain :blogContent="blogContent" />
+	<BlogMain :blogContent="blogContent" :meta="$route.meta" />
 </template>
 
 <script setup>

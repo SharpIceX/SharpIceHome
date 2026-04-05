@@ -1,6 +1,6 @@
 <template>
 	<article class="blog-container">
-		<BlogHeader />
+		<BlogHeader :meta="props.meta" />
 
 		<hr class="g-separator" />
 
@@ -9,8 +9,14 @@
 </template>
 
 <script lang="ts" setup>
+import type { RouteMeta } from 'vue-router';
+
 defineOptions({ name: 'BlogMain' });
-const props = defineProps<{ blogContent: string }>();
+
+const props = defineProps<{
+	meta: RouteMeta;
+	blogContent: string;
+}>();
 </script>
 
 <style lang="less" scoped>

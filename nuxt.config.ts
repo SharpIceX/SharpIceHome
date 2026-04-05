@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import git from 'isomorphic-git';
 import process from 'node:process';
+import type { pluginOptions as postcssPresetEnvOptions } from 'postcss-preset-env';
 
 // TODO ！ 解决路由 CJK 编码问题
 // TODO ！ 让 ogImage 字体和 nuxt/fnts 联动
@@ -129,7 +130,6 @@ export default defineNuxtConfig({
 	experimental: {
 		headNext: true,
 		typedPages: true,
-		payloadExtraction: false,
 		asyncEntry: isProduction,
 		writeEarlyHints: isProduction,
 		inlineRouteRules: isProduction,
@@ -143,6 +143,21 @@ export default defineNuxtConfig({
 	devServer: {
 		port: 8600,
 		host: '127.0.0.1',
+	},
+	postcss: {
+		plugins: {
+			autoprefixer: false,
+			'postcss-preset-env': {
+				stage: 1,
+				features: {
+					'nesting-rules': false,
+					'relative-color-syntax': true,
+				},
+			} satisfies postcssPresetEnvOptions,
+		},
+	},
+	linkChecker: {
+		skipInspections: ['no-uppercase-chars', 'no-non-ascii-chars'],
 	},
 	vite: {
 		resolve: {
@@ -301,9 +316,10 @@ export default defineNuxtConfig({
 	},
 	hooks: {
 		// TODO !!! 修复 CJK 路径编码问题，可能在未来的 Nuxt 和 Vue 基础设施中彻底解决
+		// TODO !!! 目前 CJK 全都无法正常使用
 		'pages:extend': (pages) => {
 			pages.forEach((page) => {
-				const decoded = decodeURI(page.path);
+				const decoded = decodeURIComponent(page.path);
 				if (decoded !== page.path) {
 					if (typeof page.alias === 'string') page.alias = [page.alias];
 					page.alias ||= [];

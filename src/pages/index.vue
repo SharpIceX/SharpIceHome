@@ -7,6 +7,7 @@
 				<span class="identity">锐冰</span>
 				<featherPointedIcon class="icon" />
 			</h1>
+
 			<p class="info">
 				<span class="label">关于我</span>
 				<span class="content">
@@ -17,13 +18,22 @@
 					等项目。
 				</span>
 			</p>
-			<HorizontaLlist :list="connectList" />
+
+			<ul class="connect-list">
+				<li v-for="item in connectList" :key="item.name">
+					<a :href="item.url" target="_blank">
+						<span aria-hidden="true" class="icon">
+							<component :is="item.icon" />
+						</span>
+						<span>{{ item.name }}</span>
+					</a>
+				</li>
+			</ul>
 		</div>
 	</div>
 </template>
 
 <script lang="ts" setup>
-import type { HorizontaLlist } from '#components';
 import gitubIcon from '@fortawesome/fontawesome-free/svgs/brands/github.svg';
 import discordIcon from '@fortawesome/fontawesome-free/svgs/brands/discord.svg';
 import envelopeIcon from '@fortawesome/fontawesome-free/svgs/solid/envelope.svg';
@@ -34,7 +44,7 @@ useSeoMeta({
 	title: '首页',
 });
 
-const connectList: ComponentProps<typeof HorizontaLlist>['list'] = [
+const connectList = [
 	{ name: 'GitHub', icon: markRaw(gitubIcon), url: 'https://github.com/SharpIceX' },
 	{ name: 'BiliBili', icon: markRaw(bilibiliIcon), url: 'https://space.bilibili.com/513364639' },
 	{ name: 'Discord', icon: markRaw(discordIcon), url: 'https://discord.com/users/650534063492431891' },
@@ -133,6 +143,33 @@ const connectList: ComponentProps<typeof HorizontaLlist>['list'] = [
 	// # 小屏幕
 	@media (max-width: 1024px) {
 		flex-direction: column;
+	}
+}
+
+.connect-list {
+	gap: 1rem;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-wrap: wrap;
+	font-size: 1.1rem;
+	user-select: none;
+	flex-direction: row;
+	list-style-type: none;
+	justify-content: center;
+
+	li {
+		display: block;
+
+		a {
+			display: flex;
+			column-gap: 0.5rem;
+
+			.icon {
+				display: flex;
+				align-items: center;
+			}
+		}
 	}
 }
 </style>

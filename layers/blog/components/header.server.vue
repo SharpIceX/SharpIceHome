@@ -1,23 +1,23 @@
 <template>
 	<header class="blog-header">
-		<h1 class="title">{{ $route.meta['title'] }}</h1>
-		<p v-if="$route.meta['description']" class="description">{{ $route.meta['description'] }}</p>
+		<h1 class="title">{{ props.meta['title'] }}</h1>
+		<p v-if="props.meta['description']" class="description">{{ props.meta['description'] }}</p>
 
 		<ul class="metadata">
 			<li class="time">
 				<span>创建时间：</span>
-				<span>{{ $route.meta['time'].createdAt }}</span>
+				<span>{{ props.meta['time'].createdAt }}</span>
 			</li>
-			<li v-if="$route.meta['time'].createdAt !== $route.meta['time'].updatedAt" class="time">
+			<li v-if="props.meta['time'].createdAt !== props.meta['time'].updatedAt" class="time">
 				<span>更新时间：</span>
-				<span>{{ $route.meta['time'].updatedAt }}</span>
+				<span>{{ props.meta['time'].updatedAt }}</span>
 			</li>
 		</ul>
 
-		<div v-if="$route.meta['tags']" class="tags">
+		<div v-if="props.meta['tags']" class="tags">
 			<tagsIcon aria-label="标签：" />
 			<ul>
-				<li v-for="item in $route.meta['tags']" :key="item">
+				<li v-for="item in props.meta['tags']" :key="item">
 					<NuxtLink :to="`/tags/${item}`">{{ item }}</NuxtLink>
 				</li>
 			</ul>
@@ -26,9 +26,14 @@
 </template>
 
 <script lang="ts" setup>
+import type { RouteMeta } from 'vue-router';
 import tagsIcon from '@fortawesome/fontawesome-free/svgs/solid/tags.svg';
 
 defineOptions({ name: 'BlogHeader' });
+
+const props = defineProps<{
+	meta: RouteMeta;
+}>();
 </script>
 
 <style lang="less" scoped>

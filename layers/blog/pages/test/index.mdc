@@ -1,10 +1,10 @@
 ---
-title: mdc 渲染测试2
-description: 这是一个测试 mdc 渲染的页面2
+title: mdc 渲染测试
+description: 这是一个测试 mdc 渲染的页面
 tags:
-  - 测试
-  - 测试2
-  - 测试3
+  - Test
+  - Test2
+  - Test3
 ---
 
 ## 标题 1.2 (h2)

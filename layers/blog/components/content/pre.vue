@@ -2,7 +2,7 @@
 	<div ref="root" class="code-container">
 		<div class="code-header">
 			<p v-if="filename" class="code-filename">{{ filename }}</p>
-			<p class="code-lang">{{ language || '纯文本' }}</p>
+			<p class="code-lang">{{ language }}</p>
 		</div>
 
 		<button
@@ -28,7 +28,7 @@ defineProps({
 	},
 	language: {
 		type: String,
-		default: null,
+		default: '纯文本',
 	},
 	filename: {
 		type: String,
