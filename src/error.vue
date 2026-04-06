@@ -30,11 +30,15 @@ const handleError = async () => {
 
 .error-container {
 	width: 100%;
-	height: 100%;
 	display: flex;
+	height: 100dvh;
+	word-break: normal;
 	align-items: center;
 	color: @fantasy-text;
+	white-space: pre-wrap;
+	font-family: monospace;
 	flex-direction: column;
+	overflow-wrap: anywhere;
 	justify-content: center;
 	background-color: @fantasy-bg-primary;
 

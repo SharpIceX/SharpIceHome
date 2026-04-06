@@ -7,6 +7,7 @@
 					:href="getRefUrl(item.url)"
 					target="_blank"
 					class="friend-card"
+					rel="noopener noreferrer"
 					@dragstart="handleDragStart($event, item.title)">
 					<div v-if="item.avatar" aria-hidden="true" class="avatar-container">
 						<img

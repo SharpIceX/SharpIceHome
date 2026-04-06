@@ -4,9 +4,6 @@ import git from 'isomorphic-git';
 import process from 'node:process';
 import type { pluginOptions as postcssPresetEnvOptions } from 'postcss-preset-env';
 
-// TODO ！ 解决路由 CJK 编码问题
-// TODO ！ 让 ogImage 字体和 nuxt/fnts 联动
-
 const isProduction = process.env.NODE_ENV === 'production';
 
 export default defineNuxtConfig({
@@ -18,59 +15,9 @@ export default defineNuxtConfig({
 	srcDir: path.resolve(import.meta.dirname, './src'),
 	buildId: await git.resolveRef({ fs, dir: import.meta.dirname, ref: 'HEAD' }),
 	css: ['~/styles/main.less'],
-	modules: ['nuxt-svgo', '@nuxt/eslint', '@nuxtjs/seo', '@nuxt/a11y', '@nuxt/fonts'],
-	fonts: {
-		provider: 'local',
-		providers: {
-			npm: false,
-			adobe: false,
-			bunny: false,
-			google: false,
-			fontshare: false,
-			fontsource: false,
-			googleicons: false,
-		},
-		defaults: {
-			formats: ['woff2'],
-			weights: [300, 400, 500],
-			styles: ['normal', 'italic'],
-		},
-		families: [
-			{
-				name: 'LXGW Bright',
-				global: true,
-				provider: 'local',
-				src: [
-					// 正常
-					path.resolve(
-						import.meta.dirname,
-						'./node_modules/@lxgw/LxgwBright/LXGWBright/LXGWBright-Light.woff2',
-					),
-					path.resolve(
-						import.meta.dirname,
-						'./node_modules/@lxgw/LxgwBright/LXGWBright/LXGWBright-Regular.woff2',
-					),
-					path.resolve(
-						import.meta.dirname,
-						'./node_modules/@lxgw/LxgwBright/LXGWBright/LXGWBright-Medium.woff2',
-					),
-
-					// 斜体
-					path.resolve(
-						import.meta.dirname,
-						'./node_modules/@lxgw/LxgwBright/LXGWBright/LXGWBright-Italic.woff2',
-					),
-					path.resolve(
-						import.meta.dirname,
-						'./node_modules/@lxgw/LxgwBright/LXGWBright/LXGWBright-LightItalic.woff2',
-					),
-					path.resolve(
-						import.meta.dirname,
-						'./node_modules/@lxgw/LxgwBright/LXGWBright/LXGWBright-MediumItalic.woff2',
-					),
-				],
-			},
-		],
+	modules: ['nuxt-svgo', '@nuxt/eslint', '@nuxtjs/seo', '@nuxt/a11y'],
+	alias: {
+		$: path.resolve(import.meta.dirname, './node_modules'),
 	},
 	devtools: {
 		enabled: !isProduction,
@@ -130,6 +77,7 @@ export default defineNuxtConfig({
 	experimental: {
 		headNext: true,
 		typedPages: true,
+		componentIslands: true,
 		asyncEntry: isProduction,
 		writeEarlyHints: isProduction,
 		inlineRouteRules: isProduction,
@@ -238,7 +186,31 @@ export default defineNuxtConfig({
 	svgo: {
 		dts: true,
 		global: false,
-		defaultImport: 'component',
+		defaultImport: 'componentext',
+		svgoConfig: {
+			plugins: [
+				{
+					name: 'preset-default',
+					params: {
+						overrides: {
+							removeViewBox: false,
+							cleanupIds: {
+								minify: true,
+							},
+							convertPathData: {
+								forceAbsolutePath: false,
+								utilizeAbsolute: false,
+							},
+							mergePaths: {
+								floatPrecision: 2,
+							},
+						},
+					},
+				},
+				'removeDimensions',
+				'sortAttrs',
+			],
+		},
 	},
 	app: {
 		rootId: `sharpice_app`,

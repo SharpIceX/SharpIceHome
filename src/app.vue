@@ -49,7 +49,12 @@ useSeoMeta({
 	flex-direction: column;
 }
 
-// # 页面切换动效
+/** 消除 Nuxt Island 的代理包装层干扰  */
+main > div:not([class]) {
+	display: contents;
+}
+
+/** 页面切换动效 */
 .page-fade-enter-active,
 .page-fade-leave-active {
 	transition: opacity 0.3s ease;
@@ -66,7 +71,7 @@ useSeoMeta({
 	min-height: 0;
 	display: flex;
 
-	// # 小屏幕
+	/** 小屏幕 */
 	@media (max-width: 1024px) {
 		flex-direction: column;
 	}
