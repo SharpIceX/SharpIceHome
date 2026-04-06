@@ -1,5 +1,6 @@
 import path from 'node:path';
 import { joinURL } from 'ufo';
+import { DateTime } from 'luxon';
 import git from 'isomorphic-git';
 import fs from 'node:fs/promises';
 import { logger } from 'nuxt/kit';
@@ -7,38 +8,15 @@ import { fileURLToPath } from 'node:url';
 import { type RouteMeta } from 'vue-router';
 import { parseMarkdown } from '@nuxtjs/mdc/runtime';
 
-/**
- * 格式化时间戳为：YYYY-MM-D HH:mm
- */
-function formatTimestamp(dateInput: number | Date): string {
-	const date = typeof dateInput === 'number' ? new Date(dateInput * 1000) : dateInput;
-
-	const opts: Intl.DateTimeFormatOptions = {
-		year: 'numeric',
-		month: 'numeric',
-		day: 'numeric',
-		hour: 'numeric',
-		minute: 'numeric',
-		second: 'numeric',
-		hour12: false,
-	};
-
-	const parts = new Intl.DateTimeFormat('zh-CN', opts).formatToParts(date);
-	const m: Record<string, string> = {};
-	parts.forEach((p) => (m[p.type] = p.value));
-
-	return `${m.year}-${m.month}-${m.day} ${m.hour}:${m.minute}`;
-}
-
 const gitCache = {};
 const gitRootDir = path.resolve(import.meta.dirname, '../../');
 /**
  * 获取文件创建和最后更新时间
  * @param filePath 文件路径
- * @returns 创建和更新后时间
+ * @returns 创建和更新后时间，采用 ISO 8601 格式，UTC+08时区
  */
 async function getTimestamps(filePath: string): Promise<RouteMeta['time']> {
-	const now = formatTimestamp(new Date());
+	const now = DateTime.now().setZone('Asia/Shanghai').toISO()!;
 	const result = {
 		createdAt: now,
 		updatedAt: now,
@@ -69,18 +47,25 @@ async function getTimestamps(filePath: string): Promise<RouteMeta['time']> {
 		});
 
 		if (commits && commits.length > 0) {
-			// 获取创建时间（最后一次提交记录）
-			const firstCommit = commits.at(-1);
-			if (firstCommit?.commit.author.timestamp) {
-				result.createdAt = formatTimestamp(firstCommit.commit.author.timestamp);
+			// 获取最后一次提交时间 (更新时间)
+			const latestCommit = commits[0];
+			if (latestCommit?.commit.author.timestamp) {
+				result.updatedAt = DateTime.fromSeconds(latestCommit.commit.author.timestamp)
+					.setZone('Asia/Shanghai')
+					.toISO()!;
 			}
 
-			// 如果文件没有本地修改，则更新时间取自最新的 commit
-			if (status === 'unmodified') {
-				const latestCommit = commits[0];
-				if (latestCommit?.commit.author.timestamp) {
-					result.updatedAt = formatTimestamp(latestCommit.commit.author.timestamp);
-				}
+			// 获取创建时间
+			const firstCommit = commits.at(-1);
+			if (firstCommit?.commit.author.timestamp) {
+				result.createdAt = DateTime.fromSeconds(firstCommit.commit.author.timestamp)
+					.setZone('Asia/Shanghai')
+					.toISO()!;
+			}
+
+			// 如果有本地未提交的改动，则更新时间设为当前
+			if (status !== 'unmodified') {
+				result.updatedAt = now;
 			}
 		}
 	} catch (error: unknown) {
@@ -152,7 +137,6 @@ export default defineNuxtConfig({
 				if (page.file?.startsWith(layerDir)) {
 					const joined = joinURL('/blog', page.path);
 					page.path = joined;
-					page.mode = 'server';
 				}
 			});
 		},
@@ -166,6 +150,7 @@ export default defineNuxtConfig({
 					const render = await parseMarkdown(code);
 
 					return {
+						mode: 'server',
 						...render.data,
 						type: 'blog',
 						time: await getTimestamps(filePath),

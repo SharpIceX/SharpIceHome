@@ -1,23 +1,23 @@
 <template>
 	<header class="blog-header">
-		<h1 class="title">{{ props.meta['title'] }}</h1>
-		<p v-if="props.meta['description']" class="description">{{ props.meta['description'] }}</p>
+		<h1 class="title">{{ props.meta.title }}</h1>
+		<p v-if="props.meta.description" class="description">{{ props.meta.description }}</p>
 
 		<ul class="metadata">
 			<li class="time">
 				<span>创建时间：</span>
-				<span>{{ props.meta['time'].createdAt }}</span>
+				<span>{{ formatDate(props.meta.time.createdAt) }}</span>
 			</li>
-			<li v-if="props.meta['time'].createdAt !== props.meta['time'].updatedAt" class="time">
+			<li v-if="props.meta.time.createdAt !== props.meta.time.updatedAt" class="time">
 				<span>更新时间：</span>
-				<span>{{ props.meta['time'].updatedAt }}</span>
+				<span>{{ formatDate(props.meta.time.updatedAt) }}</span>
 			</li>
 		</ul>
 
-		<div v-if="props.meta['tags']" class="tags">
+		<div v-if="props.meta.tags" class="tags">
 			<tagsIcon aria-label="标签：" />
 			<ul>
-				<li v-for="item in props.meta['tags']" :key="item">
+				<li v-for="item in props.meta.tags" :key="item">
 					<NuxtLink :to="`/tags/${item}`">{{ item }}</NuxtLink>
 				</li>
 			</ul>
@@ -34,6 +34,19 @@ defineOptions({ name: 'BlogHeader' });
 const props = defineProps<{
 	meta: RouteMeta;
 }>();
+
+/**
+ * 将 ISO 字符串转换为 YYYY-M-D H:m
+ */
+function formatDate(isoString: string) {
+	const d = new Date(isoString);
+	const y = d.getFullYear();
+	const m = d.getMonth() + 1;
+	const date = d.getDate();
+	const hour = d.getHours();
+	const min = d.getMinutes().toString().padStart(2, '0');
+	return `${y}-${m}-${date} ${hour}:${min}`;
+}
 </script>
 
 <style lang="less" scoped>

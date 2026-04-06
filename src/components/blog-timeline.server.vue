@@ -9,7 +9,7 @@
 			<ul class="archive-posts">
 				<li v-for="blog in group.data" :key="blog.path" class="post-item">
 					<NuxtLink :to="blog.path as string" class="post-link">
-						<span class="post-day">{{ getDay(blog.time.createdAt) }}日</span>
+						<span class="post-day">{{ new Date(blog.createdAt).getDate().toString() }}日</span>
 						<h3 class="post-title">{{ blog.title }}</h3>
 					</NuxtLink>
 				</li>
@@ -19,26 +19,16 @@
 </template>
 
 <script lang="ts" setup>
-import type { RouteMeta } from 'vue-router';
-
 const props = defineProps<{
 	data: {
 		title: string;
 		data: {
-			title: string;
 			path: string;
-			time: RouteMeta['time'];
+			title: string;
+			createdAt: string;
 		}[];
 	}[];
 }>();
-
-/** 提取文章当前的几号 */
-const getDay = (dateStr: string = '') => {
-	const [datePart = ''] = dateStr.split(' ');
-	const parts = datePart.split('-');
-	const day = parts[2];
-	return day ? Number.parseInt(day, 10).toString() : '？';
-};
 </script>
 
 <style lang="less" scoped>

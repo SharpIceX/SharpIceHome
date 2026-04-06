@@ -15,7 +15,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { BlogTimeline } from '#components';
+import { BlogTimeline } from '#components';
 import type { RouteRecordNormalized } from 'vue-router';
 import tagsIcon from '@fortawesome/fontawesome-free/svgs/solid/tags.svg';
 
@@ -30,17 +30,17 @@ useSeoMeta({
 
 const timeLineBlogs: ComponentProps<typeof BlogTimeline>['data'] = [];
 let filteredCount = 0;
-{
-	// 提取 Blog
-	const allFiltered = router.getRoutes().filter((r) => {
-		const isBlog = r.meta?.type === 'blog';
-		const tags = (r.meta?.tags as string[]) || [];
-		return isBlog && tags.includes(currentTag);
-	});
 
-	// 去重
+{
+	// 提取符合条件的 Blog 并去重
 	const uniqueBlogs = Array.from(
-		allFiltered
+		router
+			.getRoutes()
+			.filter((r) => {
+				const isBlog = r.meta?.type === 'blog';
+				const tags = (r.meta?.tags as string[]) || [];
+				return isBlog && tags.includes(currentTag as string);
+			})
 			.reduce((map, r) => {
 				if (!map.has(r.path)) {
 					map.set(r.path, r);
@@ -51,19 +51,20 @@ let filteredCount = 0;
 	);
 
 	// 排序
-	const sorted = uniqueBlogs.sort((a, b) =>
-		(b.meta.time?.createdAt || '').localeCompare(a.meta.time?.createdAt || ''),
+	const sorted = uniqueBlogs.sort(
+		(a, b) => new Date(b.meta.time.createdAt).getTime() - new Date(a.meta.time.createdAt).getTime(),
 	);
 
-	// 分组 (YYYY.MM)
+	// 分组
 	const groupMap = new Map<string, (typeof timeLineBlogs)[number]['data']>();
 	for (const blog of sorted) {
-		const createdAt = blog.meta.time?.createdAt || '';
-		const [year, month] = createdAt.split('-');
+		const createdAt = blog.meta.time?.createdAt as string;
+		if (!createdAt) continue;
 
-		if (!year || !month) continue;
-
-		const title = `${year}.${month.padStart(2, '0')}`;
+		const date = new Date(createdAt);
+		const year = date.getFullYear();
+		const month = date.getMonth() + 1;
+		const title = `${year}.${month}`;
 
 		if (!groupMap.has(title)) {
 			groupMap.set(title, []);
@@ -71,8 +72,8 @@ let filteredCount = 0;
 
 		groupMap.get(title)!.push({
 			path: blog.path,
-			time: blog.meta.time,
 			title: blog.meta.title,
+			createdAt: blog.meta.time.createdAt,
 		});
 		filteredCount++;
 	}

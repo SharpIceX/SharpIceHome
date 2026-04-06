@@ -18,7 +18,8 @@
 </template>
 
 <script lang="ts" setup>
-import type { BlogTimeline } from '#components';
+import type { RouteMeta } from 'vue-router';
+import { BlogTimeline } from '#components';
 import tagsIcon from '@fortawesome/fontawesome-free/svgs/solid/tags.svg';
 
 useSeoMeta({
@@ -28,47 +29,54 @@ useSeoMeta({
 const router = useRouter();
 
 // # 获取所有博客并去重
-const allBlogs = Array.from(
-	router
-		.getRoutes()
-		.filter((route) => route.meta?.type === 'blog')
-		.reduce((map, route) => {
-			if (!map.has(route.path)) {
-				map.set(route.path, route);
-			}
-			return map;
-		}, new Map())
-		.values(),
-);
+const allBlogs = (() => {
+	// 筛出博客
+	const rawRoutes = router.getRoutes().filter((route) => route.meta?.type === 'blog');
+
+	// 去重
+	const uniqueMap = new Map<string, RouteMeta>();
+
+	for (const route of rawRoutes) {
+		if (!uniqueMap.has(route.path)) {
+			uniqueMap.set(route.path, {
+				...route.meta,
+				path: route.path,
+			});
+		}
+	}
+
+	return Array.from(uniqueMap.values());
+})();
 
 // # 提取所有不重复的标签
-const allTags = [...new Set(allBlogs.flatMap((blog) => blog.meta?.tags ?? []))].sort();
+const allTags = [...new Set(allBlogs.flatMap((blog) => blog.tags || []))].sort();
 
-// # 按 "YYYY.MM" 分组博客内容
-const timeLineBlogs: ComponentProps<typeof BlogTimeline>['data'] = [];
-{
+// # 按 "YYYY.M" 分组博客内容
+const timeLineBlogs = (() => {
+	const groupMap = new Map<string, ComponentProps<typeof BlogTimeline>['data'][number]['data']>();
+
 	// 排序
-	const sorted = [...allBlogs].sort((a, b) => b.meta.time.createdAt.localeCompare(a.meta.time.createdAt));
+	const sorted = [...allBlogs].sort(
+		(a, b) => new Date(b.time.createdAt).getTime() - new Date(a.time.createdAt).getTime(),
+	);
 
-	const groupMap = new Map<string, (typeof timeLineBlogs)[number]['data']>();
-
-	for (const route of sorted) {
-		const [year, month] = route.meta.time.createdAt.split('-');
-		const title = `${year}.${month.padStart(2, '0')}`;
+	for (const blog of sorted) {
+		const d = new Date(blog.time.createdAt);
+		const title = `${d.getFullYear()}.${d.getMonth() + 1}`;
 
 		if (!groupMap.has(title)) {
 			groupMap.set(title, []);
 		}
 
 		groupMap.get(title)!.push({
-			path: route.path,
-			time: route.meta.time,
-			title: route.meta.title,
+			path: blog.path!,
+			title: blog.title,
+			createdAt: blog.time.createdAt,
 		});
 	}
 
-	timeLineBlogs.push(...Array.from(groupMap, ([title, data]) => ({ title, data })));
-}
+	return Array.from(groupMap, ([title, data]) => ({ title, data }));
+})();
 </script>
 
 <style lang="less" scoped>
