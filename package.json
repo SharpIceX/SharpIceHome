@@ -59,7 +59,7 @@
 		"less": "^4.6.4",
 		"lightningcss": "^1.32.0",
 		"luxon": "^3.7.2",
-		"nuxt-nexus": "1.0.0-rc5",
+		"nuxt-nexus": "1.0.1",
 		"nuxt-svgo": "^4.2.6",
 		"prettier": "^3.8.1",
 		"remark-cjk-friendly": "^2.0.1",
