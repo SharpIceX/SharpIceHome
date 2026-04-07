@@ -2,7 +2,6 @@ import fs from 'node:fs';
 import path from 'node:path';
 import git from 'isomorphic-git';
 import process from 'node:process';
-import type { pluginOptions as postcssPresetEnvOptions } from 'postcss-preset-env';
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -92,30 +91,18 @@ export default defineNuxtConfig({
 		port: 8600,
 		host: '127.0.0.1',
 	},
-	postcss: {
-		plugins: {
-			autoprefixer: false,
-			'postcss-preset-env': {
-				stage: 1,
-				features: {
-					'nesting-rules': false,
-					'relative-color-syntax': true,
-				},
-			} satisfies postcssPresetEnvOptions,
-		},
-	},
 	linkChecker: {
 		skipInspections: ['no-uppercase-chars', 'no-non-ascii-chars'],
 	},
 	vite: {
+		css: {
+			transformer: 'lightningcss',
+		},
 		resolve: {
 			preserveSymlinks: true,
 		},
 		esbuild: {
 			drop: isProduction ? ['console', 'debugger'] : [],
-		},
-		build: {
-			cssMinify: 'lightningcss',
 		},
 		optimizeDeps: {
 			include: ['@vue/devtools-core', '@vue/devtools-kit', 'gsap'],

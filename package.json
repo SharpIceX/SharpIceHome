@@ -61,7 +61,6 @@
 		"luxon": "^3.7.2",
 		"nuxt-nexus": "1.0.0-rc5",
 		"nuxt-svgo": "^4.2.6",
-		"postcss-preset-env": "^11.2.0",
 		"prettier": "^3.8.1",
 		"remark-cjk-friendly": "^2.0.1",
 		"remark-cjk-friendly-gfm-strikethrough": "^2.0.1",
