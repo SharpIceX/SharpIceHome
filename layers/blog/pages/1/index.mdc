@@ -18,29 +18,19 @@ GPU：Intel Arc Graphics @ 2.20 GHz [集成]
 
 ## 1. 运行前准备
 
-### 切换到 xe 驱动
-
-参阅 ArchLinux Wiki 的 [Intel graphics](https://wiki.archlinux.org/title/Intel_graphics) 条目，将驱动从 i915 切换到 xe
-
-### 确保当前用户加入了 video 和 render 用户组
-
-``` bash
-# 检查
-groups
-
-# 没有就加入，需要重新登录
-sudo usermod -aG video,render $USER
-```
-
-## 2. 安装相关软件包
-
 首先你得有一个极佳的网络环境和至少 **20G+** 的可用存储
 
 ``` bash
+# 确保当前用户加入了 video 和 render 用户组
+groups
+
+# 没有就加入，需要重新登录
+# sudo usermod -aG video,render $USER
+
 sudo pacman -S intel-compute-runtime intel-media-driver vulkan-intel intel-oneapi-basekit
 ```
 
-## 3.使用
+## 2. 使用
 
 ``` bash
 # 进入 oneAPI 环境
