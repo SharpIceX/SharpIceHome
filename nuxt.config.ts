@@ -98,6 +98,10 @@ export default defineNuxtConfig({
 		css: {
 			transformer: 'lightningcss',
 		},
+		build: {
+			target: 'esnext',
+			cssMinify: 'lightningcss',
+		},
 		resolve: {
 			preserveSymlinks: true,
 		},
@@ -271,20 +275,6 @@ export default defineNuxtConfig({
 					href: '/favicon.ico',
 				},
 			],
-		},
-	},
-	hooks: {
-		// TODO !!! 修复 CJK 路径编码问题，可能在未来的 Nuxt 和 Vue 基础设施中彻底解决
-		// TODO !!! 目前 CJK 全都无法正常使用
-		'pages:extend': (pages) => {
-			pages.forEach((page) => {
-				const decoded = decodeURIComponent(page.path);
-				if (decoded !== page.path) {
-					if (typeof page.alias === 'string') page.alias = [page.alias];
-					page.alias ||= [];
-					page.alias.push(decoded);
-				}
-			});
 		},
 	},
 });

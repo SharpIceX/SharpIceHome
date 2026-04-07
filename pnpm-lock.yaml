@@ -49,8 +49,8 @@ importers:
         specifier: 10.2.0
         version: 10.2.0(jiti@2.6.1)
       isomorphic-git:
-        specifier: ^1.37.4
-        version: 1.37.4
+        specifier: ^1.37.5
+        version: 1.37.5
       less:
         specifier: ^4.6.4
         version: 4.6.4
@@ -4094,8 +4094,8 @@ packages:
     resolution: {integrity: sha512-FFUtZMpoZ8RqHS3XeXEmHWLA4thH+ZxCv2lOiPIn1Xc7CxrqhWzNSDzD+/chS/zbYezmiwWLdQC09JdQKmthOw==}
     engines: {node: '>=20'}
 
-  isomorphic-git@1.37.4:
-    resolution: {integrity: sha512-fNnCEJtI1refeVxysiuqGP9cubUoLibUS6UIDUWSy5Op6sVdFwGv/SpzfhMFiDkfgYoXKqurZ+LVxEeesy+T0Q==}
+  isomorphic-git@1.37.5:
+    resolution: {integrity: sha512-wek54c5uFvd3WsxewLWt6h0GXKWQh0P8rRXns9bN1rHNjcgCb3+0lmyAsP594NeTtQFeCJQVS9b0kjbkD1l5qg==}
     engines: {node: '>=14.17'}
     hasBin: true
 
@@ -10260,7 +10260,7 @@ snapshots:
 
   isexe@4.0.0: {}
 
-  isomorphic-git@1.37.4:
+  isomorphic-git@1.37.5:
     dependencies:
       async-lock: 1.4.1
       clean-git-ref: 2.0.1

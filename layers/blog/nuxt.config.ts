@@ -133,10 +133,12 @@ export default defineNuxtConfig({
 	hooks: {
 		'pages:resolved': (pages) => {
 			const layerDir = fileURLToPath(new URL('.', import.meta.url));
+
 			pages.forEach((page) => {
 				if (page.file?.startsWith(layerDir)) {
-					const joined = joinURL('/blog', page.path);
-					page.path = joined;
+					if (!page.path.startsWith('/blog')) {
+						page.path = joinURL('/blog', page.path);
+					}
 				}
 			});
 		},

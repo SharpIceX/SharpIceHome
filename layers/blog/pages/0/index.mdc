@@ -3,8 +3,6 @@ title: mdc 渲染测试
 description: 这是一个测试 mdc 渲染的页面
 tags:
   - Test
-  - Test2
-  - Test3
 ---
 
 ## 标题 1.2 (h2)
