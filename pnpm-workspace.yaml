@@ -5,9 +5,6 @@ disallowWorkspaceCycles: true
 ignoredBuiltDependencies:
   - '@parcel/watcher'
   - esbuild
-  - unrs-resolver
-
-onlyBuiltDependencies:
-  - less
   - sharp
   - workerd
+  - unrs-resolver
