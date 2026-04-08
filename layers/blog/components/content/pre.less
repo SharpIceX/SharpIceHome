@@ -1,0 +1,89 @@
+/** TODO 拆开样式是为了解决开发下热重载问题 */
+
+@import (reference) '~/styles/color.less';
+
+.code-container {
+	display: block;
+	position: relative;
+
+	.code-header {
+		display: flex;
+		font-size: 1.2rem;
+		align-items: center;
+		padding: 0.2rem 1.25rem;
+		color: @fantasy-text-muted;
+		justify-content: space-between;
+		background-color: @fantasy-bg-tertiary;
+		border-radius: 16px 16px 0px 0px / 14px 14px 0px 0px;
+
+		.code-filename {
+			margin: 0;
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+		}
+
+		.code-lang {
+			margin: 0;
+			margin-left: auto;
+			text-align: right;
+			font-weight: bold;
+		}
+
+		/** 小屏幕 */
+		@media (max-width: 1024px) {
+			border-radius: 12px 12px 0px 0px / 10px 10px 0px 0px;
+		}
+	}
+
+	.copy-btn {
+		top: 45px;
+		z-index: 1;
+		right: 10px;
+		opacity: 0.6;
+		font-size: 12px;
+		cursor: pointer;
+		padding: 6px 12px;
+		user-select: none;
+		border-radius: 6px;
+		position: absolute;
+		backdrop-filter: blur(8px);
+		color: @fantasy-text-muted;
+		border: 1px solid @fantasy-line-dim;
+		transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+		background-color: oklch(from @fantasy-bg-tertiary l c h / 70%);
+
+		&:hover,
+		&:focus-visible {
+			opacity: 1;
+			outline: none;
+			color: @fantasy-text;
+			border-color: @fantasy-accent;
+			box-shadow: @fantasy-glow-line;
+			background-color: @fantasy-bg-tertiary;
+		}
+
+		/** 触摸屏（移动端） */
+		@media (pointer: coarse) {
+			opacity: 0.8;
+			background-color: @fantasy-bg-tertiary;
+		}
+
+		&:active {
+			transform: scale(0.92);
+			background-color: @fantasy-accent-active;
+		}
+
+		&.is-success {
+			opacity: 1 !important;
+			color: @fantasy-accent-soft;
+			text-shadow: @fantasy-glow-text;
+			border-color: @fantasy-accent-soft;
+			background-color: oklch(from @fantasy-accent-soft l c h / 15%);
+		}
+	}
+
+	&:hover .copy-btn {
+		opacity: 0.9;
+	}
+}

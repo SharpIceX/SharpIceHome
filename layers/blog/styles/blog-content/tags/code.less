@@ -33,15 +33,16 @@ code:not(pre code) {
 	background-color: oklch(from @fantasy-bg-primary 0.15 0.02 h);
 }
 
-pre.shiki {
+pre.shiki,
+pre[class*='language-'] {
 	margin: unset;
 	overflow-x: auto;
 	position: relative;
 	counter-reset: step;
-	padding-block: 0 0.5rem;
 	border-radius: 0px 0px 16px 16px/ 0px 0px 14px 14px;
+	background-color: oklch(from @fantasy-bg-secondary 0.25 0.02 260);
 
-	&::after {
+	&:has(.line)::after {
 		top: 0;
 		bottom: 0;
 		width: 1px;
@@ -55,8 +56,11 @@ pre.shiki {
 	code {
 		display: block;
 
+		&:not(:has(.line)) {
+			padding: 0.8rem 1rem;
+		}
+
 		.line {
-			line-height: 1.5;
 			position: relative;
 			padding: 0 1em 0 3.8em;
 

@@ -8,6 +8,7 @@ import process from 'node:process';
 import { fileURLToPath } from 'node:url';
 import { type RouteMeta } from 'vue-router';
 import { parseMarkdown } from '@nuxtjs/mdc/runtime';
+import { bundledLanguagesInfo, type BundledLanguage } from 'shiki';
 
 const gitCache = {};
 const gitRootDir = path.resolve(import.meta.dirname, '../../');
@@ -92,7 +93,7 @@ export default defineNuxtConfig({
 		},
 		highlight: {
 			theme: 'nord',
-			wrapperStyle: true,
+			langs: bundledLanguagesInfo.map((l) => l.id) as BundledLanguage[],
 		},
 		components: {
 			map: {
@@ -184,7 +185,9 @@ export default defineNuxtConfig({
 
 					return `
 <template>
-	<BlogMain :blogContent="blogContent" :meta="$route.meta" />
+    <div>
+	    <BlogMain :blogContent="blogContent" :meta="$route.meta" />
+	</div>
 </template>
 
 <script setup>
