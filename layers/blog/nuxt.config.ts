@@ -4,6 +4,7 @@ import { DateTime } from 'luxon';
 import git from 'isomorphic-git';
 import fs from 'node:fs/promises';
 import { logger } from 'nuxt/kit';
+import process from 'node:process';
 import { fileURLToPath } from 'node:url';
 import { type RouteMeta } from 'vue-router';
 import { parseMarkdown } from '@nuxtjs/mdc/runtime';
@@ -107,7 +108,6 @@ export default defineNuxtConfig({
 		},
 	],
 	nitro: {
-		// TODO ! 要过滤掉`.mdc`文件
 		publicAssets: [
 			{
 				baseURL: '/blog',
@@ -141,6 +141,26 @@ export default defineNuxtConfig({
 					}
 				}
 			});
+		},
+		// TODO 此处使用暴力的方式删除 dist 内的 `*.mdc` 文件，后续如果可以的话需要优化改进
+		async close(nuxt) {
+			const isGenerate = process.env.npm_lifecycle_event === 'generate' || process.env.NUXT_GENERATE;
+			if (!isGenerate) return;
+
+			const distPath = path.resolve(nuxt.options.rootDir, 'dist');
+			try {
+				const files = [];
+				for await (const entry of fs.glob('**/*.mdc', { cwd: distPath })) {
+					files.push(path.resolve(distPath, entry));
+				}
+
+				if (files.length > 0) {
+					await Promise.all(files.map((file) => fs.unlink(file)));
+				}
+			} catch (error) {
+				const message = error instanceof Error ? error.message : String(error);
+				console.warn('Cleanup skipped or failed:', message);
+			}
 		},
 	},
 	nexus: {
