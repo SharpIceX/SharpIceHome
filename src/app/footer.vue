@@ -2,7 +2,9 @@
 	<footer class="footer-container" role="contentinfo">
 		<p>
 			<span>🥰 来自·</span>
-			<a href="https://github.com/SharpIceX/SharpIceHome" target="_blank"> SharpIceX/SharpIceHome </a>
+			<a href="https://github.com/SharpIceX/SharpIceHome" target="_blank" rel="noopener noreferrer">
+				SharpIceX/SharpIceHome
+			</a>
 		</p>
 	</footer>
 </template>

@@ -53,7 +53,6 @@ const props = defineProps<{
 				height: 10px;
 				flex-shrink: 0;
 				transform: rotate(45deg);
-				background: @fantasy-accent;
 				background-color: transparent;
 				border: 1.5px solid @fantasy-accent;
 				box-shadow: 0 0 8px color-mix(in oklch, @fantasy-accent 40%, transparent);
