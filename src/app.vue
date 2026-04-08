@@ -15,8 +15,12 @@ import AppFooter from './app/footer.vue';
 import AppSidebar from './app/sidebar.vue';
 
 defineOptions({ name: 'App' });
+
+const route = useRoute();
+
 defineOgImage({
 	component: 'fantasy',
+	props: route.meta,
 });
 
 useHead({
@@ -29,18 +33,28 @@ useHead({
 		},
 	],
 });
+
+useSeoMeta({
+	description: () => route.meta.description || '循此苦旅，终抵群星',
+	ogDescription: () => route.meta.description || '循此苦旅，终抵群星',
+});
 </script>
 
 <style lang="less">
 #sharpice_app {
 	display: flex;
-	height: 100dvh;
+	min-height: 100dvh;
 	isolation: isolate;
 	position: relative;
 	flex-direction: column;
 }
 
-// # 页面切换动效
+/** 消除 Nuxt Island 的代理包装层干扰  */
+main > div:not([class]) {
+	display: contents;
+}
+
+/** 页面切换动效 */
 .page-fade-enter-active,
 .page-fade-leave-active {
 	transition: opacity 0.3s ease;
@@ -57,7 +71,7 @@ useHead({
 	min-height: 0;
 	display: flex;
 
-	// # 小屏幕
+	/** 小屏幕 */
 	@media (max-width: 1024px) {
 		flex-direction: column;
 	}
@@ -67,7 +81,6 @@ main {
 	flex: -1;
 	opacity: 0;
 	width: 100%;
-	overflow: auto;
 	animation: slide-up-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) 1.5s forwards;
 }
 </style>

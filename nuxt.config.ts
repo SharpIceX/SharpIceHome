@@ -1,15 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import fontList from 'font-list';
 import git from 'isomorphic-git';
 import process from 'node:process';
-import { defineNuxtConfig } from 'nuxt/config';
-
-const fonts = await fontList.getFonts();
-const hasFont = fonts.some((f) => f.includes('LXGW WenKai') || f.includes('霞鹜文楷'));
-if (!hasFont) {
-	throw new Error('系统未安装“LXGW WenKai(霞鹜文楷)”字体！');
-}
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -23,6 +15,9 @@ export default defineNuxtConfig({
 	buildId: await git.resolveRef({ fs, dir: import.meta.dirname, ref: 'HEAD' }),
 	css: ['~/styles/main.less'],
 	modules: ['nuxt-svgo', '@nuxt/eslint', '@nuxtjs/seo', '@nuxt/a11y'],
+	alias: {
+		$: path.resolve(import.meta.dirname, './node_modules'),
+	},
 	devtools: {
 		enabled: !isProduction,
 	},
@@ -40,43 +35,48 @@ export default defineNuxtConfig({
 		publicAssets: [
 			{
 				baseURL: '/',
+				fallthrough: true,
 				dir: path.resolve(import.meta.dirname, './public'),
 			},
 		],
 	},
 	typescript: {
+		includeWorkspace: true,
 		tsConfig: {
-			/* 构建 */
-			sourceMap: true,
-			declaration: false,
-			noEmitOnError: true,
-			inlineSources: true,
-			declarationMap: false,
+			compilerOptions: {
+				/* 构建 */
+				sourceMap: true,
+				declaration: false,
+				noEmitOnError: true,
+				inlineSources: true,
+				declarationMap: false,
 
-			/* 检查 */
-			checkJs: true,
-			alwaysStrict: true,
-			noImplicitAny: true,
-			noUnusedLocals: true,
-			strictNullChecks: true,
-			noImplicitReturns: true,
-			noUnusedParameters: true,
-			allowUnusedLabels: false,
-			strictFunctionTypes: true,
-			strictBindCallApply: true,
-			noImplicitUseStrict: false,
-			allowUnreachableCode: false,
-			exactOptionalPropertyTypes: true,
-			useUnknownInCatchVariables: true,
-			noFallthroughCasesInSwitch: true,
-			strictPropertyInitialization: true,
-			forceConsistentCasingInFileNames: true,
-			noPropertyAccessFromIndexSignature: true,
+				/* 检查 */
+				checkJs: true,
+				alwaysStrict: true,
+				noImplicitAny: true,
+				noUnusedLocals: true,
+				strictNullChecks: true,
+				noImplicitReturns: true,
+				noUnusedParameters: true,
+				allowUnusedLabels: false,
+				strictFunctionTypes: true,
+				strictBindCallApply: true,
+				noImplicitUseStrict: false,
+				allowUnreachableCode: false,
+				exactOptionalPropertyTypes: true,
+				useUnknownInCatchVariables: true,
+				noFallthroughCasesInSwitch: true,
+				strictPropertyInitialization: true,
+				forceConsistentCasingInFileNames: true,
+				noPropertyAccessFromIndexSignature: true,
+			},
 		},
 	},
 	experimental: {
 		headNext: true,
 		typedPages: true,
+		componentIslands: true,
 		asyncEntry: isProduction,
 		writeEarlyHints: isProduction,
 		inlineRouteRules: isProduction,
@@ -91,25 +91,31 @@ export default defineNuxtConfig({
 		port: 8600,
 		host: '127.0.0.1',
 	},
+	linkChecker: {
+		skipInspections: ['no-uppercase-chars', 'no-non-ascii-chars'],
+	},
 	vite: {
+		css: {
+			transformer: 'lightningcss',
+		},
+		build: {
+			target: 'esnext',
+			cssMinify: 'lightningcss',
+		},
 		resolve: {
 			preserveSymlinks: true,
 		},
 		esbuild: {
 			drop: isProduction ? ['console', 'debugger'] : [],
 		},
-		build: {
-			cssMinify: 'lightningcss',
-		},
 		optimizeDeps: {
-			include: ['gsap', 'axe-core'],
+			include: ['@vue/devtools-core', '@vue/devtools-kit', 'gsap'],
 		},
 	},
 	site: {
 		name: '锐冰',
 		currentLocale: 'zh-Hans',
 		url: 'https://sharpice.top',
-		description: '循此苦旅，终抵群星',
 	},
 	sitemap: {
 		xsl: false,
@@ -171,7 +177,31 @@ export default defineNuxtConfig({
 	svgo: {
 		dts: true,
 		global: false,
-		defaultImport: 'component',
+		defaultImport: 'componentext',
+		svgoConfig: {
+			plugins: [
+				{
+					name: 'preset-default',
+					params: {
+						overrides: {
+							removeViewBox: false,
+							cleanupIds: {
+								minify: true,
+							},
+							convertPathData: {
+								forceAbsolutePath: false,
+								utilizeAbsolute: false,
+							},
+							mergePaths: {
+								floatPrecision: 2,
+							},
+						},
+					},
+				},
+				'removeDimensions',
+				'sortAttrs',
+			],
+		},
 	},
 	app: {
 		rootId: `sharpice_app`,
@@ -182,6 +212,7 @@ export default defineNuxtConfig({
 				dir: 'ltr',
 			},
 			meta: [
+				// 关键词
 				{
 					name: 'keywords',
 					content: 'SharpIce, 锐冰, 幻想生物, 个人网站',

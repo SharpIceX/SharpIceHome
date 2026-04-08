@@ -1,0 +1,43 @@
+@import (reference) '~/styles/color.less';
+
+hr {
+	height: 1em;
+	border: none;
+	display: flex;
+	margin: 1em auto;
+	overflow: visible;
+	position: relative;
+	align-items: center;
+	justify-content: center;
+
+	// 中间菱形
+	&::before {
+		content: '';
+		width: 1rem;
+		height: 1rem;
+		position: absolute;
+		transform: rotate(45deg);
+		background-color: transparent;
+		border: 1.5px solid @fantasy-accent;
+		filter: drop-shadow(0 0 1px @fantasy-accent);
+		box-shadow:
+			0 0 5px @fantasy-accent,
+			inset 0 0 2px @fantasy-glow-color;
+	}
+
+	// 左右线条
+	background: linear-gradient(
+		to right,
+		transparent 5%,
+		@fantasy-line-dim 25%,
+		@fantasy-line-dim 40%,
+		transparent 40%,
+		transparent 60%,
+		@fantasy-line-dim 60%,
+		@fantasy-line-dim 75%,
+		transparent 95%
+	);
+	background-size: 100% 1px;
+	background-position: center;
+	background-repeat: no-repeat;
+}

@@ -9,15 +9,12 @@ import websiteNuxtConfig from './.nuxt/eslint.config.mjs';
 const config = antfu(
 	{
 		vue: true,
+		yaml: false,
 		markdown: false,
 		stylistic: false,
 		lessOpinionated: true,
 		typescript: {
-			tsconfigPath: 'tsconfig.json',
 			parserOptions: {
-				projectService: {
-					allowDefaultProject: ['eslint.config.ts'],
-				},
 				tsconfigRootDir: import.meta.dirname,
 			},
 		},
@@ -30,7 +27,6 @@ const config = antfu(
 			'pnpm/yaml-enforce-settings': 'off',
 
 			// 允许手动排序
-			'yaml/sort-keys': 'off',
 			'jsonc/sort-keys': 'off',
 			'perfectionist/sort-imports': 'off',
 			'perfectionist/sort-named-imports': 'off',

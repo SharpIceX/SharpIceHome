@@ -1,0 +1,122 @@
+---
+title: 在搭载了 Intel Ultra 5 125H 的 ArchLinux 上为 Blender 启用实验性的 oneAPI GPU渲染支持
+tags:
+  - Blender
+  - ArchLinux
+---
+
+## 我的设备
+
+```
+主机：Redmi Book Pro 16 2024
+CPU：Intel(R) Core(TM) Ultra 5 125H (18) @ 4.50 GHz
+GPU：Intel Arc Graphics @ 2.20 GHz [集成]
+内核：6.19.11-zen1-1-zen
+```
+
+**建议使用最新内核！**
+
+## 1. 运行前准备
+
+首先你得有一个极佳的网络环境和至少 **20G+** 的可用存储
+
+``` bash
+# 确保当前用户加入了 video 和 render 用户组
+groups
+
+# 没有就加入，需要重新登录
+# sudo usermod -aG video,render $USER
+
+sudo pacman -S intel-compute-runtime intel-media-driver vulkan-intel intel-oneapi-basekit
+```
+
+## 2. 使用
+
+``` bash
+# 进入 oneAPI 环境
+source /opt/intel/oneapi/setvars.sh
+
+# 启用 Blender 对未认证 Intel 设备的实验性支持
+export CYCLES_ONEAPI_ALL_DEVICES=1
+
+blender
+
+# 记得在 `Edit -> Preferences -> System -> oneAPI` 启用 oneAPI 支持，并将渲染引擎切换到 Cycles
+```
+
+---
+
+## 调试相关
+
+### 环境验证
+
+运行：
+
+``` bash
+source /opt/intel/oneapi/setvars.sh
+
+sycl-ls
+```
+
+输出示例：
+
+```
+[level_zero:gpu][level_zero:0] Intel(R) Arc(TM) Graphics  # 确保存在这个
+[opencl:gpu][opencl:2] Intel(R) Arc(TM) Graphics NEO
+[opencl:cpu][opencl:1] Intel(R) Core(TM) Ultra 5 125H
+[opencl:fpga][opencl:0] Intel(R) FPGA Emulation Device
+```
+
+如果没有任何输出请运行
+
+``` bash
+env SYCL_UR_TRACE=1 sycl-ls
+```
+
+确保：
+
+```
+<LOADER>[INFO]: loaded adapter ... (libur_adapter_level_zero.so.0)
+<LOADER>[INFO]: loaded adapter ... (libur_adapter_opencl.so.0)
+```
+
+这两个库被成功加载，否则需自行根据详细错误进行修复
+
+
+### 支持性测试
+
+``` bash
+git clone https://github.com/oneapi-src/oneapi-samples.git
+
+cd oneapi-samples/DirectProgramming/C++SYCL/DenseLinearAlgebra/vector-add
+
+mkdir build
+cd build
+
+source /opt/intel/oneapi/setvars.sh
+
+cmake .. -G Ninja -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+cmake --build .
+
+```
+
+以上编译好后运行：
+
+``` bash
+./vector-add-buffers
+```
+
+没问题的话输出会类似：
+
+```
+Running on device: Intel(R) Arc(TM) Graphics
+Vector size: 10000
+[0]: 0 + 0 = 0
+[1]: 1 + 1 = 2
+[2]: 2 + 2 = 4
+
+[9999]: 9999 + 9999 = 19998
+Vector add successfully completed on device.
+```
+
+如果出现问题请需自行根据错误输出和 coredump 排查错误进行修复
