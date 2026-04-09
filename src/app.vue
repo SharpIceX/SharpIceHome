@@ -81,6 +81,6 @@ main {
 	flex: -1;
 	opacity: 0;
 	width: 100%;
-	animation: slide-up-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) 1.5s forwards;
+	animation: slide-up-in 200ms cubic-bezier(0.16, 1, 0.3, 1) 1.5s forwards;
 }
 </style>

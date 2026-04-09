@@ -36,6 +36,7 @@ code:not(pre code) {
 pre.shiki,
 pre[class*='language-'] {
 	margin: unset;
+	overflow: hidden;
 	overflow-x: auto;
 	position: relative;
 	counter-reset: step;
@@ -48,6 +49,7 @@ pre[class*='language-'] {
 		width: 1px;
 		content: '';
 		left: 3.3em;
+		margin: unset;
 		position: absolute;
 		pointer-events: none;
 		background-color: oklch(from @fantasy-accent l c h / 0.2);
