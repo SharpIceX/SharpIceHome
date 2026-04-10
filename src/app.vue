@@ -33,11 +33,6 @@ useHead({
 		},
 	],
 });
-
-useSeoMeta({
-	description: () => route.meta.description || '循此苦旅，终抵群星',
-	ogDescription: () => route.meta.description || '循此苦旅，终抵群星',
-});
 </script>
 
 <style lang="less">

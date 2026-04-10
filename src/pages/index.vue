@@ -49,6 +49,8 @@ import featherPointedIcon from '@fortawesome/fontawesome-free/svgs/solid/feather
 
 useSeoMeta({
 	title: '首页',
+	description: '循此苦旅，终抵群星',
+	ogDescription: '循此苦旅，终抵群星',
 });
 
 const connectList = [
