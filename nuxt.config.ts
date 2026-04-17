@@ -166,6 +166,13 @@ export default defineNuxtConfig({
 		blockAiBots: true,
 		blockNonSeoBots: true,
 		robotsEnabledValue: 'index, follow, noimageindex',
+		groups: [
+			{
+				allow: ['/'],
+				disallow: [],
+				userAgent: ['*'],
+			},
+		],
 	},
 	eslint: {
 		checker: false,
